@@ -63,6 +63,14 @@ const HomeScreen = () => {
       route: "/pages/story",
     },
     {
+      id: 5,
+      title: "Decision Scenarios",
+      description: "Practice real-world financial decisions",
+      icon: Target,
+      color: "#8b5cf6",
+      route: "/pages/ScenarioHub",
+    },
+    {
       id: 4,
       title: "Education Center",
       description: "Comprehensive fraud awareness resources",
