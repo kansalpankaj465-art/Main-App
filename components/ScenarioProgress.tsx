@@ -6,16 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
-import {
-  Trophy,
-  Target,
-  TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  Brain,
-  Clock,
-  Star,
-} from 'lucide-react-native';
+import { Trophy, Target, TrendingUp, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Brain, Clock, Star } from 'lucide-react-native';
 import { ScenarioProgress as ProgressType, scenarios } from '../data/scenarios';
 
 const { width } = Dimensions.get('window');

@@ -8,17 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  Play,
-  Clock,
-  Target,
-  TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  Brain,
-  Filter,
-  Trophy,
-} from 'lucide-react-native';
+import { Play, Clock, Target, TrendingUp, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Brain, ListFilter as Filter, Trophy } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { scenarios, Scenario } from '../data/scenarios';
 
