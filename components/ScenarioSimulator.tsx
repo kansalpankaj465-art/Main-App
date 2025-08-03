@@ -9,18 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  Clock,
-  Target,
-  CheckCircle,
-  XCircle,
-  ArrowRight,
-  RotateCcw,
-  Trophy,
-  Brain,
-  TrendingUp,
-  AlertTriangle,
-} from 'lucide-react-native';
+import { Clock, Target, CircleCheck as CheckCircle, Circle as XCircle, ArrowRight, RotateCcw, Trophy, Brain, TrendingUp, TriangleAlert as AlertTriangle } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Scenario, ScenarioChoice, scenarios } from '../data/scenarios';
 
