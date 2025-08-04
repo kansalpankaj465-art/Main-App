@@ -96,6 +96,18 @@ export default function LessonsPage() {
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
+        <View style={styles.audioLessonsContainer}>
+          <Text style={styles.audioLessonsTitle}>
+            Also Try our Audio Lessons
+          </Text>
+          <TouchableOpacity
+            style={styles.audioLessonsButton}
+            onPress={() => router.push("/pages/AudioLessons")}
+          >
+            <Text style={styles.audioLessonsButtonText}>Listen Now</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Hero Section */}
         {/* <View style={styles.heroSection}>
           {/* <View style={styles.heroBackground}>
@@ -488,5 +500,29 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     textAlign: "center",
     lineHeight: 20,
+  },
+  audioLessonsContainer: {
+    padding: 24,
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
+    marginHorizontal: 10,
+    borderRadius: 12,
+    marginBottom: 24,
+  },
+  audioLessonsTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: colors.text,
+    textAlign: "center",
+    marginBottom: 12,
+  },
+  audioLessonsButton: {
+    backgroundColor: colors.primary,
+    padding: 12,
+    borderRadius: 8,
+  },
+  audioLessonsButtonText: {
+    color: colors.white,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

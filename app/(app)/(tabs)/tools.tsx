@@ -65,6 +65,14 @@ const simulatorModules: SimulatorModule[] = [
     category: "fraud",
     route: "/pages/NearestCybercellFinder",
   },
+  {
+    id: "scam-heat-map",
+    title: "Scam Heat Map",
+    description: "Find the nearest scam to your location",
+    icon: Link,
+    category: "fraud",
+    route: "/pages/ScamHeatMap",
+  },
 
   {
     id: "sip-calculator",

@@ -36,11 +36,12 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
+import Goals from "../../../components/Goals";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
   const { signOut } = useAuth();
-  const userProfile = useSelector((state) => state.profile?.user);
+  const userProfile = useSelector((state: any) => state.profile?.user);
   const [userData, setUserData] = useState(null);
 
   const progress = useSharedValue(0);
@@ -143,7 +144,11 @@ const ProfileScreen = () => {
       <SafeAreaView style={styles.safeArea}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
-          <Animatable.View animation="fadeInDown" duration={800} style={styles.header}>
+          <Animatable.View
+            animation="fadeInDown"
+            duration={800}
+            style={styles.header}
+          >
             <Animatable.View
               animation="pulse"
               easing="ease-out"
@@ -167,14 +172,21 @@ const ProfileScreen = () => {
             </Animatable.View>
             <Text style={styles.userName}>
               {userData
-                ? `${userData.firstName || ""} ${userData.lastName || ""}`.trim()
+                ? `${userData.firstName || ""} ${
+                    userData.lastName || ""
+                  }`.trim()
                 : "Fraud Fighter"}
             </Text>
             <Text style={styles.userLevel}>{userStats.currentLevel}</Text>
           </Animatable.View>
 
           {/* Progress Section */}
-          <Animatable.View animation="fadeInUp" delay={200} duration={600} style={styles.sectionWrapper}>
+          <Animatable.View
+            animation="fadeInUp"
+            delay={200}
+            duration={600}
+            style={styles.sectionWrapper}
+          >
             <View style={styles.sectionTitleContainer}>
               <Award size={20} color="#00563F" style={styles.sectionIcon} />
               <Text style={styles.sectionTitle}>Progress</Text>
@@ -189,7 +201,9 @@ const ProfileScreen = () => {
                 </Text>
               </View>
               <View style={styles.progressBar}>
-                <Animated.View style={[styles.progressFill, animatedProgressStyle]} />
+                <Animated.View
+                  style={[styles.progressFill, animatedProgressStyle]}
+                />
               </View>
               <Text style={styles.progressLabel}>
                 {userStats.nextLevelXP - userStats.experiencePoints} XP to next
@@ -198,8 +212,15 @@ const ProfileScreen = () => {
             </View>
           </Animatable.View>
 
+          <Goals />
+
           {/* Stats Section */}
-          <Animatable.View animation="fadeInUp" delay={300} duration={600} style={styles.sectionWrapper}>
+          <Animatable.View
+            animation="fadeInUp"
+            delay={300}
+            duration={600}
+            style={styles.sectionWrapper}
+          >
             <View style={styles.sectionTitleContainer}>
               <Brain size={20} color="#00563F" style={styles.sectionIcon} />
               <Text style={styles.sectionTitle}>Your Stats</Text>
@@ -212,12 +233,16 @@ const ProfileScreen = () => {
               </View>
               <View style={styles.statCard}>
                 <Shield size={24} color="#4ecdc4" />
-                <Text style={styles.statValue}>{userStats.redFlagsSpotted}</Text>
+                <Text style={styles.statValue}>
+                  {userStats.redFlagsSpotted}
+                </Text>
                 <Text style={styles.statLabel}>Red Flags Spotted</Text>
               </View>
               <View style={styles.statCard}>
                 <BookOpen size={24} color="#45b7d1" />
-                <Text style={styles.statValue}>{userStats.storiesCompleted}</Text>
+                <Text style={styles.statValue}>
+                  {userStats.storiesCompleted}
+                </Text>
                 <Text style={styles.statLabel}>Stories Completed</Text>
               </View>
               <View style={styles.statCard}>
@@ -229,7 +254,12 @@ const ProfileScreen = () => {
           </Animatable.View>
 
           {/* Badges Section */}
-          <Animatable.View animation="fadeInUp" delay={400} duration={600} style={styles.sectionWrapper}>
+          <Animatable.View
+            animation="fadeInUp"
+            delay={400}
+            duration={600}
+            style={styles.sectionWrapper}
+          >
             <View style={styles.sectionTitleContainer}>
               <Award size={20} color="#00563F" style={styles.sectionIcon} />
               <Text style={styles.sectionTitle}>Badges Collection</Text>
@@ -240,7 +270,10 @@ const ProfileScreen = () => {
                   key={index}
                   animation="bounceIn"
                   delay={index * 100}
-                  style={[styles.badgeCard, !badge.earned && styles.badgeCardLocked]}
+                  style={[
+                    styles.badgeCard,
+                    !badge.earned && styles.badgeCardLocked,
+                  ]}
                 >
                   {typeof badge.icon === "string" ? (
                     <Text
@@ -271,7 +304,12 @@ const ProfileScreen = () => {
           </Animatable.View>
 
           {/* Recent Achievements */}
-          <Animatable.View animation="fadeInUp" delay={500} duration={600} style={styles.sectionWrapper}>
+          <Animatable.View
+            animation="fadeInUp"
+            delay={500}
+            duration={600}
+            style={styles.sectionWrapper}
+          >
             <View style={styles.sectionTitleContainer}>
               <Trophy size={20} color="#00563F" style={styles.sectionIcon} />
               <Text style={styles.sectionTitle}>Recent Achievements</Text>
@@ -285,8 +323,12 @@ const ProfileScreen = () => {
               >
                 <Trophy size={24} color="#ffd93d" />
                 <View style={styles.achievementContent}>
-                  <Text style={styles.achievementTitle}>{achievement.title}</Text>
-                  <Text style={styles.achievementDescription}>{achievement.description}</Text>
+                  <Text style={styles.achievementTitle}>
+                    {achievement.title}
+                  </Text>
+                  <Text style={styles.achievementDescription}>
+                    {achievement.description}
+                  </Text>
                   <Text style={styles.achievementDate}>{achievement.date}</Text>
                 </View>
               </Animatable.View>
@@ -294,7 +336,12 @@ const ProfileScreen = () => {
           </Animatable.View>
 
           {/* Settings Section */}
-          <Animatable.View animation="fadeInUp" delay={600} duration={600} style={styles.sectionWrapper}>
+          <Animatable.View
+            animation="fadeInUp"
+            delay={600}
+            duration={600}
+            style={styles.sectionWrapper}
+          >
             <View style={styles.sectionTitleContainer}>
               <Info size={20} color="#00563F" style={styles.sectionIcon} />
               <Text style={styles.sectionTitle}>Settings</Text>
@@ -332,7 +379,9 @@ const ProfileScreen = () => {
               onPress={handleLogout}
             >
               <LogOut size={24} color="#ff6b6b" />
-              <Text style={[styles.settingText, styles.logoutText]}>Logout</Text>
+              <Text style={[styles.settingText, styles.logoutText]}>
+                Logout
+              </Text>
             </TouchableOpacity>
           </Animatable.View>
         </ScrollView>
@@ -422,8 +471,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e5e5e5",
   },
-  statValue: { fontSize: 24, fontWeight: "bold", color: "#00563F", marginTop: 8 },
-  statLabel: { fontSize: 12, color: "#888888", textAlign: "center", marginTop: 4 },
+  statValue: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#00563F",
+    marginTop: 8,
+  },
+  statLabel: {
+    fontSize: 12,
+    color: "#888888",
+    textAlign: "center",
+    marginTop: 4,
+  },
   badgesGrid: {
     flexDirection: "row",
     flexWrap: "wrap",

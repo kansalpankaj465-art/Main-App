@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV !== "production";
 
 // Use localhost for development and actual domain for production
 const BASE_URL = isDev
-  ? "http://192.168.0.105:5000/api" // Development - update this to your local IP
+  ? "http://192.168.1.12:5000/api" // Development - update this to your local IP
   : "https://your-production-api.com/api"; // Production - update this when deploying
 
 console.log("API Base URL:", BASE_URL);
