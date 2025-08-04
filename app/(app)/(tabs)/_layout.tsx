@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Home, Brain, BookOpen, User, Wrench } from "lucide-react-native";
+import { Chrome as Home, Brain, BookOpen, User, Wrench } from "lucide-react-native";
 import { useTheme } from "../../../contexts/ThemeContext";
 import PSBColors from "../../../constants/colors";
 
