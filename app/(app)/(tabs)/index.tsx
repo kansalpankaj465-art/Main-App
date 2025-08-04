@@ -84,8 +84,14 @@ const HomeScreen = () => {
           <View style={styles.header}>
             <View>
               <View style={styles.logoSpace}>
-                <Text style={styles.bankName}>Punjab & Sind Bank</Text>
-                <Text style={styles.tagline}>Your Trusted Banking Partner</Text>
+                <View style={styles.bankHeader}>
+                  <Text style={styles.bankName}>Punjab & Sind Bank</Text>
+                  <View style={styles.bankNameUnderline} />
+                </View>
+                <Text style={styles.tagline}>Your Trusted Banking Partner Since 1908</Text>
+                <View style={styles.heritageBadge}>
+                  <Text style={styles.heritageBadgeText}>🏛️ 116 Years of Trust</Text>
+                </View>
               </View>
               <Text style={[styles.greeting, { color: theme.colors.text }]}>
                 Welcome back!
@@ -230,37 +236,67 @@ const styles = StyleSheet.create({
   logoSpace: {
     marginBottom: 16,
   },
+  bankHeader: {
+    alignItems: 'flex-start',
+    marginBottom: 8,
+  },
   bankName: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 22,
+    fontWeight: "800",
     color: PSBColors.primary,
-    letterSpacing: 0.5,
+    letterSpacing: -0.3,
+  },
+  bankNameUnderline: {
+    width: 40,
+    height: 2,
+    backgroundColor: PSBColors.secondary,
+    borderRadius: 1,
+    marginTop: 4,
   },
   tagline: {
-    fontSize: 12,
+    fontSize: 14,
     color: PSBColors.text.secondary,
-    marginTop: 2,
+    fontWeight: "600",
+    marginBottom: 8,
+  },
+  heritageBadge: {
+    backgroundColor: PSBColors.secondary + '20',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    alignSelf: 'flex-start',
+    borderWidth: 1,
+    borderColor: PSBColors.secondary + '40',
+  },
+  heritageBadgeText: {
+    color: PSBColors.brand.heritage,
+    fontSize: 12,
+    fontWeight: '700',
   },
   greeting: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 28,
+    fontWeight: "800",
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
     marginTop: 4,
+    fontWeight: "500",
   },
   notificationButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: PSBColors.gray[100],
+    backgroundColor: PSBColors.white,
     justifyContent: "center",
     alignItems: "center",
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4,
+    borderWidth: 1,
+    borderColor: PSBColors.card.border,
   },
   statsContainer: {
     paddingHorizontal: 20,
@@ -278,27 +314,31 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: PSBColors.white,
-    borderRadius: 12,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 16,
     padding: 15,
     alignItems: "center",
     marginHorizontal: 5,
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
+    borderTopWidth: 3,
+    borderTopColor: PSBColors.secondary,
   },
   statValue: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 26,
+    fontWeight: "800",
     marginTop: 8,
+    letterSpacing: -0.5,
   },
   statLabel: {
-    fontSize: 12,
+    fontSize: 13,
     color: PSBColors.text.secondary,
     textAlign: "center",
     marginTop: 4,
+    fontWeight: "600",
   },
   featuresContainer: {
     paddingHorizontal: 20,
@@ -313,63 +353,70 @@ const styles = StyleSheet.create({
     width: (width - 50) / 2,
     height: 160,
     marginBottom: 15,
-    borderRadius: 12,
+    borderRadius: 16,
     overflow: "hidden",
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 8,
   },
   featureGradient: {
     flex: 1,
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 12,
+    borderRadius: 16,
+    position: 'relative',
   },
   featureTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 17,
+    fontWeight: "800",
     marginTop: 12,
     textAlign: "center",
+    letterSpacing: -0.3,
   },
   featureDescription: {
-    fontSize: 12,
+    fontSize: 13,
     textAlign: "center",
     marginTop: 8,
     lineHeight: 16,
+    fontWeight: "500",
   },
   tipsContainer: {
     paddingHorizontal: 20,
     marginBottom: 30,
   },
   tipCard: {
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 20,
     flexDirection: "row",
     alignItems: "flex-start",
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
+    borderLeftWidth: 4,
+    borderLeftColor: PSBColors.secondary,
   },
   tipIcon: {
-    fontSize: 24,
+    fontSize: 28,
     marginRight: 15,
   },
   tipContent: {
     flex: 1,
   },
   tipTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "800",
     marginBottom: 8,
+    letterSpacing: -0.3,
   },
   tipText: {
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 20,
+    fontWeight: "500",
   },
 });
 

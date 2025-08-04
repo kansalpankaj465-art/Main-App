@@ -609,23 +609,24 @@ const styles = StyleSheet.create({
   },
   calculateButton: {
     backgroundColor: PSBColors.primary,
-    borderRadius: 12,
+    borderRadius: 16,
     paddingVertical: 16,
     alignItems: "center",
     marginTop: 8,
     shadowColor: PSBColors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 8,
   },
   disabledButton: {
     opacity: 0.6,
   },
   calculateButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 18,
+    fontWeight: "800",
     color: PSBColors.white,
+    letterSpacing: 0.5,
   },
 });
 

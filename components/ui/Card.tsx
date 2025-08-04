@@ -68,32 +68,32 @@ export function CardContent({ children, style }: CardContentProps) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 1,
     borderColor: PSBColors.card.border,
     backgroundColor: PSBColors.card.background,
     padding: 24,
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 8,
   },
   header: {
     flexDirection: "column",
     marginBottom: 20,
   },
   title: {
-    fontSize: 22,
-    fontWeight: "700",
+    fontSize: 24,
+    fontWeight: "800",
     color: PSBColors.text.primary,
     marginBottom: 8,
-    letterSpacing: -0.5,
+    letterSpacing: -0.3,
   },
   description: {
-    fontSize: 15,
+    fontSize: 16,
     color: PSBColors.text.secondary,
-    lineHeight: 22,
+    lineHeight: 24,
   },
   content: {
     paddingTop: 0,

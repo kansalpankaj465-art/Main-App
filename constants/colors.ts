@@ -40,6 +40,8 @@ export const PSBColors = {
     secondary: ['#FFD700', '#FFED4E'],
     neutral: ['#F9FAFB', '#F3F4F6'],
     dark: ['#1F2937', '#374151'],
+    psbGradient: ['#00563F', '#FFD700', '#00704F'], // PSB signature gradient
+    goldGradient: ['#FFD700', '#FFA500', '#FFED4E'], // Golden gradient
   },
   
   // Text Colors
@@ -49,13 +51,15 @@ export const PSBColors = {
     light: '#9CA3AF',
     white: '#FFFFFF',
     accent: '#00563F',
+    gold: '#B8860B',
   },
   
   // Component Specific
   card: {
     background: '#FFFFFF',
     border: '#E5E7EB',
-    shadow: 'rgba(0, 86, 63, 0.1)',
+    shadow: 'rgba(0, 86, 63, 0.15)',
+    shadowGold: 'rgba(255, 215, 0, 0.2)',
   },
   
   button: {
@@ -73,17 +77,32 @@ export const PSBColors = {
     balance: '#059669',
     debit: '#DC2626',
     credit: '#059669',
+    premium: '#B8860B',
+  },
+  
+  // PSB Brand specific
+  brand: {
+    heritage: '#8B4513',      // Brown for heritage feel
+    trust: '#00563F',         // Deep green for trust
+    prosperity: '#FFD700',    // Gold for prosperity
+    stability: '#2F4F4F',     // Dark slate for stability
   }
 };
 
-// Theme configuration for light and dark modes
+// Enhanced theme configuration for PSB branding
 export const createTheme = (isDark: boolean = false) => ({
   isDark,
   colors: {
-    // Background colors
-    background: isDark ? ['#1F2937', '#374151'] : ['#F9FAFB', '#FFFFFF'],
-    surface: isDark ? 'rgba(255, 255, 255, 0.05)' : PSBColors.white,
-    card: isDark ? 'rgba(255, 255, 255, 0.05)' : PSBColors.card.background,
+    // Background colors with PSB gradients
+    background: isDark 
+      ? ['#1F2937', '#374151'] 
+      : ['#F9FAFB', '#FFFFFF'],
+    surface: isDark 
+      ? 'rgba(255, 255, 255, 0.05)' 
+      : PSBColors.white,
+    card: isDark 
+      ? 'rgba(0, 86, 63, 0.1)' 
+      : PSBColors.card.background,
     
     // Text colors
     text: isDark ? PSBColors.text.white : PSBColors.text.primary,
@@ -108,6 +127,12 @@ export const createTheme = (isDark: boolean = false) => ({
     // Banking specific
     secure: PSBColors.banking.secure,
     transaction: PSBColors.banking.transaction,
+    
+    // PSB Brand elements
+    heritage: PSBColors.brand.heritage,
+    trust: PSBColors.brand.trust,
+    prosperity: PSBColors.brand.prosperity,
+    stability: PSBColors.brand.stability,
   },
 });
 

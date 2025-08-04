@@ -71,50 +71,50 @@ export function Button({
 
     switch (variant) {
       case "destructive":
-        baseStyle.push({ ...styles.button, ...styles.destructive });
+        baseStyle.push(styles.destructive);
         break;
       case "outline":
-        baseStyle.push({ ...styles.button, ...styles.outline });
+        baseStyle.push(styles.outline);
         break;
       case "secondary":
-        baseStyle.push({ ...styles.button, ...styles.secondary });
+        baseStyle.push(styles.secondary);
         break;
       case "ghost":
-        baseStyle.push({ ...styles.button, ...styles.ghost });
+        baseStyle.push(styles.ghost);
         break;
 
       case "scan":
-        baseStyle.push({ ...styles.button, ...styles.scan });
+        baseStyle.push(styles.scan);
         break;
       case "danger":
-        baseStyle.push({ ...styles.button, ...styles.danger });
+        baseStyle.push(styles.danger);
         break;
       case "warning":
-        baseStyle.push({ ...styles.button, ...styles.warning });
+        baseStyle.push(styles.warning);
         break;
       case "safe":
-        baseStyle.push({ ...styles.button, ...styles.safe });
+        baseStyle.push(styles.safe);
         break;
       default:
-        baseStyle.push({ ...styles.button, ...styles.default });
+        baseStyle.push(styles.default);
     }
 
     switch (size) {
       case "sm":
-        baseStyle.push({ ...styles.button, ...styles.sm });
+        baseStyle.push(styles.sm);
         break;
       case "lg":
-        baseStyle.push({ ...styles.button, ...styles.lg });
+        baseStyle.push(styles.lg);
         break;
       case "icon":
-        baseStyle.push({ ...styles.button, ...styles.icon });
+        baseStyle.push(styles.icon);
         break;
       default:
-        baseStyle.push({ ...styles.button, ...styles.defaultSize });
+        baseStyle.push(styles.defaultSize);
     }
 
     if (disabled) {
-      baseStyle.push({ ...styles.button, ...styles.disabled });
+      baseStyle.push(styles.disabled);
     }
 
     return baseStyle;
@@ -168,15 +168,15 @@ export function Button({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 4,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 6,
   },
   default: {
     backgroundColor: PSBColors.primary,
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   },
   defaultSize: {
     paddingHorizontal: 24,
-    paddingVertical: 16,
+    paddingVertical: 18,
     minHeight: 48,
   },
   sm: {
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
   },
   lg: {
     paddingHorizontal: 32,
-    paddingVertical: 20,
+    paddingVertical: 22,
     minHeight: 56,
   },
   icon: {
@@ -241,8 +241,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
   },
   text: {
-    fontWeight: "600",
+    fontWeight: "700",
     textAlign: "center",
+    letterSpacing: 0.5,
   },
   defaultText: {
     color: "#ffffff",
@@ -251,6 +252,7 @@ const styles = StyleSheet.create({
   outlineText: {
     color: PSBColors.primary,
     fontSize: 16,
+    fontWeight: "700",
   },
   ghostText: {
     color: PSBColors.primary,
@@ -261,5 +263,6 @@ const styles = StyleSheet.create({
   },
   lgText: {
     fontSize: 18,
+    fontWeight: "800",
   },
 });

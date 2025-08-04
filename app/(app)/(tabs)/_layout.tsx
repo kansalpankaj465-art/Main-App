@@ -10,22 +10,28 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: PSBColors.white,
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
           borderTopColor: PSBColors.card.border,
-          height: 70,
+          height: 75,
           paddingBottom: 10,
           paddingTop: 10,
           shadowColor: PSBColors.card.shadow,
-          shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 4,
-          elevation: 8,
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.2,
+          shadowRadius: 8,
+          elevation: 12,
+          borderTopWidth: 2,
+          borderTopColor: PSBColors.secondary,
         },
         tabBarActiveTintColor: PSBColors.primary,
         tabBarInactiveTintColor: PSBColors.gray[500],
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "600",
+          fontSize: 13,
+          fontWeight: "700",
+          letterSpacing: 0.3,
+        },
+        tabBarIconStyle: {
+          marginBottom: 2,
         },
       }}
     >

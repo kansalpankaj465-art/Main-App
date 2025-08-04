@@ -203,13 +203,20 @@ export default function SimulatorsScreen() {
         <View style={styles.heroContent}>
           <View style={styles.brandContainer}>
             <View style={styles.logoContainer}>
-              <Zap size={32} color={PSBColors.white} strokeWidth={2.5} />
+              <View style={styles.logoWrapper}>
+                <Zap size={32} color={PSBColors.white} strokeWidth={2.5} />
+                <View style={styles.logoGlow} />
+              </View>
             </View>
             <View>
-              <Text style={styles.brandTitle}>PSB Security Center</Text>
-              <Text style={styles.brandSubtitle}>
-                Fraud Prevention & Awareness Training
-              </Text>
+              <View style={styles.titleWrapper}>
+                <Text style={styles.brandTitle}>PSB Security Center</Text>
+                <View style={styles.titleAccent} />
+              </View>
+              <Text style={styles.brandSubtitle}>Fraud Prevention & Awareness Training</Text>
+              <View style={styles.securityBadge}>
+                <Text style={styles.securityBadgeText}>🛡️ Advanced Protection</Text>
+              </View>
             </View>
           </View>
 
@@ -297,30 +304,72 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   logoContainer: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     backgroundColor: PSBColors.secondary,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 16,
     shadowColor: PSBColors.card.shadow,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 10,
+    position: 'relative',
+  },
+  logoWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoGlow: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'rgba(255, 215, 0, 0.3)',
+    top: -5,
+    left: -5,
+    zIndex: -1,
+  },
+  titleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
   },
   brandTitle: {
-    fontSize: 28,
-    fontWeight: "700",
+    fontSize: 32,
+    fontWeight: "800",
     color: PSBColors.white,
-    letterSpacing: -0.5,
+    letterSpacing: -0.8,
+  },
+  titleAccent: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: PSBColors.secondary,
+    marginLeft: 8,
   },
   brandSubtitle: {
-    fontSize: 14,
+    fontSize: 16,
     color: PSBColors.gray[200],
-    fontWeight: "500",
-    marginTop: 2,
+    fontWeight: "600",
+    marginBottom: 8,
+  },
+  securityBadge: {
+    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 215, 0, 0.3)',
+  },
+  securityBadgeText: {
+    color: PSBColors.secondary,
+    fontSize: 12,
+    fontWeight: '700',
   },
   statsContainer: {
     flexDirection: "row",
