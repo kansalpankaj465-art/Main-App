@@ -24,6 +24,7 @@ import { useTheme } from "../../../contexts/ThemeContext";
 import ThemeToggle from "../../../components/ThemeToggle";
 import ChatbotButton from "../../../components/ChatbotButton";
 import ChatbotPopup from "../../../components/ChatbotPopup";
+import PSBColors from "../../../constants/colors";
 
 const { width } = Dimensions.get("window");
 
@@ -36,7 +37,7 @@ const HomeScreen = () => {
       title: "Simulators",
       description: "Experience how fraud schemes work from the inside",
       icon: Brain,
-      color: "#ff6b6b",
+      color: PSBColors.primary,
       route: "/(tabs)/simulator",
     },
     {
@@ -44,24 +45,16 @@ const HomeScreen = () => {
       title: "Quizzes",
       description: "Test your knowledge of everything that you learned",
       icon: Flag,
-      color: "#4ecdc4",
+      color: PSBColors.secondary,
       route: "/pages/QuizzesScreen",
     },
-    // {
-    //   id: 2,
-    //   title: "Red Flag Game",
-    //   description: "Test your ability to spot fraud indicators",
-    //   icon: Flag,
-    //   color: "#ecdc44",
-    //   route: "/pages/redflags",
-    // },
 
     {
       id: 4,
       title: "Education Center",
       description: "Comprehensive fraud awareness resources",
       icon: GraduationCap,
-      color: "#96ceb4",
+      color: PSBColors.primaryLight,
       route: "/(app)/(tabs)/education",
     },
     {
@@ -69,20 +62,20 @@ const HomeScreen = () => {
       title: "Story Mode",
       description: "Practice real-world financial decisions",
       icon: Target,
-      color: "#ecdc44",
+      color: PSBColors.secondaryDark,
       route: "/pages/ScenarioHub",
     },
   ];
 
   const stats = [
-    { label: "Schemes Exposed", value: "50+", icon: Eye },
-    { label: "Users Protected", value: "10K+", icon: Shield },
-    { label: "Success Rate", value: "95%", icon: TrendingUp },
+    { label: "Schemes Exposed", value: "50+", icon: Eye, color: PSBColors.primary },
+    { label: "Users Protected", value: "10K+", icon: Shield, color: PSBColors.secondary },
+    { label: "Success Rate", value: "95%", icon: TrendingUp, color: PSBColors.success },
   ];
 
   return (
     <LinearGradient
-      colors={[theme.colors.background[0], theme.colors.background[1]]}
+      colors={PSBColors.gradients.neutral}
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -90,13 +83,17 @@ const HomeScreen = () => {
           {/* Header */}
           <View style={styles.header}>
             <View>
+              <View style={styles.logoSpace}>
+                <Text style={styles.bankName}>Punjab & Sind Bank</Text>
+                <Text style={styles.tagline}>Your Trusted Banking Partner</Text>
+              </View>
               <Text style={[styles.greeting, { color: theme.colors.text }]}>
                 Welcome back!
               </Text>
               <Text
                 style={[styles.subtitle, { color: theme.colors.textSecondary }]}
               >
-                Ready to expose some fraud?
+                Secure your financial future
               </Text>
             </View>
             <TouchableOpacity style={styles.notificationButton}>
@@ -107,7 +104,7 @@ const HomeScreen = () => {
           {/* Stats Section */}
           <View style={styles.statsContainer}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Impact Statistics
+              Security Statistics
             </Text>
             <View style={styles.statsRow}>
               {stats.map((stat, index) => (
@@ -115,10 +112,14 @@ const HomeScreen = () => {
                   key={index}
                   style={[
                     styles.statCard,
-                    { backgroundColor: theme.colors.card },
+                    { 
+                      backgroundColor: PSBColors.white,
+                      borderLeftWidth: 4,
+                      borderLeftColor: stat.color,
+                    },
                   ]}
                 >
-                  <stat.icon size={24} color="#4ecdc4" />
+                  <stat.icon size={24} color={stat.color} />
                   <Text
                     style={[styles.statValue, { color: theme.colors.text }]}
                   >
@@ -150,10 +151,7 @@ const HomeScreen = () => {
                   onPress={() => router.push(feature.route as any)}
                   activeOpacity={0.8}
                 >
-                  <LinearGradient
-                    colors={[feature.color, `${feature.color}CC`]}
-                    style={styles.featureGradient}
-                  >
+                  <View style={[styles.featureGradient, { backgroundColor: feature.color }]}>
                     <feature.icon size={32} color="black" />
                     <Text style={[styles.featureTitle, { color: "black" }]}>
                       {feature.title}
@@ -163,7 +161,7 @@ const HomeScreen = () => {
                     >
                       {feature.description}
                     </Text>
-                  </LinearGradient>
+                  </View>
                 </TouchableOpacity>
               ))}
             </View>
@@ -172,17 +170,21 @@ const HomeScreen = () => {
           {/* Quick Tips */}
           <View style={styles.tipsContainer}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Daily Tip
+              Security Tip
             </Text>
             <View
-              style={[styles.tipCard, { backgroundColor: theme.colors.card }]}
+              style={[styles.tipCard, { 
+                backgroundColor: PSBColors.white,
+                borderLeftWidth: 4,
+                borderLeftColor: PSBColors.warning,
+              }]}
             >
-              <Text style={[styles.tipIcon, { color: theme.colors.text }]}>
+              <Text style={[styles.tipIcon, { color: PSBColors.warning }]}>
                 💡
               </Text>
               <View style={styles.tipContent}>
                 <Text style={[styles.tipTitle, { color: theme.colors.text }]}>
-                  Red Flag Alert!
+                  Security Alert!
                 </Text>
                 <Text
                   style={[
@@ -190,9 +192,8 @@ const HomeScreen = () => {
                     { color: theme.colors.textSecondary },
                   ]}
                 >
-                  If someone promises "guaranteed returns" with no risk, it's
-                  likely a scam. Real investments always carry some level of
-                  risk.
+                  Always verify banking communications through official PSB channels. 
+                  We never ask for sensitive information via email or SMS.
                 </Text>
               </View>
             </View>
@@ -226,22 +227,40 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 30,
   },
+  logoSpace: {
+    marginBottom: 16,
+  },
+  bankName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: PSBColors.primary,
+    letterSpacing: 0.5,
+  },
+  tagline: {
+    fontSize: 12,
+    color: PSBColors.text.secondary,
+    marginTop: 2,
+  },
   greeting: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
   },
   subtitle: {
     fontSize: 16,
-    color: "#b8b8b8",
     marginTop: 4,
   },
   notificationButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: PSBColors.gray[100],
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   statsContainer: {
     paddingHorizontal: 20,
@@ -259,21 +278,25 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: "rgba(255, 255, 255, 0.11)",
+    backgroundColor: PSBColors.white,
     borderRadius: 12,
     padding: 15,
     alignItems: "center",
     marginHorizontal: 5,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   statValue: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "white",
     marginTop: 8,
   },
   statLabel: {
     fontSize: 12,
-    color: "#b8b8b8",
+    color: PSBColors.text.secondary,
     textAlign: "center",
     marginTop: 4,
   },
@@ -290,25 +313,29 @@ const styles = StyleSheet.create({
     width: (width - 50) / 2,
     height: 160,
     marginBottom: 15,
-    borderRadius: 16,
+    borderRadius: 12,
     overflow: "hidden",
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
   },
   featureGradient: {
     flex: 1,
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 12,
   },
   featureTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
     marginTop: 12,
     textAlign: "center",
   },
   featureDescription: {
     fontSize: 12,
-    color: "rgba(255, 255, 255, 0.8)",
     textAlign: "center",
     marginTop: 8,
     lineHeight: 16,
@@ -318,11 +345,15 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   tipCard: {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 12,
     padding: 20,
     flexDirection: "row",
     alignItems: "flex-start",
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   tipIcon: {
     fontSize: 24,
@@ -334,12 +365,10 @@ const styles = StyleSheet.create({
   tipTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
     marginBottom: 8,
   },
   tipText: {
     fontSize: 14,
-    color: "#b8b8b8",
     lineHeight: 20,
   },
 });

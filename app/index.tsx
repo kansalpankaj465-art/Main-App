@@ -1,6 +1,7 @@
 import { Redirect } from "expo-router";
 import { useAuth } from "../contexts/AuthContext";
 import { View, ActivityIndicator } from "react-native";
+import PSBColors from "../constants/colors";
 
 export default function Index() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -13,10 +14,10 @@ export default function Index() {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#1a1a2e",
+            backgroundColor: PSBColors.white,
           }}
         >
-          <ActivityIndicator size="large" color="#ff6b6b" />
+          <ActivityIndicator size="large" color={PSBColors.primary} />
         </View>
       </>
     );

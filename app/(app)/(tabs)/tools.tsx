@@ -27,6 +27,7 @@ import {
 } from "lucide-react-native";
 import ChatbotButton from "../../../components/ChatbotButton";
 import ChatbotPopup from "../../../components/ChatbotPopup";
+import PSBColors from "../../../constants/colors";
 
 const { width, height } = Dimensions.get("window");
 
@@ -174,12 +175,12 @@ export default function SimulatorsScreen() {
         <View style={styles.heroContent}>
           <View style={styles.brandContainer}>
             <View style={styles.logoContainer}>
-              <Zap size={32} color="#FFFFFF" strokeWidth={2.5} />
+              <Zap size={32} color={PSBColors.white} strokeWidth={2.5} />
             </View>
             <View>
-              <Text style={styles.brandTitle}>FinSim Academy</Text>
+              <Text style={styles.brandTitle}>PSB FinTools</Text>
               <Text style={styles.brandSubtitle}>
-                Professional Training Platform
+                Punjab & Sind Bank Financial Tools
               </Text>
             </View>
           </View>
@@ -194,10 +195,10 @@ export default function SimulatorsScreen() {
         {/* Fraud Detection Section */}
         <View style={styles.section}>
           <CategoryHeader
-            title="Fraud Detection & Prevention"
-            subtitle="Master advanced fraud detection techniques"
+            title="Security & Fraud Prevention"
+            subtitle="PSB's advanced security tools and fraud detection"
             icon={Shield}
-            color="#DC2626"
+            color={PSBColors.primary}
           />
           <View style={styles.modulesList}>
             {fraudModules.map((module, index) => (
@@ -210,9 +211,9 @@ export default function SimulatorsScreen() {
         <View style={styles.section}>
           <CategoryHeader
             title="Financial Analysis & Modeling"
-            subtitle="Build expertise in financial markets"
+            subtitle="Professional financial planning tools"
             icon={Building}
-            color="#2563EB"
+            color={PSBColors.secondary}
           />
           <View style={styles.modulesList}>
             {financialModules.map((module, index) => (
@@ -236,10 +237,10 @@ export default function SimulatorsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9FAFB",
+    backgroundColor: PSBColors.gray[50],
   },
   heroHeader: {
-    backgroundColor: "#1F2937",
+    backgroundColor: PSBColors.primary,
     paddingTop: 50,
     paddingBottom: 30,
     paddingHorizontal: 20,
@@ -256,25 +257,25 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: "#3B82F6",
+    backgroundColor: PSBColors.secondary,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 16,
-    shadowColor: "#000",
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 8,
   },
   brandTitle: {
     fontSize: 28,
     fontWeight: "700",
-    color: "#FFFFFF",
+    color: PSBColors.white,
     letterSpacing: -0.5,
   },
   brandSubtitle: {
     fontSize: 14,
-    color: "#9CA3AF",
+    color: PSBColors.gray[200],
     fontWeight: "500",
     marginTop: 2,
   },
@@ -332,13 +333,13 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 22,
     fontWeight: "800",
-    color: "#111827",
+    color: PSBColors.text.primary,
     marginBottom: 4,
     letterSpacing: -0.3,
   },
   categorySubtitle: {
     fontSize: 15,
-    color: "#6B7280",
+    color: PSBColors.text.secondary,
     fontWeight: "400",
     lineHeight: 20,
   },
@@ -346,15 +347,15 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   moduleCard: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: PSBColors.white,
     borderRadius: 12,
-    shadowColor: "#000",
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 3,
     borderWidth: 1,
-    borderColor: "#F3F4F6",
+    borderColor: PSBColors.card.border,
   },
   cardContent: {
     flexDirection: "row",
@@ -376,13 +377,13 @@ const styles = StyleSheet.create({
   moduleTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#111827",
+    color: PSBColors.text.primary,
     marginBottom: 6,
     lineHeight: 24,
   },
   moduleDescription: {
     fontSize: 14,
-    color: "#6B7280",
+    color: PSBColors.text.secondary,
     lineHeight: 20,
     marginBottom: 12,
   },

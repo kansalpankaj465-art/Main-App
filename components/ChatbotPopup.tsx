@@ -9,6 +9,7 @@ import {
   Animated,
 } from "react-native";
 import { WebView } from "react-native-webview";
+import PSBColors from "../constants/colors";
 
 const { width, height } = Dimensions.get("window");
 
@@ -51,7 +52,7 @@ const ChatbotPopup: React.FC<ChatbotPopupProps> = ({ visible, onClose }) => {
         >
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.headerText}>FinGuard Assistant</Text>
+            <Text style={styles.headerText}>PSB Assistant</Text>
             <TouchableOpacity onPress={onClose}>
               <Text style={styles.closeButton}>✕</Text>
             </TouchableOpacity>
@@ -95,19 +96,19 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   header: {
-    backgroundColor: "#0070BA",
+    backgroundColor: PSBColors.primary,
     padding: 12,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   headerText: {
-    color: "#fff",
+    color: PSBColors.white,
     fontSize: 18,
     fontWeight: "bold",
   },
   closeButton: {
-    color: "#fff",
+    color: PSBColors.white,
     fontSize: 20,
   },
   webView: {

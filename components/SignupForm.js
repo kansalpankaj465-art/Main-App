@@ -6,6 +6,7 @@ import { sendOtp, signUp } from "../redux/services/operations/authServices";
 import { setSignUpData } from "../redux/slices/authSlice";
 import OAuthButtons from "./OAuthButtons";
 import Toast from "react-native-toast-message";
+import PSBColors from "../constants/colors";
 
 const SignupForm = ({ onSignupSuccess }) => {
   const dispatch = useDispatch();
@@ -103,12 +104,17 @@ const SignupForm = ({ onSignupSuccess }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.formHeader}>
+        <Text style={styles.formTitle}>Create Account</Text>
+        <Text style={styles.formSubtitle}>Join PSB digital banking today</Text>
+      </View>
+
       {!otpSent ? (
         <>
           {/* First Name */}
           <Text style={styles.label}>First Name</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="person-outline" size={20} color="#777" />
+            <Ionicons name="person-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Enter your first name"
@@ -120,7 +126,7 @@ const SignupForm = ({ onSignupSuccess }) => {
           {/* Last Name */}
           <Text style={styles.label}>Last Name</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="person-outline" size={20} color="#777" />
+            <Ionicons name="person-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Enter your last name"
@@ -132,7 +138,7 @@ const SignupForm = ({ onSignupSuccess }) => {
           {/* Email */}
           <Text style={styles.label}>Email</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="mail-outline" size={20} color="#777" />
+            <Ionicons name="mail-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Email"
@@ -145,7 +151,7 @@ const SignupForm = ({ onSignupSuccess }) => {
           {/* Password */}
           <Text style={styles.label}>Password</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="lock-closed-outline" size={20} color="#777" />
+            <Ionicons name="lock-closed-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Password"
@@ -157,7 +163,7 @@ const SignupForm = ({ onSignupSuccess }) => {
               <Ionicons
                 name={showPassword ? "eye-off-outline" : "eye-outline"}
                 size={20}
-                color="#777"
+                color={PSBColors.gray[500]}
               />
             </TouchableOpacity>
           </View>
@@ -165,7 +171,7 @@ const SignupForm = ({ onSignupSuccess }) => {
           {/* Confirm Password */}
           <Text style={styles.label}>Confirm Password</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="lock-closed-outline" size={20} color="#777" />
+            <Ionicons name="lock-closed-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Confirm your Password"
@@ -177,7 +183,7 @@ const SignupForm = ({ onSignupSuccess }) => {
               <Ionicons
                 name={showConfirmPassword ? "eye-off-outline" : "eye-outline"}
                 size={20}
-                color="#777"
+                color={PSBColors.gray[500]}
               />
             </TouchableOpacity>
           </View>
@@ -188,7 +194,7 @@ const SignupForm = ({ onSignupSuccess }) => {
               style={[styles.checkbox, agreeToTerms && styles.checkboxChecked]}
               onPress={() => setAgreeToTerms(!agreeToTerms)}
             >
-              {agreeToTerms && <Ionicons name="checkmark" size={16} color="#fff" />}
+              {agreeToTerms && <Ionicons name="checkmark" size={16} color={PSBColors.white} />}
             </TouchableOpacity>
             <Text style={styles.checkboxLabel}>
               I agree to the <Text style={styles.link}>Terms & Conditions</Text> and{" "}
@@ -210,7 +216,7 @@ const SignupForm = ({ onSignupSuccess }) => {
           {/* OTP Input */}
           <Text style={styles.label}>OTP</Text>
           <View style={styles.inputWrapper}>
-            <Ionicons name="key-outline" size={20} color="#777" />
+            <Ionicons name="key-outline" size={20} color={PSBColors.primary} />
             <TextInput
               style={styles.input}
               placeholder="Enter OTP"
@@ -233,27 +239,47 @@ const SignupForm = ({ onSignupSuccess }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: PSBColors.white,
     padding: 30,
-    borderRadius: 20,
+    borderRadius: 16,
     width: "90%",
     alignSelf: "center",
     marginTop: 50,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  formHeader: {
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  formTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: PSBColors.primary,
+    marginBottom: 4,
+  },
+  formSubtitle: {
+    fontSize: 14,
+    color: PSBColors.text.secondary,
   },
   label: {
     fontWeight: "600",
-    color: "#151717",
+    color: PSBColors.text.primary,
     marginBottom: 5,
   },
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    borderColor: "#ecedec",
-    borderWidth: 1.5,
-    borderRadius: 10,
+    borderColor: PSBColors.card.border,
+    borderWidth: 1,
+    borderRadius: 8,
     height: 50,
     paddingHorizontal: 10,
     marginBottom: 10,
+    backgroundColor: PSBColors.gray[50],
   },
   input: {
     flex: 1,
@@ -268,37 +294,43 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderWidth: 2,
-    borderColor: "#ecedec",
+    borderColor: PSBColors.card.border,
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 2,
   },
   checkboxChecked: {
-    backgroundColor: "#151717",
-    borderColor: "#151717",
+    backgroundColor: PSBColors.primary,
+    borderColor: PSBColors.primary,
   },
   checkboxLabel: {
     marginLeft: 5,
     fontSize: 14,
     flex: 1,
+    color: PSBColors.text.primary,
   },
   link: {
-    color: "#2d79f3",
+    color: PSBColors.primary,
     fontWeight: "500",
   },
   button: {
-    backgroundColor: "#151717",
-    borderRadius: 10,
+    backgroundColor: PSBColors.primary,
+    borderRadius: 8,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 20,
+    shadowColor: PSBColors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   buttonText: {
-    color: "#fff",
+    color: PSBColors.white,
     fontSize: 15,
-    fontWeight: "500",
+    fontWeight: "600",
   },
 });
 

@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../../contexts/AuthContext";
 import { setUser } from "../../../redux/slices/profileSlices";
 import { router } from "expo-router";
+import PSBColors from "../../../constants/colors";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -127,11 +128,15 @@ const ProfileScreen = () => {
     (userStats.experiencePoints / userStats.nextLevelXP) * 100;
 
   return (
-    <LinearGradient colors={["#1a1a2e", "#16213e"]} style={styles.container}>
+    <LinearGradient colors={PSBColors.gradients.neutral} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View style={styles.header}>
+            <View style={styles.bankHeader}>
+              <Text style={styles.bankName}>Punjab & Sind Bank</Text>
+              <Text style={styles.bankTagline}>Personal Banking Profile</Text>
+            </View>
             <View style={styles.avatarContainer}>
               {userData?.avatar ? (
                 <Image
@@ -141,10 +146,10 @@ const ProfileScreen = () => {
                 />
               ) : (
                 <LinearGradient
-                  colors={["#ff6b6b", "#4ecdc4"]}
+                  colors={PSBColors.gradients.primary}
                   style={styles.avatar}
                 >
-                  <User size={40} color="white" />
+                  <User size={40} color={PSBColors.white} />
                 </LinearGradient>
               )}
             </View>
@@ -155,7 +160,9 @@ const ProfileScreen = () => {
                   }`.trim()
                 : "Fraud Fighter"}
             </Text>
-            <Text style={styles.userLevel}>{userStats.currentLevel}</Text>
+            <Text style={[styles.userLevel, { color: PSBColors.primary }]}>
+              {userStats.currentLevel}
+            </Text>
           </View>
 
           {/* Progress Section */}
@@ -174,7 +181,10 @@ const ProfileScreen = () => {
                 <View
                   style={[
                     styles.progressFill,
-                    { width: `${progressPercentage}%` },
+                    { 
+                      width: `${progressPercentage}%`,
+                      backgroundColor: PSBColors.primary,
+                    },
                   ]}
                 />
               </View>
@@ -333,6 +343,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 30,
   },
+  bankHeader: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  bankName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: PSBColors.primary,
+    letterSpacing: 0.5,
+  },
+  bankTagline: {
+    fontSize: 12,
+    color: PSBColors.text.secondary,
+    marginTop: 2,
+  },
   avatarContainer: {
     marginBottom: 15,
   },
@@ -346,12 +371,11 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.primary,
     marginBottom: 5,
   },
   userLevel: {
     fontSize: 16,
-    color: "#4ecdc4",
     fontWeight: "600",
   },
   progressContainer: {
@@ -361,13 +385,18 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.primary,
     marginBottom: 15,
   },
   progressCard: {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    backgroundColor: PSBColors.white,
     borderRadius: 12,
     padding: 20,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   progressHeader: {
     flexDirection: "row",
@@ -377,28 +406,27 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: 16,
-    color: "white",
+    color: PSBColors.text.primary,
     fontWeight: "600",
   },
   progressPercentage: {
     fontSize: 16,
-    color: "#4ecdc4",
+    color: PSBColors.primary,
     fontWeight: "bold",
   },
   progressBar: {
     height: 8,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: PSBColors.gray[200],
     borderRadius: 4,
     marginBottom: 10,
   },
   progressFill: {
     height: "100%",
-    backgroundColor: "#4ecdc4",
     borderRadius: 4,
   },
   progressLabel: {
     fontSize: 14,
-    color: "#b8b8b8",
+    color: PSBColors.text.secondary,
     textAlign: "center",
   },
   statsContainer: {
@@ -412,21 +440,26 @@ const styles = StyleSheet.create({
   },
   statCard: {
     width: "48%",
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    backgroundColor: PSBColors.white,
     borderRadius: 12,
     padding: 15,
     alignItems: "center",
     marginBottom: 10,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   statValue: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.primary,
     marginTop: 8,
   },
   statLabel: {
     fontSize: 12,
-    color: "#b8b8b8",
+    color: PSBColors.text.secondary,
     textAlign: "center",
     marginTop: 4,
   },

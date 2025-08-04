@@ -11,6 +11,7 @@ import {
 import { Ionicons } from "@expo/vector-icons"; // for icons
 import Toast from "react-native-toast-message";
 import OAuthButtons from "./OAuthButtons";
+import PSBColors from "../constants/colors";
 
 const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
   const [email, setEmail] = useState("");
@@ -33,10 +34,15 @@ const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.formHeader}>
+        <Text style={styles.formTitle}>Secure Login</Text>
+        <Text style={styles.formSubtitle}>Access your PSB digital banking</Text>
+      </View>
+
       {/* Email */}
       <Text style={styles.label}>Email</Text>
       <View style={styles.inputWrapper}>
-        <Ionicons name="mail-outline" size={20} color="#777" />
+        <Ionicons name="mail-outline" size={20} color={PSBColors.primary} />
         <TextInput
           style={styles.input}
           placeholder="Enter your Email"
@@ -49,7 +55,7 @@ const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
       {/* Password */}
       <Text style={styles.label}>Password</Text>
       <View style={styles.inputWrapper}>
-        <Ionicons name="lock-closed-outline" size={20} color="#777" />
+        <Ionicons name="lock-closed-outline" size={20} color={PSBColors.primary} />
         <TextInput
           style={styles.input}
           placeholder="Enter your Password"
@@ -61,7 +67,7 @@ const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
           <Ionicons
             name={showPassword ? "eye-off-outline" : "eye-outline"}
             size={20}
-            color="#777"
+            color={PSBColors.gray[500]}
           />
         </TouchableOpacity>
       </View>
@@ -73,7 +79,7 @@ const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
             style={[styles.checkbox, rememberMe && styles.checkboxChecked]}
             onPress={() => setRememberMe(!rememberMe)}
           >
-            {rememberMe && <Ionicons name="checkmark" size={16} color="#fff" />}
+            {rememberMe && <Ionicons name="checkmark" size={16} color={PSBColors.white} />}
           </TouchableOpacity>
           <Text style={styles.checkboxLabel}>Remember me</Text>
         </View>
@@ -163,27 +169,47 @@ const LoginForm = ({ onSwitchToSignup, onForgotPassword, onLoginSuccess }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: PSBColors.white,
     padding: 30,
-    borderRadius: 20,
+    borderRadius: 16,
     width: "90%",
     alignSelf: "center",
     marginTop: 50,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  formHeader: {
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  formTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: PSBColors.primary,
+    marginBottom: 4,
+  },
+  formSubtitle: {
+    fontSize: 14,
+    color: PSBColors.text.secondary,
   },
   label: {
     fontWeight: "600",
-    color: "#151717",
+    color: PSBColors.text.primary,
     marginBottom: 5,
   },
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    borderColor: "#ecedec",
-    borderWidth: 1.5,
-    borderRadius: 10,
+    borderColor: PSBColors.card.border,
+    borderWidth: 1,
+    borderRadius: 8,
     height: 50,
     paddingHorizontal: 10,
     marginBottom: 10,
+    backgroundColor: PSBColors.gray[50],
   },
   input: {
     flex: 1,
@@ -203,45 +229,53 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderWidth: 2,
-    borderColor: "#ecedec",
+    borderColor: PSBColors.card.border,
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
   },
   checkboxChecked: {
-    backgroundColor: "#151717",
-    borderColor: "#151717",
+    backgroundColor: PSBColors.primary,
+    borderColor: PSBColors.primary,
   },
   checkboxLabel: {
     marginLeft: 5,
     fontSize: 14,
+    color: PSBColors.text.primary,
   },
   link: {
-    color: "#2d79f3",
+    color: PSBColors.primary,
     fontWeight: "500",
   },
   button: {
-    backgroundColor: "#151717",
-    borderRadius: 10,
+    backgroundColor: PSBColors.primary,
+    borderRadius: 8,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 20,
+    shadowColor: PSBColors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   buttonText: {
-    color: "#fff",
+    color: PSBColors.white,
     fontSize: 15,
-    fontWeight: "500",
+    fontWeight: "600",
   },
   signupText: {
     textAlign: "center",
     fontSize: 14,
     marginVertical: 5,
+    color: PSBColors.text.primary,
   },
   orText: {
     textAlign: "center",
     fontSize: 14,
     marginVertical: 10,
+    color: PSBColors.text.secondary,
   },
   socialButton: {
     flexDirection: "row",

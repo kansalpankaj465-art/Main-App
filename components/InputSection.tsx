@@ -23,6 +23,7 @@ import {
   Clock,
 } from "lucide-react-native";
 import { SipInputs, formatCurrency } from "../hooks/useSipCalculator";
+import PSBColors from "../constants/colors";
 
 interface InputSectionProps {
   inputs: SipInputs;
@@ -55,7 +56,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TrendingUp size={20} color="#1e40af" />
+        <TrendingUp size={20} color={PSBColors.primary} />
         <Text style={styles.headerText}>Investment Parameters</Text>
       </View>
 
@@ -226,17 +227,17 @@ const InputField: React.FC<InputFieldProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
+    backgroundColor: PSBColors.white,
     borderRadius: 16,
     padding: 20,
     marginHorizontal: 16,
     marginBottom: 16,
-    shadowColor: "#000",
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 8,
   },
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 18,
     fontWeight: "700",
-    color: "#1e293b",
+    color: PSBColors.text.primary,
   },
   inputGroup: {
     marginBottom: 28,
@@ -263,23 +264,23 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 15,
     fontWeight: "600",
-    color: "#374151",
+    color: PSBColors.text.primary,
   },
   input: {
     borderWidth: 2,
-    borderColor: "#e5e7eb",
+    borderColor: PSBColors.card.border,
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: PSBColors.gray[50],
     marginBottom: 16,
-    color: "#1e293b",
+    color: PSBColors.text.primary,
     fontWeight: "500",
   },
   inputError: {
-    borderColor: "#ef4444",
-    backgroundColor: "#fef2f2",
+    borderColor: PSBColors.error,
+    backgroundColor: PSBColors.error + "10",
   },
   slider: {
     width: "100%",
@@ -287,10 +288,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sliderThumb: {
-    backgroundColor: "#1e40af",
+    backgroundColor: PSBColors.primary,
     width: 24,
     height: 24,
-    shadowColor: "#1e40af",
+    shadowColor: PSBColors.primary,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -305,13 +306,13 @@ const styles = StyleSheet.create({
   },
   sliderLabel: {
     fontSize: 12,
-    color: "#64748b",
+    color: PSBColors.text.secondary,
     fontWeight: "500",
   },
   sliderValue: {
     fontSize: 15,
     fontWeight: "700",
-    color: "#1e40af",
+    color: PSBColors.primary,
   },
   errorContainer: {
     marginTop: 8,
@@ -319,7 +320,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 12,
-    color: "#ef4444",
+    color: PSBColors.error,
     fontWeight: "500",
   },
   actionButtons: {
@@ -332,31 +333,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    backgroundColor: "#f8fafc",
+    backgroundColor: PSBColors.gray[100],
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: PSBColors.card.border,
   },
   advancedButtonText: {
     marginLeft: 8,
     fontSize: 14,
     fontWeight: "500",
-    color: "#64748b",
+    color: PSBColors.text.secondary,
   },
   resetButton: {
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: PSBColors.white,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: PSBColors.card.border,
   },
   resetButtonText: {
     marginLeft: 8,
     fontSize: 14,
     fontWeight: "500",
-    color: "#64748b",
+    color: PSBColors.text.secondary,
   },
 });

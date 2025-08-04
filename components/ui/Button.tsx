@@ -16,6 +16,7 @@ import {
   GestureDetector,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
+import PSBColors from "../../constants/colors";
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -57,11 +58,11 @@ export function Button({
 
   const tap = Gesture.Tap()
     .onBegin(() => {
-      scale.value = withSpring(0.95);
+      scale.value = withSpring(0.96, { damping: 15, stiffness: 300 });
       opacity.value = withTiming(0.8, { duration: 100 });
     })
     .onFinalize(() => {
-      scale.value = withSpring(1);
+      scale.value = withSpring(1, { damping: 15, stiffness: 300 });
       opacity.value = withTiming(1, { duration: 100 });
     });
 
@@ -167,53 +168,53 @@ export function Button({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 12,
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 4,
   },
   default: {
-    backgroundColor: "#10b981",
-    shadowColor: "#10b981",
+    backgroundColor: PSBColors.primary,
+    shadowColor: PSBColors.primary,
   },
   destructive: {
-    backgroundColor: "#ef4444",
-    shadowColor: "#ef4444",
+    backgroundColor: PSBColors.error,
+    shadowColor: PSBColors.error,
   },
   outline: {
     borderWidth: 2,
-    borderColor: "#374151",
+    borderColor: PSBColors.primary,
     backgroundColor: "transparent",
     shadowOpacity: 0.1,
   },
   secondary: {
-    backgroundColor: "#6b7280",
-    shadowColor: "#6b7280",
+    backgroundColor: PSBColors.secondary,
+    shadowColor: PSBColors.secondary,
   },
   ghost: {
     backgroundColor: "transparent",
     shadowOpacity: 0,
   },
   scan: {
-    backgroundColor: "#10b981",
-    shadowColor: "#10b981",
+    backgroundColor: PSBColors.primary,
+    shadowColor: PSBColors.primary,
   },
   danger: {
-    backgroundColor: "#dc2626",
-    shadowColor: "#dc2626",
+    backgroundColor: PSBColors.error,
+    shadowColor: PSBColors.error,
   },
   warning: {
-    backgroundColor: "#f59e0b",
-    shadowColor: "#f59e0b",
+    backgroundColor: PSBColors.warning,
+    shadowColor: PSBColors.warning,
   },
   safe: {
-    backgroundColor: "#059669",
-    shadowColor: "#059669",
+    backgroundColor: PSBColors.success,
+    shadowColor: PSBColors.success,
   },
   defaultSize: {
     paddingHorizontal: 24,
@@ -248,11 +249,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   outlineText: {
-    color: "#f9fafb",
+    color: PSBColors.primary,
     fontSize: 16,
   },
   ghostText: {
-    color: "#f9fafb",
+    color: PSBColors.primary,
     fontSize: 16,
   },
   smText: {

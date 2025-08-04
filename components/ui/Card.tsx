@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated";
+import PSBColors from "../../constants/colors";
 
 interface CardProps {
   children: React.ReactNode;
@@ -67,16 +68,16 @@ export function CardContent({ children, style }: CardContentProps) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 16,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: "#374151",
-    backgroundColor: "#1f2937",
+    borderColor: PSBColors.card.border,
+    backgroundColor: PSBColors.card.background,
     padding: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
-    shadowRadius: 16,
-    elevation: 12,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
   },
   header: {
     flexDirection: "column",
@@ -85,13 +86,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "700",
-    color: "#f9fafb",
+    color: PSBColors.text.primary,
     marginBottom: 8,
     letterSpacing: -0.5,
   },
   description: {
     fontSize: 15,
-    color: "#9ca3af",
+    color: PSBColors.text.secondary,
     lineHeight: 22,
   },
   content: {

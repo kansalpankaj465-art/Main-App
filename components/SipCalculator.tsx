@@ -8,6 +8,7 @@ import { ResultsCard } from './ResultsCard';
 import { SipChart } from './SipChart';
 import { QuickPresets } from './QuickPresets';
 import { AdvancedOptions } from './AdvancedOptions';
+import PSBColors from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,22 +36,22 @@ export const SipCalculator: React.FC = () => {
           entering={FadeInUp.duration(800).springify()}
           style={styles.headerContainer}
         >
-          <View style={styles.headerGradient}>
+          <View style={[styles.headerGradient, { backgroundColor: PSBColors.primary }]}>
             <View style={styles.headerContent}>
               <View style={styles.headerBadge}>
-                <Calculator size={18} color="#1e40af" />
-                <Sparkles size={16} color="#f59e0b" style={styles.sparkleIcon} />
-                <Text style={styles.headerBadgeText}>Professional SIP Calculator</Text>
+                <Calculator size={18} color={PSBColors.white} />
+                <Sparkles size={16} color={PSBColors.secondary} style={styles.sparkleIcon} />
+                <Text style={styles.headerBadgeText}>PSB SIP Calculator</Text>
               </View>
-              <Text style={styles.title}>Build Your Wealth</Text>
+              <Text style={styles.title}>Build Wealth with PSB</Text>
               <Text style={styles.subtitle}>
-                Smart systematic investment planning with real-time calculations and insights
+                Systematic Investment Planning with Punjab & Sind Bank
               </Text>
               
               {/* Stats Row */}
               <View style={styles.statsRow}>
                 <View style={styles.statItem}>
-                  <Text style={styles.statValue}>12%</Text>
+                  <Text style={styles.statValue}>8-12%</Text>
                   <Text style={styles.statLabel}>Avg Return</Text>
                 </View>
                 <View style={styles.statDivider} />
@@ -60,7 +61,7 @@ export const SipCalculator: React.FC = () => {
                 </View>
                 <View style={styles.statDivider} />
                 <View style={styles.statItem}>
-                  <Text style={styles.statValue}>10Y+</Text>
+                  <Text style={styles.statValue}>PSB</Text>
                   <Text style={styles.statLabel}>Long Term</Text>
                 </View>
               </View>
@@ -131,7 +132,7 @@ export const SipCalculator: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: PSBColors.white,
     backgroundColor: '#f8fafc',
   },
   scrollView: {
@@ -144,7 +145,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerGradient: {
-    backgroundColor: '#1e40af',
     paddingTop: 20,
     paddingBottom: 30,
     paddingHorizontal: 20,
@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
   headerBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: PSBColors.secondaryLight + '30',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: PSBColors.secondary + '50',
   },
   sparkleIcon: {
     marginLeft: 4,
@@ -172,19 +172,19 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 13,
     fontWeight: '600',
-    color: '#ffffff',
+    color: PSBColors.white,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: PSBColors.white,
     textAlign: 'center',
     marginBottom: 8,
     letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: PSBColors.gray[200],
     textAlign: 'center',
     lineHeight: 24,
     maxWidth: width - 80,
@@ -193,12 +193,12 @@ const styles = StyleSheet.create({
   statsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: PSBColors.secondary + '20',
     borderRadius: 16,
     paddingVertical: 16,
     paddingHorizontal: 20,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.15)',
+    borderColor: PSBColors.secondary + '30',
   },
   statItem: {
     flex: 1,
@@ -207,31 +207,31 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: PSBColors.white,
     marginBottom: 2,
   },
   statLabel: {
     fontSize: 12,
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: PSBColors.gray[200],
   },
   statDivider: {
     width: 1,
     height: 30,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: PSBColors.secondary + '40',
     marginHorizontal: 16,
   },
   chartSection: {
-    backgroundColor: '#ffffff',
+    backgroundColor: PSBColors.white,
     borderRadius: 16,
     padding: 20,
     marginHorizontal: 16,
     marginTop: 16,
-    shadowColor: '#000',
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 8,
   },
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 18,
     fontWeight: '700',
-    color: '#1e293b',
+    color: PSBColors.text.primary,
   },
   bottomSpacing: {
     height: 20,

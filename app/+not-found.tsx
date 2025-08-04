@@ -4,17 +4,20 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { Home, AlertTriangle } from "lucide-react-native";
+import PSBColors from "../constants/colors";
 
 export default function NotFoundScreen() {
   return (
-    <LinearGradient colors={["#1a1a2e", "#16213e"]} style={styles.container}>
+    <LinearGradient colors={PSBColors.gradients.neutral} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
-          <AlertTriangle size={80} color="#ff6b6b" />
+          <View style={styles.iconContainer}>
+            <AlertTriangle size={80} color={PSBColors.error} />
+          </View>
           <Text style={styles.title}>404</Text>
           <Text style={styles.subtitle}>Page Not Found</Text>
           <Text style={styles.description}>
-            Oops! The page you're looking for doesn't exist.
+            Sorry! The page you're looking for is not available.
           </Text>
 
           <TouchableOpacity
@@ -22,7 +25,7 @@ export default function NotFoundScreen() {
             onPress={() => router.push("/(app)/(tabs)")}
             activeOpacity={0.8}
           >
-            <Home size={20} color="white" />
+            <Home size={20} color={PSBColors.white} />
             <Text style={styles.homeButtonText}>Go Home</Text>
           </TouchableOpacity>
         </View>
@@ -44,21 +47,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
   },
+  iconContainer: {
+    backgroundColor: PSBColors.gray[100],
+    padding: 20,
+    borderRadius: 50,
+    marginBottom: 20,
+  },
   title: {
     fontSize: 72,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.primary,
     marginTop: 20,
   },
   subtitle: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#ff6b6b",
+    color: PSBColors.error,
     marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    color: "#b8b8b8",
+    color: PSBColors.text.secondary,
     textAlign: "center",
     lineHeight: 22,
     marginBottom: 40,
@@ -66,13 +75,18 @@ const styles = StyleSheet.create({
   homeButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#4ecdc4",
+    backgroundColor: PSBColors.primary,
     paddingHorizontal: 24,
     paddingVertical: 12,
-    borderRadius: 25,
+    borderRadius: 8,
+    shadowColor: PSBColors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   homeButtonText: {
-    color: "white",
+    color: PSBColors.white,
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: 8,

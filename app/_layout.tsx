@@ -6,6 +6,7 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import { Provider } from "react-redux";
 import { AuthProvider } from "../contexts/AuthContext";
 import store from "../redux/store";
+import PSBColors from "../constants/colors";
 
 function MainLayout() {
   useFrameworkReady();
@@ -15,7 +16,7 @@ function MainLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <AuthProvider>
           <Slot />
-          <StatusBar style="light" backgroundColor="#1a1a2e" />
+          <StatusBar style="dark" backgroundColor={PSBColors.white} />
         </AuthProvider>
       </GestureHandlerRootView>
     </ThemeProvider>
