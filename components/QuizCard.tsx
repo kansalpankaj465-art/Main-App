@@ -1,17 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import {
-  Shield,
-  DollarSign,
-  CheckCircle,
-  Clock,
-  Star,
-  Zap,
-  Trophy,
-  Target,
-} from "lucide-react-native";
+import { Shield, DollarSign, CircleCheck as CheckCircle, Clock, Star, Zap, Trophy, Target } from "lucide-react-native";
 import { Quiz, getUserProgress } from "../data/quizData";
-import PSBColors from "../constants/colors";
 
 interface QuizCardProps {
   quiz: Quiz;
@@ -30,30 +20,30 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onPress }) => {
     switch (difficulty) {
       case "beginner":
         return {
-          color: PSBColors.success,
-          bg: PSBColors.success + "20",
-          gradient: [PSBColors.success, PSBColors.primaryLight],
+          color: "#10b981",
+          bg: "#d1fae5",
+          gradient: ["#10b981", "#34d399"],
           icon: Target,
         };
       case "intermediate":
         return {
-          color: PSBColors.warning,
-          bg: PSBColors.warning + "20",
-          gradient: [PSBColors.warning, PSBColors.secondaryDark],
+          color: "#f59e0b",
+          bg: "#fef3c7",
+          gradient: ["#f59e0b", "#fbbf24"],
           icon: Zap,
         };
       case "advanced":
         return {
-          color: PSBColors.error,
-          bg: PSBColors.error + "20",
-          gradient: [PSBColors.error, PSBColors.error],
+          color: "#ef4444",
+          bg: "#fee2e2",
+          gradient: ["#ef4444", "#f87171"],
           icon: Trophy,
         };
       default:
         return {
-          color: PSBColors.gray[500],
-          bg: PSBColors.gray[100],
-          gradient: [PSBColors.gray[500], PSBColors.gray[400]],
+          color: "#6b7280",
+          bg: "#f3f4f6",
+          gradient: ["#6b7280", "#9ca3af"],
           icon: Star,
         };
     }
@@ -63,9 +53,9 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onPress }) => {
   const DifficultyIcon = difficultyConfig.icon;
 
   const getScoreColor = (score: number) => {
-    if (score >= 4) return PSBColors.success;
-    if (score >= 3) return PSBColors.warning;
-    return PSBColors.error;
+    if (score >= 4) return "#10b981";
+    if (score >= 3) return "#f59e0b";
+    return "#ef4444";
   };
 
   return (
@@ -197,22 +187,22 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onPress }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: PSBColors.white,
+    backgroundColor: "#ffffff",
     borderRadius: 20,
     padding: 20,
     marginBottom: 16,
-    shadowColor: PSBColors.card.shadow,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.1,
     shadowRadius: 16,
     elevation: 8,
     borderWidth: 1,
-    borderColor: PSBColors.card.border,
+    borderColor: "#f1f5f9",
     position: "relative",
     overflow: "hidden",
   },
   completedCard: {
-    borderColor: PSBColors.success,
+    borderColor: "#10b981",
     borderWidth: 1,
   },
   completionGlow: {
@@ -221,9 +211,9 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: "140%",
-    backgroundColor: PSBColors.success,
+    backgroundColor: "#10b981",
     opacity: 0.07,
-    shadowColor: PSBColors.success,
+    shadowColor: "#10b981",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
@@ -246,17 +236,17 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: PSBColors.card.shadow,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
   },
   fraudIcon: {
-    backgroundColor: PSBColors.error,
+    backgroundColor: "#ef4444",
   },
   financialIcon: {
-    backgroundColor: PSBColors.primary,
+    backgroundColor: "#6366f1",
   },
   categoryBadge: {
     paddingHorizontal: 12,
@@ -264,20 +254,20 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   fraudBadge: {
-    backgroundColor: PSBColors.error + "20",
+    backgroundColor: "#fee2e2",
   },
   financialBadge: {
-    backgroundColor: PSBColors.primary + "20",
+    backgroundColor: "#e0e7ff",
   },
   categoryText: {
     fontSize: 12,
     fontWeight: "600",
   },
   fraudText: {
-    color: PSBColors.error,
+    color: "#dc2626",
   },
   financialText: {
-    color: PSBColors.primary,
+    color: "#4338ca",
   },
   completionBadge: {
     alignItems: "flex-end",
@@ -307,13 +297,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "700",
-    color: PSBColors.text.primary,
+    color: "#1f2937",
     marginBottom: 8,
     lineHeight: 24,
   },
   description: {
     fontSize: 14,
-    color: PSBColors.text.secondary,
+    color: "#6b7280",
     lineHeight: 20,
   },
   metaSection: {

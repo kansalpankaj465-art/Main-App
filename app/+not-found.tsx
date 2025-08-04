@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import { Home, AlertTriangle } from "lucide-react-native";
+import { Chrome as Home, TriangleAlert as AlertTriangle } from "lucide-react-native";
 import PSBColors from "../constants/colors";
 
 export default function NotFoundScreen() {
