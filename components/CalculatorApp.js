@@ -11,6 +11,7 @@ import { Calculator, CreditCard, TrendingUp, Sparkles, Repeat } from 'lucide-rea
 import SimpleInterestCalculator from './SimpleInterestCalculator';
 import LoanEmiCalculator from './LoanEmiCalculator';
 import CompoundInterestCalculator from './CompoundInterestCalculator';
+import PSBColors from '../constants/colors';
 
 const CalculatorApp = () => {
   const [activeTab, setActiveTab] = useState('simple');
@@ -29,13 +30,13 @@ const CalculatorApp = () => {
           <View style={styles.headerContent}>
             <View style={styles.titleContainer}>
               <View style={styles.iconContainer}>
-                <Calculator size={32} color="#ffffff" />
+                <Calculator size={32} color={PSBColors.white} />
               </View>
-              <Text style={styles.title}>Financial Calculator</Text>
-              <Sparkles size={24} color="#ffffff" opacity={0.8} />
+              <Text style={styles.title}>PSB Calculator</Text>
+              <Sparkles size={24} color={PSBColors.secondary} opacity={0.8} />
             </View>
             <Text style={styles.subtitle}>
-              Calculate Simple Interest, Loan EMI & Compound Interest with beautiful visualizations
+              Punjab & Sind Bank's comprehensive financial calculator suite
             </Text>
           </View>
         </View>
@@ -52,7 +53,7 @@ const CalculatorApp = () => {
                     style={[styles.tab, activeTab === tab.id && styles.activeTab]}
                     onPress={() => setActiveTab(tab.id)}
                   >
-                    <Icon size={20} color={activeTab === tab.id ? '#ffffff' : '#666666'} />
+                    <Icon size={20} color={activeTab === tab.id ? PSBColors.white : PSBColors.text.secondary} />
                     <Text
                       style={[
                         styles.tabText,
@@ -78,11 +79,11 @@ const CalculatorApp = () => {
         {/* Footer */}
         <View style={styles.footer}>
           <View style={styles.footerContent}>
-            <Calculator size={20} color="#0066cc" />
-            <Text style={styles.footerTitle}>Financial Calculator</Text>
+            <Calculator size={20} color={PSBColors.primary} />
+            <Text style={styles.footerTitle}>PSB Calculator</Text>
           </View>
           <Text style={styles.footerSubtitle}>
-            Built with PayPal-inspired design • Calculate with confidence
+            Punjab & Sind Bank • Calculate with confidence
           </Text>
         </View>
       </ScrollView>
@@ -93,13 +94,13 @@ const CalculatorApp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: PSBColors.gray[50],
   },
   scrollView: {
     flex: 1,
   },
   header: {
-    backgroundColor: '#0066cc',
+    backgroundColor: PSBColors.primary,
     paddingVertical: 32,
     paddingHorizontal: 16,
   },
@@ -113,18 +114,18 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   iconContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: PSBColors.secondary + '40',
     padding: 12,
     borderRadius: 50,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: PSBColors.white,
   },
   subtitle: {
     fontSize: 18,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: PSBColors.gray[200],
     textAlign: 'center',
     maxWidth: 320,
   },
@@ -134,10 +135,10 @@ const styles = StyleSheet.create({
   },
   tabWrapper: {
     flexDirection: 'row',
-    backgroundColor: '#ffffff',
+    backgroundColor: PSBColors.white,
     borderRadius: 16,
     padding: 8,
-    shadowColor: '#000',
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -153,8 +154,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeTab: {
-    backgroundColor: '#0066cc',
-    shadowColor: '#000',
+    backgroundColor: PSBColors.primary,
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
@@ -163,18 +164,18 @@ const styles = StyleSheet.create({
   tabText: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#666666',
+    color: PSBColors.text.secondary,
   },
   activeTabText: {
-    color: '#ffffff',
+    color: PSBColors.white,
   },
   content: {
     paddingHorizontal: 16,
   },
   footer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    backgroundColor: PSBColors.gray[100],
     borderTopWidth: 1,
-    borderTopColor: '#e2e8f0',
+    borderTopColor: PSBColors.card.border,
     paddingVertical: 32,
     paddingHorizontal: 16,
     marginTop: 64,
@@ -189,11 +190,11 @@ const styles = StyleSheet.create({
   footerTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1e293b',
+    color: PSBColors.text.primary,
   },
   footerSubtitle: {
     fontSize: 14,
-    color: '#64748b',
+    color: PSBColors.text.secondary,
     textAlign: 'center',
   },
 });
