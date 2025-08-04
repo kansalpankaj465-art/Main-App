@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
+  Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -18,6 +19,7 @@ import {
   Eye,
   Shield,
   TrendingUp,
+  Target,
 } from "lucide-react-native";
 import { useTheme } from "../../../contexts/ThemeContext";
 import ThemeToggle from "../../../components/ThemeToggle";
@@ -26,58 +28,18 @@ import ChatbotPopup from "../../../components/ChatbotPopup";
 
 const { width } = Dimensions.get("window");
 
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+
 const HomeScreen = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const [isPopupVisible, setPopupVisible] = useState(false);
+
   const features = [
-    {
-      id: 1,
-      title: "Simulators",
-      description: "Experience how fraud schemes work from the inside",
-      icon: Brain,
-      color: "#ff6b6b",
-      route: "/(tabs)/simulator",
-    },
-    {
-      id: 2,
-      title: "Quizzes",
-      description: "Test your knowledge of everything that you learned",
-      icon: Flag,
-      color: "#4ecdc4",
-      route: "/pages/QuizzesScreen",
-    },
-    // {
-    //   id: 2,
-    //   title: "Red Flag Game",
-    //   description: "Test your ability to spot fraud indicators",
-    //   icon: Flag,
-    //   color: "#4ecdc4",
-    //   route: "/pages/redflags",
-    // },
-    {
-      id: 3,
-      title: "Story Mode",
-      description: "Learn through real-world case studies",
-      icon: BookOpen,
-      color: "#45b7d1",
-      route: "/pages/story",
-    },
-    {
-      id: 5,
-      title: "Decision Scenarios",
-      description: "Practice real-world financial decisions",
-      icon: Target,
-      color: "#8b5cf6",
-      route: "/pages/ScenarioHub",
-    },
-    {
-      id: 4,
-      title: "Education Center",
-      description: "Comprehensive fraud awareness resources",
-      icon: GraduationCap,
-      color: "#96ceb4",
-      route: "/(app)/(tabs)/education",
-    },
+    { id: 1, title: "Simulators", description: "Understand fraud schemes through live simulations", icon: Brain, color: "#00563F", route: "/(tabs)/simulator" },
+    { id: 2, title: "Quizzes", description: "Test your financial fraud awareness skills", icon: Flag, color: "#FFD700", route: "/pages/QuizzesScreen" },
+    { id: 3, title: "Story Mode", description: "Learn through real-world case studies", icon: BookOpen, color: "#00563F", route: "/pages/story" },
+    { id: 4, title: "Decision Scenarios", description: "Practice secure financial decision making", icon: Target, color: "#FFD700", route: "/pages/ScenarioHub" },
+    { id: 5, title: "Education Center", description: "Trusted resources for fraud prevention", icon: GraduationCap, color: "#00563F", route: "/(app)/(tabs)/education" },
   ];
 
   const stats = [
@@ -86,58 +48,47 @@ const HomeScreen = () => {
     { label: "Success Rate", value: "95%", icon: TrendingUp },
   ];
 
+  const scaleAnim = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleAnim, {
+      toValue: 0.96,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleAnim, {
+      toValue: 1,
+      friction: 3,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <LinearGradient
-      colors={[theme.colors.background[0], theme.colors.background[1]]}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#FFFFFF", "#F9F9F9"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
           {/* Header */}
           <View style={styles.header}>
-            <View>
-              <Text style={[styles.greeting, { color: theme.colors.text }]}>
-                Welcome back!
-              </Text>
-              <Text
-                style={[styles.subtitle, { color: theme.colors.textSecondary }]}
-              >
-                Ready to expose some fraud?
-              </Text>
+            <View style={styles.greetingWrapper}>
+              <Text style={styles.greeting}>Welcome to PSB Fraud Shield</Text>
+              <Text style={styles.subtitle}>Empowering safe and secure banking</Text>
             </View>
-            <TouchableOpacity style={styles.notificationButton}>
+            <View style={styles.toggleWrapper}>
               <ThemeToggle />
-            </TouchableOpacity>
+            </View>
           </View>
 
           {/* Stats Section */}
           <View style={styles.statsContainer}>
-            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Impact Statistics
-            </Text>
+            <Text style={styles.sectionTitle}>Our Impact</Text>
             <View style={styles.statsRow}>
               {stats.map((stat, index) => (
-                <View
-                  key={index}
-                  style={[
-                    styles.statCard,
-                    { backgroundColor: theme.colors.card },
-                  ]}
-                >
-                  <stat.icon size={24} color="#4ecdc4" />
-                  <Text
-                    style={[styles.statValue, { color: theme.colors.text }]}
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text
-                    style={[
-                      styles.statLabel,
-                      { color: theme.colors.textSecondary },
-                    ]}
-                  >
-                    {stat.label}
-                  </Text>
+                <View key={index} style={styles.statCard}>
+                  <stat.icon size={26} color="#00563F" />
+                  <Text style={styles.statValue}>{stat.value}</Text>
+                  <Text style={styles.statLabel}>{stat.label}</Text>
                 </View>
               ))}
             </View>
@@ -145,209 +96,144 @@ const HomeScreen = () => {
 
           {/* Features Grid */}
           <View style={styles.featuresContainer}>
-            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Explore Features
-            </Text>
+            <Text style={styles.sectionTitle}>Explore Services</Text>
             <View style={styles.featuresGrid}>
               {features.map((feature) => (
-                <TouchableOpacity
+                <AnimatedTouchable
                   key={feature.id}
-                  style={styles.featureCard}
+                  style={[styles.featureCard, { transform: [{ scale: scaleAnim }] }]}
+                  onPressIn={handlePressIn}
+                  onPressOut={handlePressOut}
                   onPress={() => router.push(feature.route as any)}
-                  activeOpacity={0.8}
+                  activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={[feature.color, `${feature.color}CC`]}
-                    style={styles.featureGradient}
+                    colors={["#FFFFFF", "#FFF8E1"]}
+                    style={[styles.featureGradient, { borderColor: feature.color }]}
                   >
-                    <feature.icon size={32} color="black" />
-                    <Text style={[styles.featureTitle, { color: "black" }]}>
-                      {feature.title}
-                    </Text>
-                    <Text
-                      style={[styles.featureDescription, { color: "black" }]}
-                    >
-                      {feature.description}
-                    </Text>
+                    <feature.icon size={32} color={feature.color} />
+                    <Text style={[styles.featureTitle]}>{feature.title}</Text>
+                    <Text style={styles.featureDescription}>{feature.description}</Text>
                   </LinearGradient>
-                </TouchableOpacity>
+                </AnimatedTouchable>
               ))}
             </View>
           </View>
 
           {/* Quick Tips */}
           <View style={styles.tipsContainer}>
-            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Daily Tip
-            </Text>
-            <View
-              style={[styles.tipCard, { backgroundColor: theme.colors.card }]}
-            >
-              <Text style={[styles.tipIcon, { color: theme.colors.text }]}>
-                💡
-              </Text>
+            <Text style={styles.sectionTitle}>Banking Tip</Text>
+            <View style={styles.tipCard}>
+              <Text style={styles.tipIcon}>💡</Text>
               <View style={styles.tipContent}>
-                <Text style={[styles.tipTitle, { color: theme.colors.text }]}>
-                  Red Flag Alert!
-                </Text>
-                <Text
-                  style={[
-                    styles.tipText,
-                    { color: theme.colors.textSecondary },
-                  ]}
-                >
-                  If someone promises "guaranteed returns" with no risk, it's
-                  likely a scam. Real investments always carry some level of
-                  risk.
+                <Text style={styles.tipTitle}>Secure Transactions</Text>
+                <Text style={styles.tipText}>
+                  Always verify the sender’s details and avoid sharing OTP or account information over calls or messages.
                 </Text>
               </View>
             </View>
           </View>
         </ScrollView>
+
         {/* Floating Chatbot Button */}
         <ChatbotButton onPress={() => setPopupVisible(true)} />
 
         {/* Popup */}
-        <ChatbotPopup
-          visible={isPopupVisible}
-          onClose={() => setPopupVisible(false)}
-        />
+        <ChatbotPopup visible={isPopupVisible} onClose={() => setPopupVisible(false)} />
       </SafeAreaView>
     </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-  },
+  container: { flex: 1 },
+  safeArea: { flex: 1 },
+  scrollContent: { paddingBottom: 80 },
+  
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingTop: 30,
+    paddingBottom: 25,
+    backgroundColor: "#00563F",
+    borderBottomWidth: 3,
+    borderBottomColor: "#FFD700",
   },
-  greeting: {
-    fontSize: 28,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#b8b8b8",
-    marginTop: 4,
-  },
-  notificationButton: {
+  greetingWrapper: { flex: 1, paddingRight: 10 },
+  greeting: { fontSize: 24, fontWeight: "bold", color: "#FFD700" },
+  subtitle: { fontSize: 14, color: "#FFFFFF", marginTop: 4 },
+  toggleWrapper: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: 8,
   },
-  statsContainer: {
-    paddingHorizontal: 20,
-    marginBottom: 30,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 15,
-  },
-  statsRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
+
+  statsContainer: { paddingHorizontal: 20, marginVertical: 25 },
+  sectionTitle: { fontSize: 20, fontWeight: "bold", color: "#00563F", marginBottom: 15 },
+  statsRow: { flexDirection: "row", justifyContent: "space-between" },
   statCard: {
     flex: 1,
-    backgroundColor: "rgba(255, 255, 255, 0.11)",
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#FFD700",
     borderRadius: 12,
-    padding: 15,
+    paddingVertical: 18,
     alignItems: "center",
     marginHorizontal: 5,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
   },
-  statValue: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
-    marginTop: 8,
-  },
-  statLabel: {
-    fontSize: 12,
-    color: "#b8b8b8",
-    textAlign: "center",
-    marginTop: 4,
-  },
-  featuresContainer: {
-    paddingHorizontal: 20,
-    marginBottom: 30,
-  },
-  featuresGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
+  statValue: { fontSize: 20, fontWeight: "bold", color: "#00563F", marginTop: 8 },
+  statLabel: { fontSize: 12, color: "#555", textAlign: "center", marginTop: 4 },
+
+  featuresContainer: { paddingHorizontal: 20, marginBottom: 30 },
+  featuresGrid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" },
   featureCard: {
     width: (width - 50) / 2,
     height: 160,
     marginBottom: 15,
     borderRadius: 16,
     overflow: "hidden",
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 5,
+    elevation: 3,
   },
   featureGradient: {
     flex: 1,
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 16,
   },
-  featureTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "white",
-    marginTop: 12,
-    textAlign: "center",
-  },
-  featureDescription: {
-    fontSize: 12,
-    color: "rgba(255, 255, 255, 0.8)",
-    textAlign: "center",
-    marginTop: 8,
-    lineHeight: 16,
-  },
-  tipsContainer: {
-    paddingHorizontal: 20,
-    marginBottom: 30,
-  },
+  featureTitle: { fontSize: 16, fontWeight: "bold", marginTop: 12, textAlign: "center", color: "#00563F" },
+  featureDescription: { fontSize: 12, color: "#555", textAlign: "center", marginTop: 8, lineHeight: 16 },
+
+  tipsContainer: { paddingHorizontal: 20, marginBottom: 30 },
   tipCard: {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    backgroundColor: "#FFFFFF",
     borderRadius: 12,
     padding: 20,
     flexDirection: "row",
     alignItems: "flex-start",
+    borderWidth: 1,
+    borderColor: "#FFD700",
   },
-  tipIcon: {
-    fontSize: 24,
-    marginRight: 15,
-  },
-  tipContent: {
-    flex: 1,
-  },
-  tipTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 8,
-  },
-  tipText: {
-    fontSize: 14,
-    color: "#b8b8b8",
-    lineHeight: 20,
-  },
+  tipIcon: { fontSize: 24, marginRight: 15 },
+  tipContent: { flex: 1 },
+  tipTitle: { fontSize: 16, fontWeight: "bold", color: "#00563F", marginBottom: 8 },
+  tipText: { fontSize: 14, color: "#555", lineHeight: 20 },
 });
 
 export default HomeScreen;

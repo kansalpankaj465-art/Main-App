@@ -59,28 +59,38 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#f9fcfb",
   },
   header: {
     alignItems: "center",
     paddingTop: 60,
     paddingBottom: 30,
-    backgroundColor: "#fff",
+    backgroundColor: "#1b8a5a",
+    borderBottomWidth: 4,
+    borderBottomColor: "#c0392b", // Red accent at bottom
   },
   appTitle: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "bold",
-    color: "#151717",
+    color: "#ffffff",
     marginTop: 10,
   },
   appSubtitle: {
     fontSize: 16,
-    color: "#666",
+    color: "#d4a64f",
     marginTop: 5,
   },
   formContainer: {
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
+    backgroundColor: "#ffffff",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: -2 },
+    shadowRadius: 10,
+    elevation: 3,
   },
 });
