@@ -10,21 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  User,
-  Trophy,
-  Flag,
-  BookOpen,
-  Brain,
-  Award,
-  Bell,
-  Globe,
-  HelpCircle,
-  Info,
-  LogOut,
-  Shield,
-  GraduationCap,
-} from "lucide-react-native";
+import { User, Trophy, Flag, BookOpen, Brain, Award, Bell, Globe, Circle as HelpCircle, Info, LogOut, Shield, GraduationCap } from "lucide-react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../../contexts/AuthContext";
