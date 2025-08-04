@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { AuthProvider } from "../contexts/AuthContext";
 import store from "../redux/store";
 import PSBColors from "../constants/colors"
+import { useFrameworkReady } from '@/hooks/useFrameworkReady'
 
 function MainLayout() {
   useFrameworkReady();
