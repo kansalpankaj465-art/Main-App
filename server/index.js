@@ -27,6 +27,8 @@ db.once("open", () => {
 // Import and use route modules
 require("./docHashRoutes")(app);
 require("./phishingRoutes").default(app);
+import otpRoutes from "./otpRoutes.js";
+otpRoutes(app);
 
 // General health check
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));

@@ -207,6 +207,60 @@ export const checkServerHealth = async (): Promise<ApiResponse<{ status: string 
   return apiCall('/health');
 };
 
+// OTP Functions
+export const sendSMSOTP = async (
+  phoneNumber: string,
+  purpose: string = "verification"
+): Promise<ApiResponse<{ message: string; purpose: string; expiresIn: string }>> => {
+  return apiCall('/send-otp-sms', {
+    method: 'POST',
+    body: JSON.stringify({ phoneNumber, purpose }),
+  });
+};
+
+export const sendEmailOTP = async (
+  email: string,
+  purpose: string = "verification"
+): Promise<ApiResponse<{ message: string; purpose: string; expiresIn: string }>> => {
+  return apiCall('/send-otp-email', {
+    method: 'POST',
+    body: JSON.stringify({ email, purpose }),
+  });
+};
+
+export const verifyOTP = async (
+  identifier: string,
+  otp: string,
+  type: string = "sms"
+): Promise<ApiResponse<{ message: string; verified: boolean }>> => {
+  return apiCall('/verify-otp', {
+    method: 'POST',
+    body: JSON.stringify({ identifier, otp, type }),
+  });
+};
+
+export const resendOTP = async (
+  identifier: string,
+  type: string = "sms"
+): Promise<ApiResponse<{ message: string; expiresIn: string }>> => {
+  return apiCall('/resend-otp', {
+    method: 'POST',
+    body: JSON.stringify({ identifier, type }),
+  });
+};
+
+export const getOTPStatus = async (
+  identifier: string
+): Promise<ApiResponse<{
+  exists: boolean;
+  expired: boolean;
+  remainingTime: number;
+  attempts: number;
+  type: string;
+}>> => {
+  return apiCall(`/otp-status/${identifier}`);
+};
+
 // Error handling utilities
 export const handleApiError = (error: string, fallbackMessage = 'Something went wrong') => {
   console.error('API Error:', error);
@@ -291,6 +345,11 @@ export default {
   findNearestCybercell,
   getScamHeatMapData,
   checkServerHealth,
+  sendSMSOTP,
+  sendEmailOTP,
+  verifyOTP,
+  resendOTP,
+  getOTPStatus,
   handleApiError,
   apiCallWithRetry,
   isOnline,

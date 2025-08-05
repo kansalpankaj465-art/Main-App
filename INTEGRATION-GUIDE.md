@@ -46,6 +46,19 @@ Update API base URL in your app:
 export const API_BASE_URL = 'http://localhost:5000/api';
 ```
 
+### 4. OTP Configuration
+Add OTP environment variables to your `.env` file:
+```env
+# Twilio Configuration (for SMS OTP)
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_NUMBER=your_twilio_phone_number
+
+# Email Configuration (for Email OTP)
+EMAIL_USER=your_gmail_address@gmail.com
+EMAIL_PASSWORD=your_app_specific_password
+```
+
 ## 📱 Application Structure
 
 ### Tab Navigation (`app/(app)/(tabs)/`)
@@ -116,6 +129,28 @@ POST /api/analyze-url
 ```typescript
 GET /api/user-analytics/:userId
 POST /api/track-activity
+```
+
+#### OTP Verification
+```typescript
+POST /api/send-otp-sms
+{
+  "phoneNumber": "+1234567890",
+  "purpose": "verification"
+}
+
+POST /api/send-otp-email
+{
+  "email": "user@example.com",
+  "purpose": "verification"
+}
+
+POST /api/verify-otp
+{
+  "identifier": "sms_+1234567890_verification",
+  "otp": "123456",
+  "type": "sms"
+}
 ```
 
 ### Integration Example
@@ -252,6 +287,13 @@ db.users.find().pretty()
 - ✅ Comprehensive glossary
 - ✅ Real-world case studies
 - ✅ Progress tracking
+
+### 5. OTP Security
+- ✅ SMS and email OTP delivery
+- ✅ 6-digit secure OTP generation
+- ✅ 10-minute expiration period
+- ✅ Maximum 3 verification attempts
+- ✅ PSB-branded email templates
 
 ## 🚨 Error Handling
 
