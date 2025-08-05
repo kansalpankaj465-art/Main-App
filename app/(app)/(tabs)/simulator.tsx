@@ -30,6 +30,7 @@ import {
   Target,
   Award,
 } from "lucide-react-native";
+import { PSBColors, PSBShadows, PSBSpacing } from "../../../utils/PSBColors";
 import ChatbotButton from "../../../components/ChatbotButton";
 import ChatbotPopup from "../../../components/ChatbotPopup";
 
@@ -315,13 +316,13 @@ export default function SimulatorsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9FAFB",
+    backgroundColor: PSBColors.background.secondary,
   },
   heroHeader: {
-    backgroundColor: "#1F2937",
+    backgroundColor: PSBColors.primary.green,
     paddingTop: 50,
     paddingBottom: 30,
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
   },
   heroContent: {
     alignItems: "center",
@@ -335,25 +336,21 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: "#3B82F6",
+    backgroundColor: PSBColors.primary.gold,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
+    ...PSBShadows.lg,
   },
   brandTitle: {
     fontSize: 28,
     fontWeight: "700",
-    color: "#FFFFFF",
+    color: PSBColors.text.inverse,
     letterSpacing: -0.5,
   },
   brandSubtitle: {
     fontSize: 14,
-    color: "#9CA3AF",
+    color: PSBColors.text.inverse,
     fontWeight: "500",
     marginTop: 2,
   },
@@ -363,7 +360,7 @@ const styles = StyleSheet.create({
   },
   statCard: {
     alignItems: "center",
-    backgroundColor: "#374151",
+    backgroundColor: PSBColors.primary.darkGreen,
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -372,11 +369,11 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: 20,
     fontWeight: "700",
-    color: "#FFFFFF",
+    color: PSBColors.text.inverse,
   },
   statLabel: {
     fontSize: 12,
-    color: "#9CA3AF",
+    color: PSBColors.text.inverse,
     marginTop: 2,
     fontWeight: "500",
   },
@@ -388,7 +385,7 @@ const styles = StyleSheet.create({
   },
   section: {
     marginTop: 32,
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
   },
   categoryHeader: {
     flexDirection: "row",
@@ -411,13 +408,13 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 22,
     fontWeight: "800",
-    color: "#111827",
+    color: PSBColors.text.primary,
     marginBottom: 4,
     letterSpacing: -0.3,
   },
   categorySubtitle: {
     fontSize: 15,
-    color: "#6B7280",
+    color: PSBColors.text.secondary,
     fontWeight: "400",
     lineHeight: 20,
   },
@@ -425,20 +422,16 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   moduleCard: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: PSBColors.background.card,
     borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
+    ...PSBShadows.sm,
     borderWidth: 1,
-    borderColor: "#F3F4F6",
+    borderColor: PSBColors.border.primary,
   },
   cardContent: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 20,
+    padding: PSBSpacing.lg,
   },
   iconWrapper: {
     width: 44,
@@ -455,13 +448,13 @@ const styles = StyleSheet.create({
   moduleTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#111827",
+    color: PSBColors.text.primary,
     marginBottom: 6,
     lineHeight: 24,
   },
   moduleDescription: {
     fontSize: 14,
-    color: "#6B7280",
+    color: PSBColors.text.secondary,
     lineHeight: 20,
     marginBottom: 12,
   },
@@ -484,7 +477,7 @@ const styles = StyleSheet.create({
   },
   durationText: {
     fontSize: 13,
-    color: "#9CA3AF",
+    color: PSBColors.text.tertiary,
     fontWeight: "500",
   },
 });
