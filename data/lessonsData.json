@@ -1,0 +1,59 @@
+{
+  "en": [
+    {
+      "id": "otp-scam",
+      "title": "OTP Scam Awareness",
+      "description": "Learn how to identify and protect yourself from OTP scams and fake verification calls.",
+      "audio": "otp-scam-awareness-en.mp3",
+      "duration": "3:45",
+      "difficulty": "Beginner",
+      "quiz": [
+        {"id": "q1", "question": "Should you share your OTP with someone claiming to be from your bank?", "options": ["Yes", "No"], "correct": 1},
+        {"id": "q2", "question": "Is it safe to give OTP to cancel a transaction?", "options": ["Yes", "No"], "correct": 1},
+        {"id": "q3", "question": "Can scammers steal money using just your OTP?", "options": ["Yes", "No"], "correct": 0}
+      ]
+    },
+    {
+      "id": "loan-fraud",
+      "title": "Loan Fraud Protection",
+      "description": "Understand common loan scam tactics and how to verify legitimate loan offers.",
+      "audio": "loan-fraud-protection-en.mp3",
+      "duration": "4:20",
+      "difficulty": "Intermediate",
+      "quiz": [
+        {"id": "q1", "question": "Should you pay advance fees for loan approval?", "options": ["Yes", "No"], "correct": 1},
+        {"id": "q2", "question": "Are instant loan approvals without documents suspicious?", "options": ["Yes", "No"], "correct": 0},
+        {"id": "q3", "question": "Is it safe to share bank details for loan verification?", "options": ["Yes", "No"], "correct": 1}
+      ]
+    },
+    {
+      "id": "phishing-sms",
+      "title": "Phishing SMS Detection",
+      "description": "Recognize suspicious text messages and protect your personal information.",
+      "audio": "phishing-sms-detection-en.mp3",
+      "duration": "2:55",
+      "difficulty": "Beginner",
+      "quiz": [
+        {"id": "q1", "question": "Should you click links in suspicious SMS messages?", "options": ["Yes", "No"], "correct": 1},
+        {"id": "q2", "question": "Do banks usually ask for passwords via SMS?", "options": ["Yes", "No"], "correct": 1},
+        {"id": "q3", "question": "Are urgent action messages usually scams?", "options": ["Yes", "No"], "correct": 0}
+      ]
+    }
+  ],
+  "hi": [
+    {
+      "id": "otp-scam",
+      "title": "ओटीपी धोखाधड़ी जागरूकता",
+      "description": "ओटीपी स्कैम और नकली सत्यापन कॉल से कैसे बचें और उन्हें कैसे पहचानें।",
+      "audio": "otp-scam-awareness-hi.mp3",
+      "duration": "3:45",
+      "difficulty": "शुरुआती",
+      "quiz": [
+        {"id": "q1", "question": "क्या आपको बैंक से आने वाले व्यक्ति के साथ अपना ओटीपी साझा करना चाहिए?", "options": ["हाँ", "नहीं"], "correct": 1},
+        {"id": "q2", "question": "क्या लेनदेन रद्द करने के लिए ओटीपी देना सुरक्षित है?", "options": ["हाँ", "नहीं"], "correct": 1},
+        {"id": "q3", "question": "क्या धोखेबाज केवल आपके ओटीपी का उपयोग करके पैसे चुरा सकते हैं?", "options": ["हाँ", "नहीं"], "correct": 0}
+      ]
+    }
+    // ... (other hi and pa lessons, similar structure)
+  ]
+}
