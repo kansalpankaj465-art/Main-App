@@ -261,6 +261,77 @@ export const getOTPStatus = async (
   return apiCall(`/otp-status/${identifier}`);
 };
 
+// Enhanced Authentication with OTP
+export const sendSignupOTP = async (
+  email?: string,
+  phone?: string
+): Promise<ApiResponse<{ message: string; expiresIn: string }>> => {
+  return apiCall('/auth/send-signup-otp', {
+    method: 'POST',
+    body: JSON.stringify({ email, phone }),
+  });
+};
+
+export const signupWithOTP = async (
+  userData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    phone?: string;
+    otp: string;
+    identifier: string;
+  }
+): Promise<ApiResponse<{ token: string; user: User; message: string }>> => {
+  return apiCall('/auth/signup-with-otp', {
+    method: 'POST',
+    body: JSON.stringify(userData),
+  });
+};
+
+export const sendLoginOTP = async (
+  email: string,
+  password: string
+): Promise<ApiResponse<{ message: string; expiresIn: string }>> => {
+  return apiCall('/auth/send-login-otp', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+};
+
+export const loginWithOTP = async (
+  email: string,
+  password: string,
+  otp: string,
+  identifier: string
+): Promise<ApiResponse<{ token: string; user: User; message: string }>> => {
+  return apiCall('/auth/login-with-otp', {
+    method: 'POST',
+    body: JSON.stringify({ email, password, otp, identifier }),
+  });
+};
+
+export const forgotPasswordOTP = async (
+  email: string
+): Promise<ApiResponse<{ message: string; expiresIn: string }>> => {
+  return apiCall('/auth/forgot-password-otp', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+};
+
+export const resetPasswordOTP = async (
+  email: string,
+  otp: string,
+  identifier: string,
+  newPassword: string
+): Promise<ApiResponse<{ message: string }>> => {
+  return apiCall('/auth/reset-password-otp', {
+    method: 'POST',
+    body: JSON.stringify({ email, otp, identifier, newPassword }),
+  });
+};
+
 // Error handling utilities
 export const handleApiError = (error: string, fallbackMessage = 'Something went wrong') => {
   console.error('API Error:', error);
@@ -350,6 +421,12 @@ export default {
   verifyOTP,
   resendOTP,
   getOTPStatus,
+  sendSignupOTP,
+  signupWithOTP,
+  sendLoginOTP,
+  loginWithOTP,
+  forgotPasswordOTP,
+  resetPasswordOTP,
   handleApiError,
   apiCallWithRetry,
   isOnline,

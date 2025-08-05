@@ -483,6 +483,384 @@ app.post("/api/auth/reset-password", async (req, res) => {
   }
 });
 
+// ✅ Enhanced Authentication Routes with OTP Support
+
+// Send OTP for signup verification
+app.post("/api/auth/send-signup-otp", async (req, res) => {
+  try {
+    const { email, phone } = req.body;
+
+    if (!email && !phone) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Email or phone number is required" 
+      });
+    }
+
+    // Check if user already exists
+    if (email) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "User already exists with this email" 
+        });
+      }
+    }
+
+    let otpResult;
+    if (email) {
+      // Send email OTP
+      const otp = generateOTP();
+      const identifier = `email_${email}_signup`;
+      storeOTP(identifier, otp, "email");
+      
+      otpResult = await sendEmailOTP(email, otp);
+    } else if (phone) {
+      // Send SMS OTP
+      const otp = generateOTP();
+      const identifier = `sms_${phone}_signup`;
+      storeOTP(identifier, otp, "sms");
+      
+      otpResult = await sendSMSOTP(phone, otp);
+    }
+
+    if (otpResult.success) {
+      res.json({
+        success: true,
+        message: "OTP sent successfully for signup verification",
+        expiresIn: "10 minutes"
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Failed to send OTP",
+        error: otpResult.error
+      });
+    }
+  } catch (error) {
+    console.error("Send signup OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error sending signup OTP", 
+      error: error.message 
+    });
+  }
+});
+
+// Signup with OTP verification
+app.post("/api/auth/signup-with-otp", async (req, res) => {
+  try {
+    const { firstName, lastName, email, password, phone, otp, identifier } = req.body;
+
+    if (!firstName || !lastName || !password || !otp || !identifier) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "All required fields must be provided" 
+      });
+    }
+
+    // Verify OTP
+    const otpResult = verifyOTP(identifier, otp);
+    if (!otpResult.valid) {
+      return res.status(400).json({ 
+        success: false, 
+        message: otpResult.message 
+      });
+    }
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "User already exists with this email" 
+      });
+    }
+
+    // Hash password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // Create user
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+      phone,
+      isVerified: true // User is verified through OTP
+    });
+
+    await user.save();
+
+    // Generate token
+    const token = generateToken(user);
+
+    // Remove password from response
+    const userResponse = user.toObject();
+    delete userResponse.password;
+
+    res.status(201).json({
+      success: true,
+      message: "User created and verified successfully",
+      token,
+      user: userResponse
+    });
+  } catch (error) {
+    console.error("Signup with OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error creating user", 
+      error: error.message 
+    });
+  }
+});
+
+// Send OTP for login verification (2FA)
+app.post("/api/auth/send-login-otp", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Email and password are required" 
+      });
+    }
+
+    // Find user and verify password
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Invalid credentials" 
+      });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Invalid credentials" 
+      });
+    }
+
+    // Send OTP to user's phone or email
+    let otpResult;
+    if (user.phone) {
+      const otp = generateOTP();
+      const identifier = `sms_${user.phone}_login`;
+      storeOTP(identifier, otp, "sms");
+      
+      otpResult = await sendSMSOTP(user.phone, otp);
+    } else if (user.email) {
+      const otp = generateOTP();
+      const identifier = `email_${user.email}_login`;
+      storeOTP(identifier, otp, "email");
+      
+      otpResult = await sendEmailOTP(user.email, otp);
+    } else {
+      return res.status(400).json({ 
+        success: false, 
+        message: "No phone or email found for OTP delivery" 
+      });
+    }
+
+    if (otpResult.success) {
+      res.json({
+        success: true,
+        message: "OTP sent successfully for login verification",
+        expiresIn: "10 minutes"
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Failed to send OTP",
+        error: otpResult.error
+      });
+    }
+  } catch (error) {
+    console.error("Send login OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error sending login OTP", 
+      error: error.message 
+    });
+  }
+});
+
+// Login with OTP verification
+app.post("/api/auth/login-with-otp", async (req, res) => {
+  try {
+    const { email, password, otp, identifier } = req.body;
+
+    if (!email || !password || !otp || !identifier) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "All required fields must be provided" 
+      });
+    }
+
+    // Find user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Invalid credentials" 
+      });
+    }
+
+    // Check password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Invalid credentials" 
+      });
+    }
+
+    // Verify OTP
+    const otpResult = verifyOTP(identifier, otp);
+    if (!otpResult.valid) {
+      return res.status(400).json({ 
+        success: false, 
+        message: otpResult.message 
+      });
+    }
+
+    // Generate token
+    const token = generateToken(user);
+
+    // Remove password from response
+    const userResponse = user.toObject();
+    delete userResponse.password;
+
+    res.json({
+      success: true,
+      message: "Login successful with OTP verification",
+      token,
+      user: userResponse
+    });
+  } catch (error) {
+    console.error("Login with OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error during login", 
+      error: error.message 
+    });
+  }
+});
+
+// Enhanced forgot password with OTP
+app.post("/api/auth/forgot-password-otp", async (req, res) => {
+  try {
+    const { email } = req.body;
+    
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ 
+        success: false, 
+        message: "User not found" 
+      });
+    }
+
+    // Send OTP for password reset
+    let otpResult;
+    if (user.phone) {
+      const otp = generateOTP();
+      const identifier = `sms_${user.phone}_reset`;
+      storeOTP(identifier, otp, "sms");
+      
+      otpResult = await sendSMSOTP(user.phone, otp);
+    } else if (user.email) {
+      const otp = generateOTP();
+      const identifier = `email_${user.email}_reset`;
+      storeOTP(identifier, otp, "email");
+      
+      otpResult = await sendEmailOTP(user.email, otp);
+    } else {
+      return res.status(400).json({ 
+        success: false, 
+        message: "No phone or email found for OTP delivery" 
+      });
+    }
+
+    if (otpResult.success) {
+      res.json({
+        success: true,
+        message: "OTP sent successfully for password reset",
+        expiresIn: "10 minutes"
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Failed to send OTP",
+        error: otpResult.error
+      });
+    }
+  } catch (error) {
+    console.error("Forgot password OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error processing forgot password", 
+      error: error.message 
+    });
+  }
+});
+
+// Reset password with OTP verification
+app.post("/api/auth/reset-password-otp", async (req, res) => {
+  try {
+    const { email, otp, identifier, newPassword } = req.body;
+    
+    if (!email || !otp || !identifier || !newPassword) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "All required fields must be provided" 
+      });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ 
+        success: false, 
+        message: "User not found" 
+      });
+    }
+
+    // Verify OTP
+    const otpResult = verifyOTP(identifier, otp);
+    if (!otpResult.valid) {
+      return res.status(400).json({ 
+        success: false, 
+        message: otpResult.message 
+      });
+    }
+
+    // Hash new password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+    // Update password
+    user.password = hashedPassword;
+    user.securitySettings.lastPasswordChange = new Date();
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "Password reset successful with OTP verification"
+    });
+  } catch (error) {
+    console.error("Reset password OTP error:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error resetting password", 
+      error: error.message 
+    });
+  }
+});
+
 // ✅ User Profile Routes
 app.get("/api/users/currentuser", authenticateToken, async (req, res) => {
   try {
@@ -1396,6 +1774,333 @@ app.post("/api/admin/seed", async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: "Error seeding data", error: error.message });
+  }
+});
+
+// ✅ OTP Functionality
+// In-memory storage for OTPs (in production, use Redis or database)
+const otpStore = new Map();
+
+// Generate OTP
+const generateOTP = () => {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
+// Store OTP with expiration
+const storeOTP = (identifier, otp, type = "sms") => {
+  const expiration = Date.now() + 10 * 60 * 1000; // 10 minutes
+  otpStore.set(identifier, {
+    otp,
+    type,
+    expiration,
+    attempts: 0,
+  });
+};
+
+// Verify OTP
+const verifyOTP = (identifier, otp) => {
+  const stored = otpStore.get(identifier);
+  if (!stored) {
+    return { valid: false, message: "OTP not found or expired" };
+  }
+
+  if (Date.now() > stored.expiration) {
+    otpStore.delete(identifier);
+    return { valid: false, message: "OTP expired" };
+  }
+
+  if (stored.attempts >= 3) {
+    otpStore.delete(identifier);
+    return { valid: false, message: "Too many attempts" };
+  }
+
+  if (stored.otp === otp) {
+    otpStore.delete(identifier);
+    return { valid: true, message: "OTP verified successfully" };
+  }
+
+  stored.attempts += 1;
+  return { valid: false, message: "Invalid OTP" };
+};
+
+// Send SMS OTP (using Twilio)
+const sendSMSOTP = async (phoneNumber, otp) => {
+  try {
+    // For development, we'll simulate SMS sending
+    // In production, integrate with Twilio
+    console.log(`📱 SMS OTP sent to ${phoneNumber}: ${otp}`);
+    return { success: true, messageId: `sim_${Date.now()}` };
+  } catch (error) {
+    console.error("SMS sending failed:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+// Send Email OTP (using Nodemailer)
+const sendEmailOTP = async (email, otp) => {
+  try {
+    // For development, we'll simulate email sending
+    // In production, integrate with Nodemailer
+    console.log(`📧 Email OTP sent to ${email}: ${otp}`);
+    return { success: true, messageId: `sim_${Date.now()}` };
+  } catch (error) {
+    console.error("Email sending failed:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+// ✅ OTP Routes
+app.post("/api/send-otp-sms", async (req, res) => {
+  try {
+    const { phoneNumber, purpose = "verification" } = req.body;
+
+    if (!phoneNumber) {
+      return res.status(400).json({
+        success: false,
+        error: "Phone number is required",
+      });
+    }
+
+    // Validate phone number format
+    const phoneRegex = /^\+?[1-9]\d{1,14}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid phone number format",
+      });
+    }
+
+    const otp = generateOTP();
+    const identifier = `sms_${phoneNumber}_${purpose}`;
+
+    // Store OTP
+    storeOTP(identifier, otp, "sms");
+
+    // Send SMS
+    const smsResult = await sendSMSOTP(phoneNumber, otp);
+
+    if (smsResult.success) {
+      res.json({
+        success: true,
+        message: "OTP sent successfully",
+        purpose,
+        expiresIn: "10 minutes",
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: "Failed to send OTP",
+        details: smsResult.error,
+      });
+    }
+  } catch (error) {
+    console.error("Send OTP SMS error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
+app.post("/api/send-otp-email", async (req, res) => {
+  try {
+    const { email, purpose = "verification" } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        error: "Email is required",
+      });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid email format",
+      });
+    }
+
+    const otp = generateOTP();
+    const identifier = `email_${email}_${purpose}`;
+
+    // Store OTP
+    storeOTP(identifier, otp, "email");
+
+    // Send Email
+    const emailResult = await sendEmailOTP(email, otp);
+
+    if (emailResult.success) {
+      res.json({
+        success: true,
+        message: "OTP sent successfully",
+        purpose,
+        expiresIn: "10 minutes",
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: "Failed to send OTP",
+        details: emailResult.error,
+      });
+    }
+  } catch (error) {
+    console.error("Send OTP Email error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
+app.post("/api/verify-otp", async (req, res) => {
+  try {
+    const { identifier, otp, type = "sms" } = req.body;
+
+    if (!identifier || !otp) {
+      return res.status(400).json({
+        success: false,
+        error: "Identifier and OTP are required",
+      });
+    }
+
+    const result = verifyOTP(identifier, otp);
+
+    if (result.valid) {
+      res.json({
+        success: true,
+        message: result.message,
+        verified: true,
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        error: result.message,
+        verified: false,
+      });
+    }
+  } catch (error) {
+    console.error("Verify OTP error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
+app.post("/api/resend-otp", async (req, res) => {
+  try {
+    const { identifier, type = "sms" } = req.body;
+
+    if (!identifier) {
+      return res.status(400).json({
+        success: false,
+        error: "Identifier is required",
+      });
+    }
+
+    // Extract contact info from identifier
+    const parts = identifier.split("_");
+    if (parts.length < 3) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid identifier format",
+      });
+    }
+
+    const contact = parts[1];
+    const purpose = parts[2];
+    const otp = generateOTP();
+
+    // Store new OTP
+    storeOTP(identifier, otp, type);
+
+    let sendResult;
+    if (type === "email") {
+      sendResult = await sendEmailOTP(contact, otp);
+    } else {
+      sendResult = await sendSMSOTP(contact, otp);
+    }
+
+    if (sendResult.success) {
+      res.json({
+        success: true,
+        message: "OTP resent successfully",
+        expiresIn: "10 minutes",
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: "Failed to resend OTP",
+        details: sendResult.error,
+      });
+    }
+  } catch (error) {
+    console.error("Resend OTP error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
+app.get("/api/otp-status/:identifier", (req, res) => {
+  try {
+    const { identifier } = req.params;
+    const stored = otpStore.get(identifier);
+
+    if (!stored) {
+      return res.json({
+        success: true,
+        exists: false,
+        message: "OTP not found",
+      });
+    }
+
+    const isExpired = Date.now() > stored.expiration;
+    const remainingTime = Math.max(0, stored.expiration - Date.now());
+
+    res.json({
+      success: true,
+      exists: true,
+      expired: isExpired,
+      remainingTime: Math.floor(remainingTime / 1000), // seconds
+      attempts: stored.attempts,
+      type: stored.type,
+    });
+  } catch (error) {
+    console.error("OTP status error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
+app.post("/api/cleanup-otps", (req, res) => {
+  try {
+    const now = Date.now();
+    let cleanedCount = 0;
+
+    for (const [identifier, data] of otpStore.entries()) {
+      if (now > data.expiration) {
+        otpStore.delete(identifier);
+        cleanedCount++;
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Cleaned up ${cleanedCount} expired OTPs`,
+      cleanedCount,
+    });
+  } catch (error) {
+    console.error("Cleanup OTPs error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
   }
 });
 
