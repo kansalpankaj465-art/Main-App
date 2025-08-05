@@ -1,0 +1,292 @@
+{
+  "courses": [
+    {
+      "id": "budgeting-basics",
+      "title": "Budgeting Fundamentals",
+      "description": "Master the art of budgeting with practical strategies that actually work in real life.",
+      "color": "#3B82F6",
+      "icon": "trending-up",
+      "difficulty": "Beginner",
+      "rating": 4.8,
+      "totalDuration": 45,
+      "lessons": [
+        {
+          "id": "what-is-budgeting",
+          "title": "What is Budgeting?",
+          "description": "Discover why budgeting is your financial superpower and how it can transform your money habits.",
+          "content": "# Understanding Budgeting 💰\n\nBudgeting isn't about restricting yourself—it's about giving yourself **permission to spend** on what matters most to you.\n\n## Why Budget?\n\nThink of budgeting like GPS for your money. Without it, you're driving blind, hoping you'll reach your destination. With it, you have a clear path to your financial goals.\n\n### The Real Benefits:\n- **Stress reduction**: Know exactly where your money goes\n- **Goal achievement**: Turn dreams into actionable plans  \n- **Emergency preparedness**: Build your safety net systematically\n- **Guilt-free spending**: Enjoy purchases without worry\n\n## Common Budgeting Myths\n\n**Myth**: \"Budgeting means I can't have fun\"\n**Reality**: Budgeting ensures you CAN have fun—guilt-free!\n\n**Myth**: \"I don't make enough to budget\"\n**Reality**: The less you make, the more important budgeting becomes.\n\n> \"A budget is telling your money where to go instead of wondering where it went.\" - Dave Ramsey",
+          "category": "budgeting",
+          "duration": 8,
+          "order": 1,
+          "keyTakeaways": [
+            "Budgeting is about permission, not restriction",
+            "It reduces financial stress and anxiety",
+            "Everyone can benefit from budgeting, regardless of income level"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "track-your-spending",
+          "title": "Track Your Current Spending",
+          "description": "Learn simple methods to understand where your money actually goes each month.",
+          "content": "# Know Where Your Money Goes 📊\n\nBefore you can control your money, you need to understand your current spending patterns. This is like taking a financial selfie—it might be uncomfortable, but it's necessary!\n\n## The 7-Day Money Tracking Challenge\n\nFor the next week, write down **every single purchase**. Yes, even that ₹250 coffee!\n\n### What to Track:\n- **Amount spent**\n- **What you bought**\n- **How you paid** (cash, card, app)\n- **How you felt** (happy, guilty, stressed)\n\n## Simple Tracking Methods\n\n### Method 1: The Notebook Approach\nCarry a small notebook and pen. Write it down immediately.\n\n### Method 2: Phone Notes\nUse your phone's notes app or voice memos.\n\n### Method 3: Banking Apps\nMost banks categorize your spending automatically.\n\n## What You'll Discover\n\nMost people are shocked to learn:\n- Small purchases add up to big amounts\n- Emotional spending patterns\n- \"Money leaks\" they didn't know existed\n\n> \"What gets measured gets managed.\" - Peter Drucker",
+          "category": "budgeting",
+          "duration": 10,
+          "order": 2,
+          "keyTakeaways": [
+            "Track every purchase for at least 7 days",
+            "Small expenses add up to significant amounts",
+            "Awareness is the first step to control"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "categorize-expenses",
+          "title": "Categorize Your Expenses",
+          "description": "Organize your spending into clear categories to identify patterns and opportunities.",
+          "content": "# Organize Your Financial Life 📋\n\nNow that you know where your money goes, let's organize it into categories. This is like sorting your closet—suddenly everything makes sense!\n\n## The Big Three Categories\n\n### 1. Needs (50-60% of income)\n- Housing (rent/mortgage, utilities)\n- Transportation (car payment, gas, insurance)\n- Food (groceries, not dining out)\n- Minimum debt payments\n- Basic insurance\n\n### 2. Wants (20-30% of income)\n- Dining out and entertainment\n- Hobbies and subscriptions\n- Shopping and personal care\n- Travel and vacations\n\n### 3. Savings & Debt (20% of income)\n- Emergency fund\n- Retirement savings\n- Extra debt payments\n- Investment accounts\n\n## Pro Tips for Categorizing\n\n**Be honest**: That daily latte is a \"want,\" not a \"need\"\n**Be specific**: Break down large categories (separate groceries from dining out)\n**Be consistent**: Use the same categories each month\n\n## Red Flags to Watch For\n\n- Needs taking up more than 70% of income\n- No money going to savings\n- Credit card balances growing monthly\n\n> \"You must gain control over your money or the lack of it will forever control you.\" - Dave Ramsey",
+          "category": "budgeting",
+          "duration": 12,
+          "order": 3,
+          "keyTakeaways": [
+            "Organize spending into Needs, Wants, and Savings",
+            "Needs should be 50-60% of your income",
+            "Always allocate something to savings, even if small"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386339/pexels-photo-4386339.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "create-your-budget",
+          "title": "Create Your First Budget",
+          "description": "Build a realistic budget that you can actually stick to using proven methods.",
+          "content": "# Build Your Money Plan 🎯\n\nTime to create your first budget! Remember, the best budget is the one you'll actually use.\n\n## The 50/30/20 Rule (Perfect for Beginners)\n\nThis simple framework works for most people:\n\n### 50% - Needs\nYour essential expenses that you can't avoid.\n\n### 30% - Wants  \nFun money for the things that make life enjoyable.\n\n### 20% - Savings & Debt\nBuilding your future and eliminating debt.\n\n## Step-by-Step Budget Creation\n\n### Step 1: Calculate Your After-Tax Income\nUse your actual take-home pay, not your gross salary.\n\n### Step 2: List Your Fixed Expenses\n- Rent/mortgage\n- Insurance premiums\n- Loan payments\n- Subscriptions\n\n### Step 3: Estimate Variable Expenses\n- Groceries\n- Gas\n- Utilities\n- Entertainment\n\n### Step 4: Assign Every Dollar\nMake sure Income - Expenses = ₹0\n\n## Budget Tools That Work\n\n- **Pen and paper**: Simple and effective\n- **Spreadsheets**: Great for detail-oriented people\n- **Apps**: Mint, YNAB, or your bank's app\n\n> \"A goal without a plan is just a wish.\" - Antoine de Saint-Exupéry",
+          "category": "budgeting",
+          "duration": 15,
+          "order": 4,
+          "keyTakeaways": [
+            "Use the 50/30/20 rule as a starting framework",
+            "Assign every dollar a purpose",
+            "Choose budgeting tools that match your personality"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386476/pexels-photo-4386476.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
+      ]
+    },
+    {
+      "id": "advanced-budgeting",
+      "title": "Advanced Budgeting Strategies",
+      "description": "Take your budgeting skills to the next level with sophisticated techniques and methods.",
+      "color": "#059669",
+      "icon": "target",
+      "difficulty": "Intermediate",
+      "rating": 4.7,
+      "totalDuration": 50,
+      "lessons": [
+        {
+          "id": "zero-based-budgeting",
+          "title": "Zero-Based Budgeting",
+          "description": "Master the art of giving every dollar a job with this powerful budgeting method.",
+          "content": "# Give Every Dollar a Purpose 🎯\n\nZero-based budgeting means your income minus expenses equals zero. Every dollar has a job before you spend it!\n\n## How Zero-Based Budgeting Works\n\n### The Formula:\n**Income - Expenses - Savings = ₹0**\n\nThis doesn't mean you spend everything—it means you've assigned every dollar to a category, including savings.\n\n## Step-by-Step Process\n\n### 1. Start with Your Income\nUse your actual take-home pay for the month.\n\n### 2. List All Expenses\n- Fixed expenses (rent, insurance)\n- Variable expenses (groceries, gas)\n- Savings goals\n- Fun money\n\n### 3. Assign Every Dollar\nKeep adjusting categories until you reach zero.\n\n## Example: Sarah's Zero-Based Budget\n\n**Monthly Income**: ₹3,32,000\n\n**Expenses**:\n- Rent: ₹99,600\n- Groceries: ₹33,200\n- Car payment: ₹24,900\n- Insurance: ₹16,600\n- Utilities: ₹12,450\n- Emergency fund: ₹24,900\n- Retirement: ₹33,200\n- Entertainment: ₹16,600\n- Miscellaneous: ₹12,450\n- Gas: ₹8,300\n- Phone: ₹8,300\n\n**Total**: ₹3,32,000 (Zero remaining!)\n\n## Benefits of Zero-Based Budgeting\n\n- **Intentional spending**: Every purchase is planned\n- **No money waste**: Nothing falls through the cracks\n- **Goal achievement**: Savings are built into the plan\n- **Flexibility**: Adjust categories as needed\n\n> \"Every dollar must have a destination before it leaves your pocket.\"",
+          "category": "budgeting",
+          "duration": 12,
+          "order": 1,
+          "keyTakeaways": [
+            "Assign every dollar before spending it",
+            "Income minus expenses should equal zero",
+            "Include savings as a non-negotiable expense"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "envelope-method",
+          "title": "The Envelope Method",
+          "description": "Use cash envelopes to control spending and stick to your budget categories.",
+          "content": "# Cash Control System 💰\n\nThe envelope method uses physical cash to control spending. When the envelope is empty, you're done spending in that category!\n\n## How the Envelope Method Works\n\n### 1. Choose Your Categories\nPick 3-5 variable expense categories:\n- Groceries\n- Entertainment\n- Dining out\n- Personal care\n- Gas\n\n### 2. Calculate Monthly Amounts\nBased on your budget, determine how much cash goes in each envelope.\n\n### 3. Fill the Envelopes\nAt the beginning of each month, put cash in each envelope.\n\n### 4. Spend Only What's There\nWhen an envelope is empty, you're done spending in that category.\n\n## Digital Envelope Method\n\nDon't want to use cash? Try these alternatives:\n\n### Separate Bank Accounts\nCreate different savings accounts for each category.\n\n### Prepaid Cards\nLoad specific amounts onto different cards.\n\n### Banking Apps\nMany banks offer \"envelope\" features digitally.\n\n## Pro Tips for Success\n\n- **Start small**: Begin with 2-3 categories\n- **Be realistic**: Don't set amounts too low\n- **Plan for leftovers**: Roll unused money to next month or savings\n- **Emergency clause**: Have a plan for true emergencies\n\n## Real Example: Mike's Envelopes\n\n**Monthly Envelope Amounts**:\n- Groceries: ₹33,200\n- Entertainment: ₹12,450\n- Dining out: ₹16,600\n- Personal care: ₹6,225\n- Gas: ₹9,960\n\n**Result**: Mike reduced overspending by 60% in the first month!\n\n> \"Cash makes spending real and immediate.\"",
+          "category": "budgeting",
+          "duration": 10,
+          "order": 2,
+          "keyTakeaways": [
+            "Use cash to make spending more tangible",
+            "When the envelope is empty, stop spending",
+            "Start with 3-5 variable expense categories"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386398/pexels-photo-4386398.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "percentage-based-budgeting",
+          "title": "Percentage-Based Budgeting",
+          "description": "Learn flexible budgeting systems that adapt to your changing income.",
+          "content": "# Flexible Budget Framework 📊\n\nPercentage-based budgeting adapts to income changes, making it perfect for irregular earners or those wanting flexibility.\n\n## Popular Percentage Systems\n\n### The 50/30/20 Rule\n- **50%** Needs (housing, food, utilities)\n- **30%** Wants (entertainment, hobbies)\n- **20%** Savings & debt payment\n\n### The 60/20/20 Rule (Conservative)\n- **60%** Needs\n- **20%** Wants\n- **20%** Savings & debt payment\n\n### The 80/20 Rule (Simple)\n- **80%** All expenses\n- **20%** Savings\n\n## Customizing Your Percentages\n\n### High Earners Might Use:\n- **40%** Needs\n- **30%** Wants\n- **30%** Savings & investments\n\n### Debt Payoff Focus:\n- **50%** Needs\n- **20%** Wants\n- **30%** Debt & savings\n\n### Young Professionals:\n- **60%** Needs\n- **25%** Wants\n- **15%** Savings (building up)\n\n## How to Calculate\n\n### Example with ₹4,15,000 monthly income:\n\n**50/30/20 Breakdown**:\n- Needs: ₹2,07,500\n- Wants: ₹1,24,500\n- Savings: ₹83,000\n\n## Adjusting for Life Changes\n\n### Income Increase:\nMaintain percentages but increase dollar amounts.\n\n### Income Decrease:\nKeep percentages but reduce spending in each category.\n\n### Life Events:\nTemporarily adjust percentages (new baby, job loss, etc.).\n\n## Tracking Your Percentages\n\n- Review monthly to ensure you're on track\n- Adjust categories if consistently over/under\n- Use apps that calculate percentages automatically\n\n> \"Percentages provide structure while maintaining flexibility.\"",
+          "category": "budgeting",
+          "duration": 11,
+          "order": 3,
+          "keyTakeaways": [
+            "Percentages adapt to income changes automatically",
+            "Choose ratios that match your financial goals",
+            "Adjust percentages for major life changes"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386454/pexels-photo-4386454.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "irregular-income-budgeting",
+          "title": "Budgeting with Irregular Income",
+          "description": "Special strategies for freelancers, commission workers, and seasonal employees.",
+          "content": "# Master Variable Income 📈\n\nIrregular income doesn't mean irregular budgeting! Learn strategies to manage money when paychecks vary.\n\n## The Challenge of Irregular Income\n\n### Common Sources:\n- Freelancing and consulting\n- Commission-based sales\n- Seasonal work\n- Small business ownership\n- Gig economy jobs\n\n### The Problems:\n- Hard to predict monthly income\n- Feast or famine cycles\n- Difficulty planning expenses\n- Stress during low-income periods\n\n## Strategy 1: The Baseline Budget\n\n### Step 1: Calculate Your Minimum\nLook at your lowest-earning months over the past year.\n\n### Step 2: Create a Survival Budget\nBuild a budget based on this minimum amount.\n\n### Step 3: Cover Essentials First\n- Housing\n- Food\n- Transportation\n- Insurance\n- Minimum debt payments\n\n### Example: Lisa's Baseline\n**Lowest month**: ₹2,32,400\n**Baseline budget**: ₹2,07,500 (safety margin)\n\n## Strategy 2: The Percentage Method\n\n### Allocate Every Dollar Immediately:\n- **50%** Current month expenses\n- **25%** Next month's expenses\n- **15%** Emergency fund\n- **10%** Goals/investments\n\n## Strategy 3: The Peak and Valley System\n\n### During High-Income Months:\n- Pay all bills for next 2-3 months\n- Build emergency fund aggressively\n- Save for taxes (if self-employed)\n- Invest surplus\n\n### During Low-Income Months:\n- Use pre-paid bills\n- Rely on emergency fund if needed\n- Focus on essential expenses only\n\n## Essential Tools for Irregular Income\n\n### 1. Larger Emergency Fund\nAim for 6-12 months of expenses instead of 3-6.\n\n### 2. Separate Tax Account\nSet aside 25-30% of income for taxes.\n\n### 3. Income Smoothing Account\nSave high-income months to supplement low ones.\n\n> \"Irregular income requires regular discipline.\"",
+          "category": "budgeting",
+          "duration": 13,
+          "order": 4,
+          "keyTakeaways": [
+            "Create a baseline budget using your lowest income month",
+            "Build a larger emergency fund (6-12 months)",
+            "Use high-income months to prepare for low ones"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
+      ]
+    },
+    {
+      "id": "emergency-fund",
+      "title": "Emergency Fund Essentials",
+      "description": "Build your financial safety net with a step-by-step emergency fund strategy.",
+      "color": "#10B981",
+      "icon": "star",
+      "difficulty": "Beginner",
+      "rating": 4.9,
+      "totalDuration": 35,
+      "lessons": [
+        {
+          "id": "why-emergency-fund",
+          "title": "Why You Need an Emergency Fund",
+          "description": "Understand the critical importance of having money set aside for unexpected expenses.",
+          "content": "# Your Financial Safety Net 🛡️\n\nAn emergency fund isn't just nice to have—it's your financial lifeline when life throws you curveballs.\n\n## What Counts as an Emergency?\n\n### True Emergencies:\n- **Medical bills** not covered by insurance\n- **Job loss** or reduced income\n- **Major car repairs** needed for work\n- **Home repairs** (roof leak, broken furnace)\n- **Family emergencies** requiring travel\n\n### NOT Emergencies:\n- Vacations (even \"once in a lifetime\" ones)\n- Holiday gifts\n- Sale items you \"can't miss\"\n- Routine car maintenance\n\n## The Real Cost of No Emergency Fund\n\nWithout an emergency fund, you're forced to:\n- Use high-interest credit cards\n- Borrow from retirement accounts (with penalties)\n- Ask family for money\n- Take predatory loans\n\n### The Stress Factor\nStudies show that people without emergency funds experience:\n- Higher stress levels\n- More relationship conflicts\n- Poorer decision-making under pressure\n\n## Peace of Mind is Priceless\n\nHaving an emergency fund means:\n- Sleeping better at night\n- Making decisions from strength, not desperation\n- Protecting your long-term financial goals\n\n> \"It's not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for.\" - Robert Kiyosaki",
+          "category": "emergency-fund",
+          "duration": 8,
+          "order": 1,
+          "keyTakeaways": [
+            "Emergency funds prevent debt when unexpected expenses arise",
+            "True emergencies are unplanned and necessary expenses",
+            "Financial security reduces stress and improves decision-making"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "how-much-to-save",
+          "title": "How Much Should You Save?",
+          "description": "Determine the right emergency fund size for your unique situation and lifestyle.",
+          "content": "# Finding Your Magic Number 🎯\n\nThe \"right\" amount for your emergency fund depends on your unique situation. Let's find your perfect target!\n\n## The Standard Guidelines\n\n### Starter Emergency Fund: ₹83,000\nPerfect if you're paying off debt. This covers most small emergencies without derailing your debt payoff.\n\n### Full Emergency Fund: 3-6 Months of Expenses\nThis is your ultimate goal. Notice it's **expenses**, not income!\n\n## Factors That Increase Your Target\n\nYou might need **6+ months** if you have:\n- **Irregular income** (freelancer, commission-based)\n- **Specialized job** that's hard to replace\n- **Health issues** requiring ongoing care\n- **Single income household** with dependents\n- **Older home or car** prone to repairs\n\n## Factors That Decrease Your Target\n\nYou might be fine with **3 months** if you have:\n- **Stable job** in a growing industry\n- **Dual income household**\n- **Strong family support** system\n- **Excellent health insurance**\n- **Reliable transportation**\n\n## Calculate Your Number\n\n### Step 1: Add up monthly expenses\n- Housing, food, transportation\n- Insurance, utilities, minimum debt payments\n- Basic personal care and necessities\n\n### Step 2: Multiply by your target months\n- Conservative: 6 months\n- Moderate: 4-5 months  \n- Aggressive: 3 months\n\n### Example:\nMonthly expenses: ₹2,49,000\nTarget: 4 months\nEmergency fund goal: ₹9,96,000\n\n> \"The real measure of your wealth is how much you'd be worth if you lost all your money.\" - Anonymous",
+          "category": "emergency-fund",
+          "duration": 10,
+          "order": 2,
+          "keyTakeaways": [
+            "Start with ₹83,000, then build to 3-6 months of expenses",
+            "Base the amount on expenses, not income",
+            "Adjust target based on job stability and personal factors"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "where-to-keep-emergency-fund",
+          "title": "Where to Keep Your Emergency Fund",
+          "description": "Learn the best places to store your emergency money for quick access and safety.",
+          "content": "# The Perfect Emergency Fund Home 🏠\n\nYour emergency fund needs to be safe, accessible, and earning some interest. Here's where to park it!\n\n## The Golden Rules\n\n### 1. Liquid and Accessible\nYou should be able to access your money within 24-48 hours, no penalties.\n\n### 2. Safe and Insured\nFDIC-insured accounts protect up to ₹2,07,50,000 per depositor, per bank.\n\n### 3. Separate from Daily Banking\nKeep it away from your checking account to avoid temptation.\n\n## Best Options for Emergency Funds\n\n### High-Yield Savings Accounts ⭐⭐⭐⭐⭐\n- **Pros**: FDIC insured, higher interest than traditional savings\n- **Cons**: May have minimum balance requirements\n- **Best for**: Most people\n\n### Money Market Accounts ⭐⭐⭐⭐\n- **Pros**: Higher interest, may include check-writing\n- **Cons**: Higher minimum balances, limited transactions\n- **Best for**: Larger emergency funds (₹8,30,000+)\n\n### Certificates of Deposit (CDs) ⭐⭐⭐\n- **Pros**: Higher interest rates, FDIC insured\n- **Cons**: Money locked up for set period, early withdrawal penalties\n- **Best for**: Part of a larger emergency fund strategy\n\n## Where NOT to Keep Emergency Funds\n\n### ❌ Checking Account\nToo easy to spend, very low interest\n\n### ❌ Investment Accounts\nMarket volatility could reduce value when you need it most\n\n### ❌ Under Your Mattress\nNo interest, not insured, security risk\n\n## Pro Tips\n\n- **Shop around**: Online banks often offer better rates\n- **Automate**: Set up automatic transfers to build your fund\n- **Review annually**: Interest rates change, so should your account\n\n> \"An investment in knowledge pays the best interest.\" - Benjamin Franklin",
+          "category": "emergency-fund",
+          "duration": 9,
+          "order": 3,
+          "keyTakeaways": [
+            "High-yield savings accounts are ideal for most people",
+            "Keep emergency funds separate from daily banking",
+            "Prioritize accessibility and safety over high returns"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386366/pexels-photo-4386366.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "build-emergency-fund-fast",
+          "title": "How to Build Your Fund Fast",
+          "description": "Practical strategies to accelerate your emergency fund savings without sacrificing your lifestyle.",
+          "content": "# Turbocharge Your Emergency Fund 🚀\n\nBuilding an emergency fund doesn't have to take forever. Here are proven strategies to reach your goal faster!\n\n## The Quick Start Strategy\n\n### Week 1: Find Your \"Found Money\"\n- Check old bank accounts\n- Look for unclaimed property online\n- Cash in loose change\n- Return unused items\n- **Goal**: ₹8,300-41,500 to jumpstart your fund\n\n## Accelerated Saving Techniques\n\n### The 52-Week Challenge\n- Week 1: Save ₹83\n- Week 2: Save ₹166\n- Week 52: Save ₹4,316\n- **Total**: ₹1,14,374 in one year!\n\n### The Percentage Method\nStart small and increase gradually:\n- Month 1-2: Save 1% of income\n- Month 3-4: Save 2% of income\n- Month 5-6: Save 3% of income\n- Continue until you reach 10-15%\n\n## Creative Ways to Boost Savings\n\n### Sell Stuff You Don't Need\n- Old electronics and gadgets\n- Clothes you never wear\n- Books, DVDs, games\n- Exercise equipment gathering dust\n\n### Side Hustle Ideas (2-5 hours/week)\n- Food delivery driving\n- Pet sitting or dog walking\n- Freelance skills (writing, design, tutoring)\n- Sell handmade items online\n\n### Expense Cutting Champions\n- Cancel unused subscriptions\n- Cook at home more often\n- Use the library instead of buying books\n- Find free entertainment options\n\n## The Windfall Strategy\n\nPut 100% of unexpected money toward your emergency fund:\n- Tax refunds\n- Work bonuses\n- Cash gifts\n- Insurance refunds\n\n## Automation is Your Friend\n\nSet up automatic transfers:\n- **Weekly**: ₹2,075 = ₹1,07,900/year\n- **Bi-weekly**: ₹4,150 = ₹1,07,900/year\n- **Monthly**: ₹8,300 = ₹99,600/year\n\n> \"Do not save what is left after spending, but spend what is left after saving.\" - Warren Buffett",
+          "category": "emergency-fund",
+          "duration": 8,
+          "order": 4,
+          "keyTakeaways": [
+            "Start with found money and small amounts",
+            "Use windfalls to accelerate your progress",
+            "Automate transfers to build the habit"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
+      ]
+    },
+    {
+      "id": "debt-elimination",
+      "title": "Debt Elimination Strategies",
+      "description": "Proven methods to pay off debt faster and regain control of your financial future.",
+      "color": "#8B5CF6",
+      "icon": "trending-up",
+      "difficulty": "Intermediate",
+      "rating": 4.7,
+      "totalDuration": 40,
+      "lessons": [
+        {
+          "id": "debt-reality-check",
+          "title": "Your Debt Reality Check",
+          "description": "Face your debt head-on and create a complete picture of what you owe.",
+          "content": "# Face Your Debt Reality 📊\n\nThe first step to conquering debt is knowing exactly what you're dealing with. It's time for some financial honesty!\n\n## The Complete Debt Inventory\n\nGather all your statements and list every debt:\n\n### For Each Debt, Record:\n- **Creditor name**\n- **Total balance owed**\n- **Minimum monthly payment**\n- **Interest rate (APR)**\n- **Due date**\n\n### Types of Debt to Include:\n- Credit cards\n- Student loans\n- Car loans\n- Personal loans\n- Medical debt\n- Money owed to family/friends\n\n## Calculate Your Debt-to-Income Ratio\n\n**Formula**: Total monthly debt payments ÷ Monthly gross income × 100\n\n### What Your Ratio Means:\n- **Under 20%**: Excellent financial health\n- **20-36%**: Manageable but watch carefully\n- **Over 36%**: Time for aggressive debt reduction\n\n## The Emotional Side of Debt\n\nIt's normal to feel:\n- Overwhelmed by the total amount\n- Ashamed about past decisions\n- Anxious about the future\n\n**Remember**: You're not alone, and you're taking the right steps by facing this now.\n\n## Debt Reality Examples\n\n### Sarah's Situation:\n- Credit Card 1: ₹2,65,600 at 18.9%\n- Credit Card 2: ₹1,49,400 at 22.4%\n- Car loan: ₹9,96,000 at 4.2%\n- **Total debt**: ₹14,11,000\n- **Monthly payments**: ₹48,140\n- **Income**: ₹3,32,000/month\n- **Debt-to-income**: 14.5% ✅\n\n> \"The first step toward getting somewhere is to decide you're not going to stay where you are.\" - J.P. Morgan",
+          "category": "debt",
+          "duration": 10,
+          "order": 1,
+          "keyTakeaways": [
+            "List every debt with balance, payment, and interest rate",
+            "Calculate your debt-to-income ratio",
+            "Acknowledge emotions but focus on action"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386398/pexels-photo-4386398.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "debt-avalanche-method",
+          "title": "The Debt Avalanche Method",
+          "description": "Learn the mathematically optimal way to pay off debt and save the most money on interest.",
+          "content": "# The Math-Smart Debt Strategy 🧮\n\nThe debt avalanche method saves you the most money by targeting high-interest debt first. Let's break it down!\n\n## How the Debt Avalanche Works\n\n### Step 1: List debts by interest rate (highest to lowest)\n### Step 2: Pay minimums on all debts\n### Step 3: Put extra money toward the highest-rate debt\n### Step 4: When that's paid off, move to the next highest rate\n\n## Real Example: Sarah's Avalanche\n\n**Sarah's debts ranked by interest rate:**\n1. Credit Card 2: ₹1,49,400 at 22.4% (target first)\n2. Credit Card 1: ₹2,65,600 at 18.9% (target second)\n3. Car loan: ₹9,96,000 at 4.2% (target last)\n\n**Sarah's strategy:**\n- Pay minimums: CC1 (₹6,640), Car (₹23,240) = ₹29,880\n- Extra ₹16,600/month goes to CC2\n- CC2 payment: ₹8,300 minimum + ₹16,600 extra = ₹24,900\n\n## Why This Method Works\n\n### The Math:\n- Eliminates highest interest charges first\n- Saves the most money over time\n- Creates momentum as debts disappear\n\n### Sarah's Savings:\nUsing avalanche vs. minimum payments only:\n- **Time saved**: 3 years\n- **Interest saved**: ₹3,48,600\n\n## Pros and Cons\n\n### ✅ Pros:\n- Mathematically optimal\n- Saves the most money\n- Logical and systematic\n\n### ❌ Cons:\n- May take longer to see first debt eliminated\n- Requires discipline and patience\n- Less emotional satisfaction initially\n\n## When to Choose Avalanche\n\nPerfect if you:\n- Are motivated by saving money\n- Can stick to a plan long-term\n- Have significant high-interest debt\n- Are comfortable with delayed gratification\n\n> \"In investing, what is comfortable is rarely profitable.\" - Robert Arnott",
+          "category": "debt",
+          "duration": 10,
+          "order": 2,
+          "keyTakeaways": [
+            "Target highest interest rate debt first",
+            "Saves the most money mathematically",
+            "Requires patience but maximizes savings"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386454/pexels-photo-4386454.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "debt-snowball-method",
+          "title": "The Debt Snowball Method",
+          "description": "Discover the psychologically powerful approach that builds momentum through quick wins.",
+          "content": "# The Motivation-Powered Strategy ⛄\n\nThe debt snowball method prioritizes psychological wins over mathematical optimization. Sometimes motivation matters more than math!\n\n## How the Debt Snowball Works\n\n### Step 1: List debts by balance (smallest to largest)\n### Step 2: Pay minimums on all debts\n### Step 3: Put extra money toward the smallest balance\n### Step 4: When paid off, add that payment to the next smallest debt\n\n## Real Example: Mike's Snowball\n\n**Mike's debts ranked by balance:**\n1. Medical bill: ₹41,500 at 0% (target first)\n2. Credit Card 1: ₹99,600 at 19.9% (target second)\n3. Credit Card 2: ₹2,90,500 at 16.9% (target third)\n4. Car loan: ₹6,64,000 at 5.2% (target last)\n\n**Mike's strategy:**\n- Pay minimums on all except smallest\n- Extra ₹24,900/month goes to medical bill\n- Medical bill gone in 2 months!\n\n## The Psychology Behind Snowball\n\n### Why It Works:\n- **Quick wins** build confidence\n- **Visible progress** maintains motivation\n- **Simplified focus** reduces overwhelm\n- **Momentum builds** as debts disappear\n\n### The Snowball Effect:\nMonth 1-2: Pay off ₹41,500 medical bill\nMonth 3-6: ₹24,900 + ₹4,150 (old medical payment) = ₹29,050 toward CC1\nMonth 7-12: ₹29,050 + ₹9,960 (old CC1 payment) = ₹39,010 toward CC2\n\n## Pros and Cons\n\n### ✅ Pros:\n- Quick psychological wins\n- Builds momentum and motivation\n- Simplifies your debt list faster\n- Great for people who need encouragement\n\n### ❌ Cons:\n- May cost more in interest over time\n- Not mathematically optimal\n- Ignores interest rates\n\n## When to Choose Snowball\n\nPerfect if you:\n- Need motivation to stick with debt payoff\n- Have struggled with debt elimination before\n- Have several small debts\n- Value psychological wins over mathematical optimization\n\n## Hybrid Approach\n\nCan't decide? Try this:\n- Use snowball for debts under ₹83,000\n- Use avalanche for larger debts\n- Get quick wins AND save on interest\n\n> \"Success is the sum of small efforts repeated day in and day out.\" - Robert Collier",
+          "category": "debt",
+          "duration": 10,
+          "order": 3,
+          "keyTakeaways": [
+            "Target smallest balance first for quick wins",
+            "Builds momentum through psychological victories",
+            "Great for people who need motivation to stick with the plan"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386372/pexels-photo-4386372.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+          "id": "find-extra-money-for-debt",
+          "title": "Find Extra Money for Debt Payments",
+          "description": "Discover hidden money in your budget and creative ways to accelerate debt payoff.",
+          "content": "# Uncover Hidden Money 💰\n\nThe key to faster debt payoff is finding extra money in your existing budget. Let's go treasure hunting!\n\n## Budget Archaeology: Dig for Money\n\n### The Monthly Subscription Audit\nReview your bank statements for recurring charges:\n- Streaming services you forgot about\n- Gym memberships you don't use\n- Apps with monthly fees\n- Magazine subscriptions\n- **Potential savings**: ₹4,150-16,600/month\n\n### The \"Latte Factor\" Analysis\nSmall daily expenses that add up:\n- Daily coffee: ₹415 × 30 days = ₹12,450/month\n- Lunch out: ₹996 × 20 workdays = ₹19,920/month\n- Convenience store snacks: ₹249 × 30 days = ₹7,470/month\n- **Potential savings**: ₹8,300-41,500/month\n\n## The 30-Day Spending Challenge\n\nFor one month, before any non-essential purchase ask:\n- Do I really need this?\n- Can I wait 24 hours?\n- Is there a cheaper alternative?\n- How many debt payments is this worth?\n\n## Creative Income Boosters\n\n### Sell Your Stuff\n- Electronics and gadgets\n- Designer clothes and accessories\n- Collectibles and antiques\n- Furniture you don't need\n- **Potential income**: ₹41,500-1,66,000\n\n### Gig Economy Opportunities\n- Food delivery (Uber Eats, DoorDash)\n- Rideshare driving (Uber, Lyft)\n- Task services (TaskRabbit, Handy)\n- Pet services (Rover, Wag)\n- **Potential income**: ₹16,600-83,000/month\n\n### Skill Monetization\n- Freelance writing or design\n- Tutoring or teaching\n- Photography services\n- Handmade crafts\n- **Potential income**: ₹24,900-1,24,500/month\n\n## The Windfall Strategy\n\nDirect 100% of unexpected money to debt:\n- Tax refunds\n- Work bonuses\n- Cash gifts\n- Insurance refunds\n- Garage sale proceeds\n\n## Real Example: Lisa's Extra Money Hunt\n\n**Lisa found an extra ₹31,540/month:**\n- Cancelled unused gym: ₹3,320\n- Reduced dining out: ₹16,600\n- Sold old electronics: ₹41,500 (one-time)\n- Weekend dog walking: ₹11,620\n- **Result**: Paid off ₹6,64,000 in credit cards 18 months faster!\n\n## The Envelope Method for Debt\n\nPut cash in envelopes for:\n- Groceries\n- Entertainment\n- Personal care\n- Gas\n\nWhen the envelope is empty, you're done spending in that category. Leftover cash goes to debt!\n\n> \"A penny saved is a penny earned.\" - Benjamin Franklin",
+          "category": "debt",
+          "duration": 10,
+          "order": 4,
+          "keyTakeaways": [
+            "Audit subscriptions and small daily expenses",
+            "Use windfalls and side income for debt payments",
+            "Every extra dollar accelerates your debt freedom"
+          ],
+          "imageUrl": "https://images.pexels.com/photos/4386433/pexels-photo-4386433.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
+      ]
+    }
+  ]
+}
