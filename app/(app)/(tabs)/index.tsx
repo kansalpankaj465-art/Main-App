@@ -22,6 +22,7 @@ import {
   Target,
 } from "lucide-react-native";
 import { useTheme } from "../../../contexts/ThemeContext";
+import { PSBColors, PSBShadows, PSBSpacing } from "../../../utils/PSBColors";
 import ThemeToggle from "../../../components/ThemeToggle";
 import ChatbotButton from "../../../components/ChatbotButton";
 import ChatbotPopup from "../../../components/ChatbotPopup";
@@ -35,11 +36,11 @@ const HomeScreen = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
 
   const features = [
-    { id: 1, title: "Simulators", description: "Understand fraud schemes through live simulations", icon: Brain, color: "#00563F", route: "/(tabs)/simulator" },
-    { id: 2, title: "Quizzes", description: "Test your financial fraud awareness skills", icon: Flag, color: "#FFD700", route: "/pages/QuizzesScreen" },
-    { id: 3, title: "Story Mode", description: "Learn through real-world case studies", icon: BookOpen, color: "#00563F", route: "/pages/story" },
-    { id: 4, title: "Decision Scenarios", description: "Practice secure financial decision making", icon: Target, color: "#FFD700", route: "/pages/ScenarioHub" },
-    { id: 5, title: "Education Center", description: "Trusted resources for fraud prevention", icon: GraduationCap, color: "#00563F", route: "/(app)/(tabs)/education" },
+    { id: 1, title: "Simulators", description: "Understand fraud schemes through live simulations", icon: Brain, color: PSBColors.primary.green, route: "/(tabs)/simulator" },
+    { id: 2, title: "Quizzes", description: "Test your financial fraud awareness skills", icon: Flag, color: PSBColors.primary.gold, route: "/pages/QuizzesScreen" },
+    { id: 3, title: "Story Mode", description: "Learn through real-world case studies", icon: BookOpen, color: PSBColors.primary.green, route: "/pages/story" },
+    { id: 4, title: "Decision Scenarios", description: "Practice secure financial decision making", icon: Target, color: PSBColors.primary.gold, route: "/pages/ScenarioHub" },
+    { id: 5, title: "Education Center", description: "Trusted resources for fraud prevention", icon: GraduationCap, color: PSBColors.primary.green, route: "/(app)/(tabs)/education" },
   ];
 
   const stats = [
@@ -66,7 +67,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <LinearGradient colors={["#FFFFFF", "#F9F9F9"]} style={styles.container}>
+    <LinearGradient colors={[PSBColors.background.primary, PSBColors.background.secondary]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
           {/* Header */}
@@ -86,7 +87,7 @@ const HomeScreen = () => {
             <View style={styles.statsRow}>
               {stats.map((stat, index) => (
                 <View key={index} style={styles.statCard}>
-                  <stat.icon size={26} color="#00563F" />
+                  <stat.icon size={26} color={PSBColors.primary.green} />
                   <Text style={styles.statValue}>{stat.value}</Text>
                   <Text style={styles.statLabel}>{stat.label}</Text>
                 </View>
@@ -154,15 +155,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
     paddingTop: 30,
     paddingBottom: 25,
-    backgroundColor: "#00563F",
+    backgroundColor: PSBColors.primary.green,
     borderBottomWidth: 3,
-    borderBottomColor: "#FFD700",
+    borderBottomColor: PSBColors.primary.gold,
   },
   greetingWrapper: { flex: 1, paddingRight: 10 },
-  greeting: { fontSize: 24, fontWeight: "bold", color: "#FFD700" },
+  greeting: { fontSize: 24, fontWeight: "bold", color: PSBColors.primary.gold },
   subtitle: { fontSize: 14, color: "#FFFFFF", marginTop: 4 },
   toggleWrapper: {
     width: 44,
@@ -174,28 +175,24 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
 
-  statsContainer: { paddingHorizontal: 20, marginVertical: 25 },
-  sectionTitle: { fontSize: 20, fontWeight: "bold", color: "#00563F", marginBottom: 15 },
+  statsContainer: { paddingHorizontal: PSBSpacing.lg, marginVertical: 25 },
+  sectionTitle: { fontSize: 20, fontWeight: "bold", color: PSBColors.primary.green, marginBottom: 15 },
   statsRow: { flexDirection: "row", justifyContent: "space-between" },
   statCard: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: PSBColors.background.card,
     borderWidth: 1,
-    borderColor: "#FFD700",
+    borderColor: PSBColors.primary.gold,
     borderRadius: 12,
     paddingVertical: 18,
     alignItems: "center",
     marginHorizontal: 5,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
+    ...PSBShadows.sm,
   },
-  statValue: { fontSize: 20, fontWeight: "bold", color: "#00563F", marginTop: 8 },
-  statLabel: { fontSize: 12, color: "#555", textAlign: "center", marginTop: 4 },
+  statValue: { fontSize: 20, fontWeight: "bold", color: PSBColors.primary.green, marginTop: 8 },
+  statLabel: { fontSize: 12, color: PSBColors.text.secondary, textAlign: "center", marginTop: 4 },
 
-  featuresContainer: { paddingHorizontal: 20, marginBottom: 30 },
+  featuresContainer: { paddingHorizontal: PSBSpacing.lg, marginBottom: 30 },
   featuresGrid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" },
   featureCard: {
     width: (width - 50) / 2,
@@ -203,11 +200,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 16,
     overflow: "hidden",
-    shadowColor: "#000",
-    shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 5,
-    elevation: 3,
+    ...PSBShadows.md,
   },
   featureGradient: {
     flex: 1,
@@ -217,23 +210,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 16,
   },
-  featureTitle: { fontSize: 16, fontWeight: "bold", marginTop: 12, textAlign: "center", color: "#00563F" },
-  featureDescription: { fontSize: 12, color: "#555", textAlign: "center", marginTop: 8, lineHeight: 16 },
+  featureTitle: { fontSize: 16, fontWeight: "bold", marginTop: 12, textAlign: "center", color: PSBColors.primary.green },
+  featureDescription: { fontSize: 12, color: PSBColors.text.secondary, textAlign: "center", marginTop: 8, lineHeight: 16 },
 
-  tipsContainer: { paddingHorizontal: 20, marginBottom: 30 },
+  tipsContainer: { paddingHorizontal: PSBSpacing.lg, marginBottom: 30 },
   tipCard: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: PSBColors.background.card,
     borderRadius: 12,
-    padding: 20,
+    padding: PSBSpacing.lg,
     flexDirection: "row",
     alignItems: "flex-start",
     borderWidth: 1,
-    borderColor: "#FFD700",
+    borderColor: PSBColors.primary.gold,
   },
   tipIcon: { fontSize: 24, marginRight: 15 },
   tipContent: { flex: 1 },
-  tipTitle: { fontSize: 16, fontWeight: "bold", color: "#00563F", marginBottom: 8 },
-  tipText: { fontSize: 14, color: "#555", lineHeight: 20 },
+  tipTitle: { fontSize: 16, fontWeight: "bold", color: PSBColors.primary.green, marginBottom: 8 },
+  tipText: { fontSize: 14, color: PSBColors.text.secondary, lineHeight: 20 },
 });
 
 export default HomeScreen;

@@ -21,6 +21,7 @@ import {
   Mail,
 } from "lucide-react-native";
 import { useTheme } from "../../../contexts/ThemeContext";
+import { PSBColors, PSBShadows, PSBSpacing } from "../../../utils/PSBColors";
 import { router } from "expo-router";
 import LessonsPage from "../pages/LessonsPage";
 
@@ -431,7 +432,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
     paddingTop: 20,
     paddingBottom: 30,
     alignItems: "center",
@@ -439,18 +440,18 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.primary.gold,
     textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
-    color: "#b8b8b8",
+    color: PSBColors.text.inverse,
     marginTop: 8,
     textAlign: "center",
   },
   tabContainer: {
     flexDirection: "row",
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
     marginBottom: 20,
   },
   tab: {
@@ -465,10 +466,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeTab: {
-    backgroundColor: "#ff6b6b",
+    backgroundColor: PSBColors.primary.green,
   },
   tabText: {
-    color: "#b8b8b8",
+    color: PSBColors.text.inverse,
     fontSize: 14,
     fontWeight: "600",
     marginLeft: 8,
@@ -478,30 +479,30 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: PSBSpacing.lg,
   },
   glossaryCard: {
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 12,
-    padding: 20,
+    padding: PSBSpacing.lg,
     marginBottom: 15,
   },
   glossaryTerm: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#4ecdc4",
+    color: PSBColors.primary.gold,
     marginBottom: 10,
   },
   glossaryDefinition: {
     fontSize: 14,
-    color: "white",
+    color: PSBColors.text.inverse,
     lineHeight: 20,
     marginBottom: 15,
   },
   exampleContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
-    backgroundColor: "rgba(255, 217, 61, 0.1)",
+    backgroundColor: PSBColors.effects.highlight,
     borderRadius: 8,
     padding: 12,
   },
@@ -511,7 +512,7 @@ const styles = StyleSheet.create({
   },
   glossaryExample: {
     fontSize: 13,
-    color: "#b8b8b8",
+    color: PSBColors.text.inverse,
     fontStyle: "italic",
     flex: 1,
     lineHeight: 18,
@@ -519,7 +520,7 @@ const styles = StyleSheet.create({
   tipCard: {
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 12,
-    padding: 20,
+    padding: PSBSpacing.lg,
     marginBottom: 15,
   },
   tipHeader: {
@@ -534,18 +535,18 @@ const styles = StyleSheet.create({
   tipTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.inverse,
     marginLeft: 12,
   },
   tipDescription: {
     fontSize: 14,
-    color: "#b8b8b8",
+    color: PSBColors.text.inverse,
     lineHeight: 20,
   },
   resourceCard: {
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 12,
-    padding: 20,
+    padding: PSBSpacing.lg,
     marginBottom: 15,
   },
   resourceHeader: {
@@ -559,32 +560,32 @@ const styles = StyleSheet.create({
   resourceTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
+    color: PSBColors.text.inverse,
     marginBottom: 4,
   },
   resourceDescription: {
     fontSize: 14,
-    color: "#b8b8b8",
+    color: PSBColors.text.inverse,
     lineHeight: 18,
   },
   emergencyCard: {
-    backgroundColor: "#FEF2F2",
+    backgroundColor: PSBColors.background.card,
     marginHorizontal: 2,
     marginBottom: 24,
     padding: 24,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "#FECACA",
+    borderColor: PSBColors.status.error,
   },
   emergencyTitle: {
     fontSize: 20,
     fontWeight: "700",
-    color: "#DC2626",
+    color: PSBColors.status.error,
     marginBottom: 12,
   },
   emergencyText: {
     fontSize: 14,
-    color: "#7F1D1D",
+    color: PSBColors.text.primary,
     marginBottom: 16,
     lineHeight: 20,
   },
@@ -599,7 +600,7 @@ const styles = StyleSheet.create({
   emergencyContact: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#7F1D1D",
+    color: PSBColors.text.primary,
   },
 });
 
