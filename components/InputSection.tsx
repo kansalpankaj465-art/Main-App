@@ -23,6 +23,7 @@ import {
   Clock,
 } from "lucide-react-native";
 import { SipInputs, formatCurrency } from "../hooks/useSipCalculator";
+import PSBColors from "../constants/colors";
 
 interface InputSectionProps {
   inputs: SipInputs;
@@ -55,7 +56,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TrendingUp size={20} color="#1e40af" />
+        <TrendingUp size={20} color={PSBColors.primary} />
         <Text style={styles.headerText}>Investment Parameters</Text>
       </View>
 
@@ -226,19 +227,21 @@ const InputField: React.FC<InputFieldProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
-    borderRadius: 16,
+    backgroundColor: PSBColors.white,
+    borderRadius: 20,
     padding: 20,
     marginHorizontal: 16,
     marginBottom: 16,
-    shadowColor: "#000",
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 6,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 10,
+    borderTopWidth: 3,
+    borderTopColor: PSBColors.secondary,
   },
   header: {
     flexDirection: "row",
@@ -247,9 +250,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     marginLeft: 8,
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#1e293b",
+    fontSize: 20,
+    fontWeight: "800",
+    color: PSBColors.text.primary,
+    letterSpacing: -0.3,
   },
   inputGroup: {
     marginBottom: 28,
@@ -261,25 +265,31 @@ const styles = StyleSheet.create({
   },
   label: {
     marginLeft: 8,
-    fontSize: 15,
-    fontWeight: "600",
-    color: "#374151",
+    fontSize: 16,
+    fontWeight: "700",
+    color: PSBColors.text.primary,
+    letterSpacing: 0.3,
   },
   input: {
     borderWidth: 2,
-    borderColor: "#e5e7eb",
-    borderRadius: 12,
+    borderColor: PSBColors.card.border,
+    borderRadius: 16,
     paddingHorizontal: 16,
     paddingVertical: 14,
-    fontSize: 16,
-    backgroundColor: "#ffffff",
+    fontSize: 17,
+    backgroundColor: PSBColors.gray[50],
     marginBottom: 16,
-    color: "#1e293b",
-    fontWeight: "500",
+    color: PSBColors.text.primary,
+    fontWeight: "600",
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   inputError: {
-    borderColor: "#ef4444",
-    backgroundColor: "#fef2f2",
+    borderColor: PSBColors.error,
+    backgroundColor: PSBColors.error + "10",
   },
   slider: {
     width: "100%",
@@ -287,10 +297,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sliderThumb: {
-    backgroundColor: "#1e40af",
+    backgroundColor: PSBColors.primary,
     width: 24,
     height: 24,
-    shadowColor: "#1e40af",
+    shadowColor: PSBColors.primary,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -305,22 +315,23 @@ const styles = StyleSheet.create({
   },
   sliderLabel: {
     fontSize: 12,
-    color: "#64748b",
+    color: PSBColors.text.secondary,
     fontWeight: "500",
   },
   sliderValue: {
-    fontSize: 15,
-    fontWeight: "700",
-    color: "#1e40af",
+    fontSize: 16,
+    fontWeight: "800",
+    color: PSBColors.primary,
+    letterSpacing: -0.3,
   },
   errorContainer: {
     marginTop: 8,
     paddingHorizontal: 4,
   },
   errorText: {
-    fontSize: 12,
-    color: "#ef4444",
-    fontWeight: "500",
+    fontSize: 13,
+    color: PSBColors.error,
+    fontWeight: "600",
   },
   actionButtons: {
     flexDirection: "row",
@@ -332,31 +343,41 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    backgroundColor: "#f8fafc",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#e2e8f0",
+    backgroundColor: PSBColors.white,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: PSBColors.card.border,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   advancedButtonText: {
     marginLeft: 8,
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#64748b",
+    fontSize: 15,
+    fontWeight: "600",
+    color: PSBColors.text.secondary,
   },
   resetButton: {
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    backgroundColor: "#ffffff",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#e2e8f0",
+    backgroundColor: PSBColors.white,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: PSBColors.card.border,
+    shadowColor: PSBColors.card.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   resetButtonText: {
     marginLeft: 8,
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#64748b",
+    fontSize: 15,
+    fontWeight: "600",
+    color: PSBColors.text.secondary,
   },
 });

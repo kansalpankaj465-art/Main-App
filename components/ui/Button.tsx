@@ -16,6 +16,7 @@ import {
   GestureDetector,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
+import PSBColors from "../../constants/colors";
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -57,11 +58,11 @@ export function Button({
 
   const tap = Gesture.Tap()
     .onBegin(() => {
-      scale.value = withSpring(0.95);
+      scale.value = withSpring(0.96, { damping: 15, stiffness: 300 });
       opacity.value = withTiming(0.8, { duration: 100 });
     })
     .onFinalize(() => {
-      scale.value = withSpring(1);
+      scale.value = withSpring(1, { damping: 15, stiffness: 300 });
       opacity.value = withTiming(1, { duration: 100 });
     });
 
@@ -70,50 +71,50 @@ export function Button({
 
     switch (variant) {
       case "destructive":
-        baseStyle.push({ ...styles.button, ...styles.destructive });
+        baseStyle.push(styles.destructive);
         break;
       case "outline":
-        baseStyle.push({ ...styles.button, ...styles.outline });
+        baseStyle.push(styles.outline);
         break;
       case "secondary":
-        baseStyle.push({ ...styles.button, ...styles.secondary });
+        baseStyle.push(styles.secondary);
         break;
       case "ghost":
-        baseStyle.push({ ...styles.button, ...styles.ghost });
+        baseStyle.push(styles.ghost);
         break;
 
       case "scan":
-        baseStyle.push({ ...styles.button, ...styles.scan });
+        baseStyle.push(styles.scan);
         break;
       case "danger":
-        baseStyle.push({ ...styles.button, ...styles.danger });
+        baseStyle.push(styles.danger);
         break;
       case "warning":
-        baseStyle.push({ ...styles.button, ...styles.warning });
+        baseStyle.push(styles.warning);
         break;
       case "safe":
-        baseStyle.push({ ...styles.button, ...styles.safe });
+        baseStyle.push(styles.safe);
         break;
       default:
-        baseStyle.push({ ...styles.button, ...styles.default });
+        baseStyle.push(styles.default);
     }
 
     switch (size) {
       case "sm":
-        baseStyle.push({ ...styles.button, ...styles.sm });
+        baseStyle.push(styles.sm);
         break;
       case "lg":
-        baseStyle.push({ ...styles.button, ...styles.lg });
+        baseStyle.push(styles.lg);
         break;
       case "icon":
-        baseStyle.push({ ...styles.button, ...styles.icon });
+        baseStyle.push(styles.icon);
         break;
       default:
-        baseStyle.push({ ...styles.button, ...styles.defaultSize });
+        baseStyle.push(styles.defaultSize);
     }
 
     if (disabled) {
-      baseStyle.push({ ...styles.button, ...styles.disabled });
+      baseStyle.push(styles.disabled);
     }
 
     return baseStyle;
@@ -173,51 +174,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 8,
-    elevation: 8,
+    elevation: 6,
   },
   default: {
-    backgroundColor: "#10b981",
-    shadowColor: "#10b981",
+    backgroundColor: PSBColors.primary,
+    shadowColor: PSBColors.primary,
   },
   destructive: {
-    backgroundColor: "#ef4444",
-    shadowColor: "#ef4444",
+    backgroundColor: PSBColors.error,
+    shadowColor: PSBColors.error,
   },
   outline: {
     borderWidth: 2,
-    borderColor: "#374151",
+    borderColor: PSBColors.primary,
     backgroundColor: "transparent",
     shadowOpacity: 0.1,
   },
   secondary: {
-    backgroundColor: "#6b7280",
-    shadowColor: "#6b7280",
+    backgroundColor: PSBColors.secondary,
+    shadowColor: PSBColors.secondary,
   },
   ghost: {
     backgroundColor: "transparent",
     shadowOpacity: 0,
   },
   scan: {
-    backgroundColor: "#10b981",
-    shadowColor: "#10b981",
+    backgroundColor: PSBColors.primary,
+    shadowColor: PSBColors.primary,
   },
   danger: {
-    backgroundColor: "#dc2626",
-    shadowColor: "#dc2626",
+    backgroundColor: PSBColors.error,
+    shadowColor: PSBColors.error,
   },
   warning: {
-    backgroundColor: "#f59e0b",
-    shadowColor: "#f59e0b",
+    backgroundColor: PSBColors.warning,
+    shadowColor: PSBColors.warning,
   },
   safe: {
-    backgroundColor: "#059669",
-    shadowColor: "#059669",
+    backgroundColor: PSBColors.success,
+    shadowColor: PSBColors.success,
   },
   defaultSize: {
     paddingHorizontal: 24,
-    paddingVertical: 16,
+    paddingVertical: 18,
     minHeight: 48,
   },
   sm: {
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
   },
   lg: {
     paddingHorizontal: 32,
-    paddingVertical: 20,
+    paddingVertical: 22,
     minHeight: 56,
   },
   icon: {
@@ -240,19 +241,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
   },
   text: {
-    fontWeight: "600",
+    fontWeight: "700",
     textAlign: "center",
+    letterSpacing: 0.5,
   },
   defaultText: {
     color: "#ffffff",
     fontSize: 16,
   },
   outlineText: {
-    color: "#f9fafb",
+    color: PSBColors.primary,
     fontSize: 16,
+    fontWeight: "700",
   },
   ghostText: {
-    color: "#f9fafb",
+    color: PSBColors.primary,
     fontSize: 16,
   },
   smText: {
@@ -260,5 +263,6 @@ const styles = StyleSheet.create({
   },
   lgText: {
     fontSize: 18,
+    fontWeight: "800",
   },
 });

@@ -9,6 +9,7 @@ import {
   Animated,
 } from "react-native";
 import { WebView } from "react-native-webview";
+import PSBColors from "../constants/colors";
 
 const { width, height } = Dimensions.get("window");
 
@@ -51,7 +52,7 @@ const ChatbotPopup: React.FC<ChatbotPopupProps> = ({ visible, onClose }) => {
         >
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.headerText}>FinGuard Assistant</Text>
+            <Text style={styles.headerText}>PSB Assistant</Text>
             <TouchableOpacity onPress={onClose}>
               <Text style={styles.closeButton}>✕</Text>
             </TouchableOpacity>
@@ -80,35 +81,39 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   popupContainer: {
-    width: width * 0.72,
-    height: height * 0.65,
+    width: width * 0.75,
+    height: height * 0.68,
     backgroundColor: "#fff",
-    borderTopLeftRadius: 12,
-    borderBottomLeftRadius: 12,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
     marginRight: 32, // ✅ Added space from the right
     marginBottom:16,
     overflow: "hidden",
     shadowColor: "#000",
-    shadowOpacity: 0.25,
-    shadowOffset: { width: -2, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
+    shadowOpacity: 0.3,
+    shadowOffset: { width: -4, height: 4 },
+    shadowRadius: 12,
+    elevation: 10,
+    borderWidth: 2,
+    borderColor: PSBColors.secondary,
   },
   header: {
-    backgroundColor: "#0070BA",
-    padding: 12,
+    backgroundColor: PSBColors.primary,
+    padding: 16,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   headerText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
+    color: PSBColors.white,
+    fontSize: 20,
+    fontWeight: "800",
+    letterSpacing: -0.3,
   },
   closeButton: {
-    color: "#fff",
-    fontSize: 20,
+    color: PSBColors.white,
+    fontSize: 24,
+    fontWeight: "bold",
   },
   webView: {
     flex: 1,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,13 +7,24 @@ import {
   ScrollView,
   Alert,
   Dimensions,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Clock, Target, CircleCheck as CheckCircle, Circle as XCircle, ArrowRight, RotateCcw, Trophy, Brain, TrendingUp, TriangleAlert as AlertTriangle } from 'lucide-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Scenario, ScenarioChoice, scenarios } from '../data/scenarios';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Clock,
+  Target,
+  CircleCheck as CheckCircle,
+  Circle as XCircle,
+  ArrowRight,
+  RotateCcw,
+  Trophy,
+  Brain,
+  TrendingUp,
+  TriangleAlert as AlertTriangle,
+} from "lucide-react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Scenario, ScenarioChoice, scenarios } from "../data/scenarios";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 interface ScenarioSimulatorProps {
   scenarioId?: string;
@@ -27,7 +38,9 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
   onExit,
 }) => {
   const [currentScenario, setCurrentScenario] = useState<Scenario | null>(null);
-  const [selectedChoice, setSelectedChoice] = useState<ScenarioChoice | null>(null);
+  const [selectedChoice, setSelectedChoice] = useState<ScenarioChoice | null>(
+    null
+  );
   const [showResult, setShowResult] = useState(false);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -35,7 +48,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
   useEffect(() => {
     if (scenarioId) {
-      const scenario = scenarios.find(s => s.id === scenarioId);
+      const scenario = scenarios.find((s) => s.id === scenarioId);
       if (scenario) {
         setCurrentScenario(scenario);
         setTimeLeft(scenario.timeLimit || null);
@@ -58,7 +71,9 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
   useEffect(() => {
     if (startTime) {
       const interval = setInterval(() => {
-        setTimeSpent(Math.floor((new Date().getTime() - startTime.getTime()) / 1000));
+        setTimeSpent(
+          Math.floor((new Date().getTime() - startTime.getTime()) / 1000)
+        );
       }, 1000);
       return () => clearInterval(interval);
     }
@@ -66,9 +81,9 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
   const handleTimeUp = () => {
     Alert.alert(
-      'Time\'s Up!',
-      'You didn\'t make a decision in time. In real life, delayed decisions can also have consequences.',
-      [{ text: 'OK', onPress: () => setShowResult(true) }]
+      "Time's Up!",
+      "You didn't make a decision in time. In real life, delayed decisions can also have consequences.",
+      [{ text: "OK", onPress: () => setShowResult(true) }]
     );
   };
 
@@ -91,7 +106,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
         scenarioId: currentScenario.id,
         choiceId: selectedChoice.id,
         points: selectedChoice.points,
-        totalPoints: Math.max(...currentScenario.choices.map(c => c.points)),
+        totalPoints: Math.max(...currentScenario.choices.map((c) => c.points)),
         completedAt: new Date(),
         timeSpent,
         isCorrect: selectedChoice.isCorrect,
@@ -102,21 +117,31 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'beginner': return '#10b981';
-      case 'intermediate': return '#f59e0b';
-      case 'advanced': return '#ef4444';
-      default: return '#6b7280';
+      case "beginner":
+        return "#10b981";
+      case "intermediate":
+        return "#f59e0b";
+      case "advanced":
+        return "#ef4444";
+      default:
+        return "#6b7280";
     }
   };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'fraud-detection': return <AlertTriangle size={20} color="#ef4444" />;
-      case 'investment': return <TrendingUp size={20} color="#3b82f6" />;
-      case 'budgeting': return <Target size={20} color="#10b981" />;
-      case 'insurance': return <CheckCircle size={20} color="#8b5cf6" />;
-      case 'retirement': return <Clock size={20} color="#f59e0b" />;
-      default: return <Brain size={20} color="#6b7280" />;
+      case "fraud-detection":
+        return <AlertTriangle size={20} color="#ef4444" />;
+      case "investment":
+        return <TrendingUp size={20} color="#3b82f6" />;
+      case "budgeting":
+        return <Target size={20} color="#10b981" />;
+      case "insurance":
+        return <CheckCircle size={20} color="#8b5cf6" />;
+      case "retirement":
+        return <Clock size={20} color="#f59e0b" />;
+      default:
+        return <Brain size={20} color="#6b7280" />;
     }
   };
 
@@ -143,30 +168,46 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          colors={selectedChoice.isCorrect ? ['#f0fdf4', '#dcfce7'] : ['#fef2f2', '#fee2e2']}
+          colors={
+            selectedChoice.isCorrect
+              ? ["#f0fdf4", "#dcfce7"]
+              : ["#fef2f2", "#fee2e2"]
+          }
           style={styles.resultContainer}
         >
           <ScrollView contentContainerStyle={styles.scrollContent}>
             <View style={styles.resultHeader}>
-              <View style={[
-                styles.resultIcon,
-                { backgroundColor: selectedChoice.isCorrect ? '#10b981' : '#ef4444' }
-              ]}>
+              <View
+                style={[
+                  styles.resultIcon,
+                  {
+                    backgroundColor: selectedChoice.isCorrect
+                      ? "#10b981"
+                      : "#ef4444",
+                  },
+                ]}
+              >
                 {selectedChoice.isCorrect ? (
                   <CheckCircle size={32} color="#ffffff" />
                 ) : (
                   <XCircle size={32} color="#ffffff" />
                 )}
               </View>
-              <Text style={[
-                styles.resultTitle,
-                { color: selectedChoice.isCorrect ? '#166534' : '#dc2626' }
-              ]}>
-                {selectedChoice.isCorrect ? 'Great Decision!' : 'Learning Opportunity'}
+              <Text
+                style={[
+                  styles.resultTitle,
+                  { color: selectedChoice.isCorrect ? "#166534" : "#dc2626" },
+                ]}
+              >
+                {selectedChoice.isCorrect
+                  ? "Great Decision!"
+                  : "Learning Opportunity"}
               </Text>
               <View style={styles.scoreContainer}>
                 <Text style={styles.scoreText}>
-                  {selectedChoice.points} / {Math.max(...currentScenario.choices.map(c => c.points))} points
+                  {selectedChoice.points} /{" "}
+                  {Math.max(...currentScenario.choices.map((c) => c.points))}{" "}
+                  points
                 </Text>
               </View>
             </View>
@@ -179,28 +220,36 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
               <View style={styles.consequenceSection}>
                 <Text style={styles.sectionTitle}>What Happened:</Text>
-                <Text style={styles.consequenceText}>{selectedChoice.consequence}</Text>
+                <Text style={styles.consequenceText}>
+                  {selectedChoice.consequence}
+                </Text>
               </View>
 
               <View style={styles.explanationSection}>
                 <Text style={styles.sectionTitle}>Why This Matters:</Text>
-                <Text style={styles.explanationText}>{selectedChoice.explanation}</Text>
+                <Text style={styles.explanationText}>
+                  {selectedChoice.explanation}
+                </Text>
               </View>
 
               <View style={styles.learningSection}>
                 <Text style={styles.sectionTitle}>Learning Objective:</Text>
-                <Text style={styles.learningText}>{currentScenario.learningObjective}</Text>
+                <Text style={styles.learningText}>
+                  {currentScenario.learningObjective}
+                </Text>
               </View>
 
               {!selectedChoice.isCorrect && (
                 <View style={styles.betterChoiceSection}>
                   <Text style={styles.sectionTitle}>Better Approach:</Text>
                   {currentScenario.choices
-                    .filter(c => c.isCorrect)
+                    .filter((c) => c.isCorrect)
                     .map((choice, index) => (
                       <View key={choice.id} style={styles.betterChoice}>
                         <CheckCircle size={16} color="#10b981" />
-                        <Text style={styles.betterChoiceText}>{choice.text}</Text>
+                        <Text style={styles.betterChoiceText}>
+                          {choice.text}
+                        </Text>
                       </View>
                     ))}
                 </View>
@@ -208,12 +257,18 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             </View>
 
             <View style={styles.actionButtons}>
-              <TouchableOpacity style={styles.restartButton} onPress={handleRestart}>
+              <TouchableOpacity
+                style={styles.restartButton}
+                onPress={handleRestart}
+              >
                 <RotateCcw size={20} color="#6b7280" />
                 <Text style={styles.restartButtonText}>Try Again</Text>
               </TouchableOpacity>
-              
-              <TouchableOpacity style={styles.completeButton} onPress={handleComplete}>
+
+              <TouchableOpacity
+                style={styles.completeButton}
+                onPress={handleComplete}
+              >
                 <Trophy size={20} color="#ffffff" />
                 <Text style={styles.completeButtonText}>Complete</Text>
               </TouchableOpacity>
@@ -226,7 +281,7 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient colors={['#1e293b', '#334155']} style={styles.container}>
+      <LinearGradient colors={["#1e293b", "#334155"]} style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {/* Header */}
           <View style={styles.header}>
@@ -234,14 +289,20 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
               <View style={styles.categoryBadge}>
                 {getCategoryIcon(currentScenario.category)}
                 <Text style={styles.categoryText}>
-                  {currentScenario.category.replace('-', ' ').toUpperCase()}
+                  {currentScenario.category.replace("-", " ").toUpperCase()}
                 </Text>
               </View>
-              
-              <View style={[
-                styles.difficultyBadge,
-                { backgroundColor: getDifficultyColor(currentScenario.difficulty) }
-              ]}>
+
+              <View
+                style={[
+                  styles.difficultyBadge,
+                  {
+                    backgroundColor: getDifficultyColor(
+                      currentScenario.difficulty
+                    ),
+                  },
+                ]}
+              >
                 <Text style={styles.difficultyText}>
                   {currentScenario.difficulty.toUpperCase()}
                 </Text>
@@ -249,16 +310,21 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             </View>
 
             <Text style={styles.scenarioTitle}>{currentScenario.title}</Text>
-            <Text style={styles.scenarioDescription}>{currentScenario.description}</Text>
+            <Text style={styles.scenarioDescription}>
+              {currentScenario.description}
+            </Text>
 
             {timeLeft !== null && (
               <View style={styles.timerContainer}>
                 <Clock size={16} color="#f59e0b" />
-                <Text style={[
-                  styles.timerText,
-                  timeLeft <= 10 && styles.timerWarning
-                ]}>
-                  {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
+                <Text
+                  style={[
+                    styles.timerText,
+                    timeLeft <= 10 && styles.timerWarning,
+                  ]}
+                >
+                  {Math.floor(timeLeft / 60)}:
+                  {(timeLeft % 60).toString().padStart(2, "0")}
                 </Text>
               </View>
             )}
@@ -267,7 +333,9 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
           {/* Situation */}
           <View style={styles.situationCard}>
             <Text style={styles.situationTitle}>The Situation</Text>
-            <Text style={styles.situationText}>{currentScenario.situation}</Text>
+            <Text style={styles.situationText}>
+              {currentScenario.situation}
+            </Text>
           </View>
 
           {/* Choices */}
@@ -296,7 +364,9 @@ export const ScenarioSimulator: React.FC<ScenarioSimulatorProps> = ({
             <Brain size={20} color="#3b82f6" />
             <View style={styles.objectiveContent}>
               <Text style={styles.objectiveTitle}>Learning Goal</Text>
-              <Text style={styles.objectiveText}>{currentScenario.learningObjective}</Text>
+              <Text style={styles.objectiveText}>
+                {currentScenario.learningObjective}
+              </Text>
             </View>
           </View>
         </ScrollView>
@@ -316,15 +386,15 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 16,
   },
   categoryBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
@@ -332,8 +402,8 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 12,
-    color: '#ffffff',
-    fontWeight: '600',
+    color: "#ffffff",
+    fontWeight: "600",
   },
   difficultyBadge: {
     paddingHorizontal: 12,
@@ -342,57 +412,57 @@ const styles = StyleSheet.create({
   },
   difficultyText: {
     fontSize: 12,
-    color: '#ffffff',
-    fontWeight: '600',
+    color: "#ffffff",
+    fontWeight: "600",
   },
   scenarioTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
     marginBottom: 8,
     lineHeight: 34,
   },
   scenarioDescription: {
     fontSize: 16,
-    color: '#cbd5e1',
+    color: "#cbd5e1",
     lineHeight: 24,
     marginBottom: 16,
   },
   timerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(245, 158, 11, 0.2)',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(245, 158, 11, 0.2)",
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 20,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     gap: 8,
   },
   timerText: {
     fontSize: 16,
-    color: '#f59e0b',
-    fontWeight: '600',
+    color: "#f59e0b",
+    fontWeight: "600",
   },
   timerWarning: {
-    color: '#ef4444',
+    color: "#ef4444",
   },
   situationCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderColor: "rgba(255, 255, 255, 0.1)",
   },
   situationTitle: {
     fontSize: 18,
-    fontWeight: '600',
-    color: '#ffffff',
+    fontWeight: "600",
+    color: "#ffffff",
     marginBottom: 12,
   },
   situationText: {
     fontSize: 16,
-    color: '#e2e8f0',
+    color: "#e2e8f0",
     lineHeight: 24,
   },
   choicesContainer: {
@@ -400,51 +470,51 @@ const styles = StyleSheet.create({
   },
   choicesTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
     marginBottom: 16,
   },
   choiceButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 12,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
-    overflow: 'hidden',
+    borderColor: "rgba(255, 255, 255, 0.1)",
+    overflow: "hidden",
   },
   choiceContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 16,
   },
   choiceNumber: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#3b82f6',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#3b82f6",
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 16,
   },
   choiceNumberText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
   },
   choiceButtonText: {
     flex: 1,
     fontSize: 16,
-    color: '#ffffff',
+    color: "#ffffff",
     lineHeight: 22,
   },
   objectiveCard: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+    flexDirection: "row",
+    alignItems: "flex-start",
+    backgroundColor: "rgba(59, 130, 246, 0.1)",
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
-    borderColor: 'rgba(59, 130, 246, 0.2)',
+    borderColor: "rgba(59, 130, 246, 0.2)",
   },
   objectiveContent: {
     flex: 1,
@@ -452,185 +522,185 @@ const styles = StyleSheet.create({
   },
   objectiveTitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#60a5fa',
+    fontWeight: "600",
+    color: "#60a5fa",
     marginBottom: 4,
   },
   objectiveText: {
     fontSize: 14,
-    color: '#cbd5e1',
+    color: "#cbd5e1",
     lineHeight: 20,
   },
   errorContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   errorTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#1f2937',
+    fontWeight: "bold",
+    color: "#1f2937",
     marginTop: 16,
     marginBottom: 8,
   },
   errorDescription: {
     fontSize: 16,
-    color: '#6b7280',
-    textAlign: 'center',
+    color: "#6b7280",
+    textAlign: "center",
     marginBottom: 24,
   },
   exitButton: {
-    backgroundColor: '#3b82f6',
+    backgroundColor: "#3b82f6",
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: 8,
   },
   exitButtonText: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   resultContainer: {
     flex: 1,
   },
   resultHeader: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 32,
   },
   resultIcon: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 16,
   },
   resultTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 8,
   },
   scoreContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
   },
   scoreText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1f2937',
+    fontWeight: "bold",
+    color: "#1f2937",
   },
   resultContent: {
     marginBottom: 32,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '600',
-    color: '#1f2937',
+    fontWeight: "600",
+    color: "#1f2937",
     marginBottom: 8,
   },
   choiceSection: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
   },
   choiceText: {
     fontSize: 16,
-    color: '#374151',
+    color: "#374151",
     lineHeight: 22,
   },
   consequenceSection: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
   },
   consequenceText: {
     fontSize: 16,
-    color: '#374151',
+    color: "#374151",
     lineHeight: 22,
   },
   explanationSection: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
   },
   explanationText: {
     fontSize: 16,
-    color: '#374151',
+    color: "#374151",
     lineHeight: 22,
   },
   learningSection: {
-    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+    backgroundColor: "rgba(59, 130, 246, 0.1)",
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(59, 130, 246, 0.2)',
+    borderColor: "rgba(59, 130, 246, 0.2)",
   },
   learningText: {
     fontSize: 16,
-    color: '#1e40af',
+    color: "#1e40af",
     lineHeight: 22,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   betterChoiceSection: {
-    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    backgroundColor: "rgba(16, 185, 129, 0.1)",
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
-    borderColor: 'rgba(16, 185, 129, 0.2)',
+    borderColor: "rgba(16, 185, 129, 0.2)",
   },
   betterChoice: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    alignItems: "flex-start",
     marginBottom: 8,
     gap: 8,
   },
   betterChoiceText: {
     flex: 1,
     fontSize: 14,
-    color: '#059669',
+    color: "#059669",
     lineHeight: 20,
   },
   actionButtons: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 12,
   },
   restartButton: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     paddingVertical: 16,
     borderRadius: 12,
     gap: 8,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: "#e5e7eb",
   },
   restartButtonText: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#6b7280',
+    fontWeight: "600",
+    color: "#6b7280",
   },
   completeButton: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#3b82f6',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#3b82f6",
     paddingVertical: 16,
     borderRadius: 12,
     gap: 8,
   },
   completeButtonText: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#ffffff',
+    fontWeight: "600",
+    color: "#ffffff",
   },
 });

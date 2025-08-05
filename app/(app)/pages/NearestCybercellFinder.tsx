@@ -21,7 +21,7 @@ export default function App() {
   const fetchCyberCells = async (lat, lng) => {
     try {
       const res = await fetch(
-        `http://192.168.1.12:4000/api/nearby-cybercells?lat=${lat}&lng=${lng}&radius=10000`
+        `http://192.168.1.12:5000/api/nearby-cybercells?lat=${lat}&lng=${lng}&radius=10000`
       );
 
       if (!res.ok) throw new Error("Network response was not ok");

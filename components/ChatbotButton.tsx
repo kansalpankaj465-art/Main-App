@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { MessageCircle } from "lucide-react-native";
+import PSBColors from "../constants/colors";
 
 interface ChatbotButtonProps {
   onPress: () => void;
@@ -21,14 +22,14 @@ const ChatbotButton: React.FC<ChatbotButtonProps> = ({ onPress }) => {
     const pulse = () => {
       Animated.sequence([
         Animated.timing(pulseAnim, {
-          toValue: 1.1,
-          duration: 1000,
+          toValue: 1.05,
+          duration: 1500,
           easing: Easing.inOut(Easing.ease),
           useNativeDriver: true,
         }),
         Animated.timing(pulseAnim, {
           toValue: 1,
-          duration: 1000,
+          duration: 1500,
           easing: Easing.inOut(Easing.ease),
           useNativeDriver: true,
         }),
@@ -39,7 +40,7 @@ const ChatbotButton: React.FC<ChatbotButtonProps> = ({ onPress }) => {
     // Slide-up entry animation
     Animated.timing(slideAnim, {
       toValue: 0,
-      duration: 600,
+      duration: 800,
       easing: Easing.out(Easing.exp),
       useNativeDriver: true,
     }).start();
@@ -57,9 +58,9 @@ const ChatbotButton: React.FC<ChatbotButtonProps> = ({ onPress }) => {
       <TouchableOpacity
         style={styles.button}
         onPress={onPress}
-        activeOpacity={0.8}
+        activeOpacity={0.85}
       >
-        <MessageCircle color="#fff" size={24} />
+        <MessageCircle color={PSBColors.white} size={24} />
       </TouchableOpacity>
     </Animated.View>
   );
@@ -73,20 +74,22 @@ const styles = StyleSheet.create({
     zIndex: 1000,
   } as ViewStyle,
   button: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: "#0070BA",
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: PSBColors.primary,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#0070BA",
+    shadowColor: PSBColors.primary,
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 8,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOpacity: 0.35,
+    shadowRadius: 16,
+    elevation: 12,
+    borderWidth: 3,
+    borderColor: PSBColors.white,
   },
 });
 

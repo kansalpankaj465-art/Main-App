@@ -23,6 +23,7 @@ import {
 import { useTheme } from "../../../contexts/ThemeContext";
 import { router } from "expo-router";
 import LessonsPage from "../pages/LessonsPage";
+import PSBColors from "../../../constants/colors";
 
 const EducationScreen = () => {
   const { theme } = useTheme();
@@ -308,18 +309,22 @@ const EducationScreen = () => {
 
   return (
     <LinearGradient
-      colors={[theme.colors.background[0], theme.colors.background[1]]}
+      colors={PSBColors.gradients.neutral}
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
+          <View style={styles.bankHeader}>
+            <Text style={styles.bankName}>Punjab & Sind Bank</Text>
+            <Text style={styles.bankTagline}>Financial Education Center</Text>
+          </View>
           <Text style={[styles.title, { color: theme.colors.text }]}>
-            Education Center
+            Security Education
           </Text>
           <Text
             style={[styles.subtitle, { color: theme.colors.textSecondary }]}
           >
-            Master essential skills through our structured learning modules.
+            Learn to protect yourself from financial fraud and scams.
           </Text>
         </View>
 
@@ -329,24 +334,29 @@ const EducationScreen = () => {
             style={[
               styles.tab,
               {
-                backgroundColor: "#a59d9d24",
-                borderColor: theme.colors.border,
-                borderWidth: 0.3,
+                backgroundColor: PSBColors.white,
+                borderColor: PSBColors.card.border,
+                borderWidth: 1,
+                shadowColor: PSBColors.card.shadow,
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.1,
+                shadowRadius: 4,
+                elevation: 2,
               },
-              selectedTab === "lessons" && styles.activeTab,
+              selectedTab === "lessons" && { backgroundColor: PSBColors.primary },
             ]}
             onPress={() => setSelectedTab("lessons")}
           >
             <Lightbulb
               size={20}
-              color={selectedTab === "lessons" ? "white" : theme.colors.icon}
+              color={selectedTab === "lessons" ? PSBColors.white : PSBColors.primary}
             />
             <Text
               style={[
                 styles.tabText,
                 {
                   color:
-                    selectedTab === "lessons" ? "white" : theme.colors.icon,
+                    selectedTab === "lessons" ? PSBColors.white : PSBColors.primary,
                 },
               ]}
             >
@@ -357,24 +367,29 @@ const EducationScreen = () => {
             style={[
               styles.tab,
               {
-                backgroundColor: "#a59d9d24",
-                borderColor: theme.colors.border,
-                borderWidth: 0.3,
+                backgroundColor: PSBColors.white,
+                borderColor: PSBColors.card.border,
+                borderWidth: 1,
+                shadowColor: PSBColors.card.shadow,
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.1,
+                shadowRadius: 4,
+                elevation: 2,
               },
-              selectedTab === "glossary" && styles.activeTab,
+              selectedTab === "glossary" && { backgroundColor: PSBColors.primary },
             ]}
             onPress={() => setSelectedTab("glossary")}
           >
             <BookOpen
               size={20}
-              color={selectedTab === "glossary" ? "white" : theme.colors.icon}
+              color={selectedTab === "glossary" ? PSBColors.white : PSBColors.primary}
             />
             <Text
               style={[
                 styles.tabText,
                 {
                   color:
-                    selectedTab === "glossary" ? "white" : theme.colors.icon,
+                    selectedTab === "glossary" ? PSBColors.white : PSBColors.primary,
                 },
               ]}
             >
@@ -386,24 +401,29 @@ const EducationScreen = () => {
             style={[
               styles.tab,
               {
-                backgroundColor: "#a59d9d24",
-                borderColor: theme.colors.border,
-                borderWidth: 0.3,
+                backgroundColor: PSBColors.white,
+                borderColor: PSBColors.card.border,
+                borderWidth: 1,
+                shadowColor: PSBColors.card.shadow,
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.1,
+                shadowRadius: 4,
+                elevation: 2,
               },
-              selectedTab === "resources" && styles.activeTab,
+              selectedTab === "resources" && { backgroundColor: PSBColors.primary },
             ]}
             onPress={() => setSelectedTab("resources")}
           >
             <ExternalLink
               size={20}
-              color={selectedTab === "resources" ? "white" : theme.colors.icon}
+              color={selectedTab === "resources" ? PSBColors.white : PSBColors.primary}
             />
             <Text
               style={[
                 styles.tabText,
                 {
                   color:
-                    selectedTab === "resources" ? "white" : theme.colors.icon,
+                    selectedTab === "resources" ? PSBColors.white : PSBColors.primary,
                 },
               ]}
             >
@@ -436,22 +456,63 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     alignItems: "center",
   },
+  bankHeader: {
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  bankTitleContainer: {
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  bankName: {
+    fontSize: 22,
+    fontWeight: "800",
+    color: PSBColors.primary,
+    letterSpacing: -0.3,
+  },
+  bankNameUnderline: {
+    width: 50,
+    height: 2,
+    backgroundColor: PSBColors.secondary,
+    borderRadius: 1,
+    marginTop: 4,
+  },
+  bankTagline: {
+    fontSize: 14,
+    color: PSBColors.text.secondary,
+    fontWeight: "600",
+    marginBottom: 8,
+  },
+  educationBadge: {
+    backgroundColor: PSBColors.secondary + '20',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: PSBColors.secondary + '40',
+  },
+  educationBadgeText: {
+    color: PSBColors.brand.heritage,
+    fontSize: 12,
+    fontWeight: '700',
+  },
   title: {
     fontSize: 32,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: "800",
     textAlign: "center",
+    letterSpacing: -0.8,
   },
   subtitle: {
-    fontSize: 16,
-    color: "#b8b8b8",
+    fontSize: 18,
     marginTop: 8,
     textAlign: "center",
+    fontWeight: "500",
   },
   tabContainer: {
     flexDirection: "row",
     paddingHorizontal: 20,
     marginBottom: 20,
+    gap: 8,
   },
   tab: {
     flex: 1,
@@ -460,21 +521,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderRadius: 8,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    marginHorizontal: 4,
-  },
-  activeTab: {
-    backgroundColor: "#ff6b6b",
+    borderRadius: 6,
   },
   tabText: {
-    color: "#b8b8b8",
     fontSize: 14,
     fontWeight: "600",
     marginLeft: 8,
-  },
-  activeTabText: {
-    color: "white",
   },
   content: {
     flex: 1,

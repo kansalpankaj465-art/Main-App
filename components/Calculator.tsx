@@ -17,6 +17,7 @@ import {
 } from "lucide-react-native";
 import ResultsDisplay from "./ResultsDisplay";
 import { formatCurrency } from "../utils/formatters";
+import PSBColors from "../constants/colors";
 
 const { width } = Dimensions.get("window");
 
@@ -297,12 +298,11 @@ const Calculator = () => {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <View style={styles.headerIcon}>
-          <CalculatorIcon size={32} color="#ffffff" />
+          <CalculatorIcon size={32} color={PSBColors.white} />
         </View>
-        <Text style={styles.headerTitle}>Smart Investment Calculator</Text>
+        <Text style={styles.headerTitle}>PSB Investment Calculator</Text>
         <Text style={styles.headerSubtitle}>
-          Calculate returns for Fixed Deposits, Recurring Deposits, and SIP
-          investments
+          Calculate returns for Fixed Deposits, Recurring Deposits with PSB rates
         </Text>
       </View>
 
@@ -483,10 +483,10 @@ const Calculator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8fafc",
+    backgroundColor: PSBColors.gray[50],
   },
   header: {
-    backgroundColor: "#3b82f6",
+    backgroundColor: PSBColors.primary,
     paddingHorizontal: 20,
     paddingVertical: 30,
     alignItems: "center",
@@ -494,7 +494,7 @@ const styles = StyleSheet.create({
   headerIcon: {
     width: 64,
     height: 64,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: PSBColors.secondaryLight + "40",
     borderRadius: 32,
     alignItems: "center",
     justifyContent: "center",
@@ -503,13 +503,13 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#ffffff",
+    color: PSBColors.white,
     textAlign: "center",
     marginBottom: 8,
   },
   headerSubtitle: {
     fontSize: 14,
-    color: "rgba(255, 255, 255, 0.8)",
+    color: PSBColors.gray[200],
     textAlign: "center",
     lineHeight: 20,
   },
@@ -518,7 +518,7 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     flexDirection: "row",
-    backgroundColor: "#e5e7eb",
+    backgroundColor: PSBColors.gray[200],
     borderRadius: 12,
     padding: 4,
     marginBottom: 24,
@@ -534,27 +534,27 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   activeTabButton: {
-    backgroundColor: "#3b82f6",
+    backgroundColor: PSBColors.primary,
   },
   tabButtonText: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#6b7280",
+    color: PSBColors.text.secondary,
   },
   activeTabButtonText: {
-    color: "#ffffff",
+    color: PSBColors.white,
   },
   formContainer: {
-    backgroundColor: "#ffffff",
+    backgroundColor: PSBColors.white,
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
-    shadowColor: "#000",
+    shadowColor: PSBColors.card.shadow,
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 4,
   },
@@ -564,17 +564,17 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#374151",
+    color: PSBColors.text.primary,
     marginBottom: 8,
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#d1d5db",
+    borderColor: PSBColors.card.border,
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: PSBColors.gray[50],
   },
   row: {
     flexDirection: "row",
@@ -593,34 +593,40 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "#d1d5db",
-    backgroundColor: "#ffffff",
+    borderColor: PSBColors.card.border,
+    backgroundColor: PSBColors.gray[50],
   },
   activePickerOption: {
-    backgroundColor: "#3b82f6",
-    borderColor: "#3b82f6",
+    backgroundColor: PSBColors.primary,
+    borderColor: PSBColors.primary,
   },
   pickerOptionText: {
     fontSize: 14,
-    color: "#6b7280",
+    color: PSBColors.text.secondary,
   },
   activePickerOptionText: {
-    color: "#ffffff",
+    color: PSBColors.white,
   },
   calculateButton: {
-    backgroundColor: "#3b82f6",
-    borderRadius: 12,
+    backgroundColor: PSBColors.primary,
+    borderRadius: 16,
     paddingVertical: 16,
     alignItems: "center",
     marginTop: 8,
+    shadowColor: PSBColors.primary,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 8,
   },
   disabledButton: {
     opacity: 0.6,
   },
   calculateButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#ffffff",
+    fontSize: 18,
+    fontWeight: "800",
+    color: PSBColors.white,
+    letterSpacing: 0.5,
   },
 });
 

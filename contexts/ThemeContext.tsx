@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Appearance, ColorSchemeName } from "react-native";
+import { createTheme } from "../constants/colors";
 
 export interface Theme {
   isDark: boolean;
@@ -24,51 +25,9 @@ export interface Theme {
   };
 }
 
-const lightTheme: Theme = {
-  isDark: false,
-  colors: {
-    background: ["#f8fafc", "#f1f5f9"],
-    surface: "rgba(83, 74, 74, 0.05)",
-    card: "#ffffff",
-    text: "#1f2937",
-    textSecondary: "#6b7280",
-    primary: "#2563eb",
-    success: "#10b981",
-    warning: "#f59e0b",
-    icon: "#6b7280",
-    error: "#dc2626",
-    border: "#e5e7eb",
-    shadow: "#000000",
-    profit: "#dcfce7",
-    loss: "#fee2e2",
-    breakEven: "#fef3c7",
-    gradientStart: "#2563eb",
-    gradientEnd: "#10b981",
-  },
-};
-
-const darkTheme: Theme = {
-  isDark: true,
-  colors: {
-    background: ["#1a1a2e", "#16213e"],
-    surface: "rgba(255, 255, 255, 0.05)",
-    card: "rgba(255, 255, 255, 0.05)",
-    text: "#f1f5f9",
-    textSecondary: "#94a3b8",
-    primary: "#3b82f6",
-    success: "#22c55e",
-    warning: "#eab308",
-    icon: "#ffffff",
-    error: "#ef4444",
-    border: "#475569",
-    shadow: "#000000",
-    profit: "#166534",
-    loss: "#991b1b",
-    breakEven: "#a16207",
-    gradientStart: "#1e40af",
-    gradientEnd: "#059669",
-  },
-};
+// PSB themed light and dark themes
+const lightTheme: Theme = createTheme(false);
+const darkTheme: Theme = createTheme(true);
 
 interface ThemeContextType {
   theme: Theme;
@@ -80,7 +39,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false); // Default to light theme for banking app
 
   useEffect(() => {
     const colorScheme = Appearance.getColorScheme();

@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScenarioList } from '../../../components/ScenarioList';
-import { ScenarioSimulator } from '../../../components/ScenarioSimulator';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ScenarioList } from "../../../components/ScenarioList";
+import { ScenarioSimulator } from "../../../components/ScenarioSimulator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const COMPLETED_SCENARIOS_KEY = 'completed_scenarios';
+const COMPLETED_SCENARIOS_KEY = "completed_scenarios";
 
 export default function ScenarioHub() {
-  const [currentScenarioId, setCurrentScenarioId] = useState<string | null>(null);
+  const [currentScenarioId, setCurrentScenarioId] = useState<string | null>(
+    null
+  );
   const [completedScenarios, setCompletedScenarios] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function ScenarioHub() {
         setCompletedScenarios(JSON.parse(stored));
       }
     } catch (error) {
-      console.error('Failed to load completed scenarios:', error);
+      console.error("Failed to load completed scenarios:", error);
     }
   };
 
@@ -30,9 +32,12 @@ export default function ScenarioHub() {
     try {
       const updated = [...new Set([...completedScenarios, scenarioId])];
       setCompletedScenarios(updated);
-      await AsyncStorage.setItem(COMPLETED_SCENARIOS_KEY, JSON.stringify(updated));
+      await AsyncStorage.setItem(
+        COMPLETED_SCENARIOS_KEY,
+        JSON.stringify(updated)
+      );
     } catch (error) {
-      console.error('Failed to save completed scenario:', error);
+      console.error("Failed to save completed scenario:", error);
     }
   };
 
@@ -74,6 +79,6 @@ export default function ScenarioHub() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e293b',
+    backgroundColor: "#1e293b",
   },
 });

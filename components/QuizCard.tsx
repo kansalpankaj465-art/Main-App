@@ -1,15 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import {
-  Shield,
-  DollarSign,
-  CheckCircle,
-  Clock,
-  Star,
-  Zap,
-  Trophy,
-  Target,
-} from "lucide-react-native";
+import { Shield, DollarSign, CircleCheck as CheckCircle, Clock, Star, Zap, Trophy, Target } from "lucide-react-native";
 import { Quiz, getUserProgress } from "../data/quizData";
 
 interface QuizCardProps {

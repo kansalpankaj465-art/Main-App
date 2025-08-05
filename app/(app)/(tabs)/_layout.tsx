@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
-import { Home, Brain, BookOpen, User, Wrench } from "lucide-react-native";
+import { Chrome as Home, Brain, BookOpen, User, Wrench } from "lucide-react-native";
 import { useTheme } from "../../../contexts/ThemeContext";
+import PSBColors from "../../../constants/colors";
 
 export default function TabLayout() {
   const { theme } = useTheme();
@@ -9,17 +10,28 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: theme.colors.background[0],
-          borderTopColor: theme.colors.border,
-          height: 70,
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderTopColor: PSBColors.card.border,
+          height: 75,
           paddingBottom: 10,
           paddingTop: 10,
+          shadowColor: PSBColors.card.shadow,
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.2,
+          shadowRadius: 8,
+          elevation: 12,
+          borderTopWidth: 2,
+          borderTopColor: PSBColors.secondary,
         },
-        tabBarActiveTintColor: "#ff6b6b",
-        tabBarInactiveTintColor: "#8e8e93",
+        tabBarActiveTintColor: PSBColors.primary,
+        tabBarInactiveTintColor: PSBColors.gray[500],
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "600",
+          fontSize: 13,
+          fontWeight: "700",
+          letterSpacing: 0.3,
+        },
+        tabBarIconStyle: {
+          marginBottom: 2,
         },
       }}
     >

@@ -8,6 +8,7 @@ import { AuthProvider } from "../contexts/AuthContext";
 import store from "../redux/store";
 import Toast from "react-native-toast-message";
 import { GoalsProvider } from "../contexts/GoalsContext";
+import PSBColors from "../constants/colors";
 
 function MainLayout() {
   useFrameworkReady();
@@ -18,7 +19,7 @@ function MainLayout() {
         <GestureHandlerRootView style={{ flex: 1 }}>
           <AuthProvider>
             <Slot />
-            <StatusBar style="light" backgroundColor="#1a1a2e" />
+            <StatusBar style="light" backgroundColor={PSBColors.primary} />
             {/* ✅ Global Toast */}
             <Toast position="top" visibilityTime={3000} />
           </AuthProvider>
@@ -29,6 +30,7 @@ function MainLayout() {
 }
 
 export default function RootLayout() {
+  useFrameworkReady();
   return (
     <Provider store={store}>
       <MainLayout />
